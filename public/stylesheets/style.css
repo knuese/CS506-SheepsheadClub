@@ -14,8 +14,20 @@ div.sticky {
   border: 2px solid rgb(128, 0, 0);
 }
 
+div.sidebar {
+  position: fixed;
+  height: 100%;
+  width: 35%;
+  z-index: 1;
+  background-color: black;
+  display: none;
+}
+
 button {
   background-color: rgb(164, 0, 0);
+  color: #FFF;
+  text-align: center;
+  font-size: 150%;
 }
 
     button:hover {

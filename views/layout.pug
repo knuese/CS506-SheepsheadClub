@@ -6,7 +6,21 @@ html
     meta(name='viewport' content='width=device-width, initial-scale=1')
   body
     div.sticky#title_bar
-      button#nav_button
-        img(src='/img/menu-icon.jpg')#nav_button_img
+      button#nav_button ☰
       //h1 Title
+    div.sidebar#nav_menu
+      a Home
+      br
+      a Scores and Stats
+      br
+      a Rules
+      br
+      a Tutorial
+      br
+      a About
+
     block content
+
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+  script(src='//code.jquery.com/ui/1.12.1/jquery-ui.js')
+  script(type='text/javascript', src='js/layout.js')
