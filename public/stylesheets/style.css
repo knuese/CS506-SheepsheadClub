@@ -28,6 +28,7 @@ button {
   color: #FFF;
   text-align: center;
   font-size: 150%;
+  padding: 0px;
 }
 
     button:hover {
