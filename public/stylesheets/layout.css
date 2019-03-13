@@ -1,0 +1,11 @@
+#nav_button {
+    position: relative;
+    left: 5px;
+    width: 45px;
+    height: 45px;
+}
+  
+#title_bar {
+    width: 100%;
+    height: 50px;
+}
