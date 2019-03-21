@@ -3,17 +3,17 @@
     border: 2px solid #800;
 }
 
-.bold {
-    font-weight: bold;
+.shaded {
+    background-color: rgba(200, 0, 0, 0.5);
 }
 
-.center_div {
+.centered {
     margin: 0 auto;
-    width: 80%;
 }
 
 #scores_table {
     width: 100%;
+    max-width: inherit;
 }
 
 table.dataTable thead .sorting:after,
