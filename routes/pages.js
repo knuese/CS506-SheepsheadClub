@@ -31,4 +31,24 @@ router.get('/tutorial', (req, res, next) => {
   res.render('tutorial');
 });
 
+router.post('/', function(req, res){
+    res.redirect('/');
+});
+
+router.post('/scores', function(req, res){
+    res.redirect('scores');
+});
+
+router.post('/rules', function(req, res){
+    res.redirect('rules');
+});
+
+router.post('/tutorial', function(req, res){
+    res.redirect('tutorial');
+});
+
+router.post('/about', function(req, res){
+    res.redirect('about');
+});
+
 module.exports = router;

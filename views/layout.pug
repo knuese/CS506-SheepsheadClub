@@ -1,27 +1,36 @@
 doctype html
 html
-  head
-    title Sheepshead Club - UW Madison
-    link(rel='stylesheet', href='/stylesheets/style.css')
-    link(rel='stylesheet', href='/stylesheets/layout.css')
-    meta(name='viewport' content='width=device-width, initial-scale=1')
-  body
-    div.sticky#title_bar
-      button#nav_button ☰
-      //h1 Title
-    div.sidebar#nav_menu
-      a(href='/') Home
-      br
-      a(href='/scores') Scores and Stats
-      br
-      a(href='/rules') Rules
-      br
-      a(href='/tutorial') Tutorial
-      br
-      a(href='/about') About
+	head
+		title Sheepshead Club - UW Madison
+		link(rel='stylesheet', href='/stylesheets/style.css')
+		link(rel='stylesheet', href='/stylesheets/layout.css')
+		meta(name='viewport' content='width=device-width, initial-scale=1')
+	body
+		div.sticky#title_bar
+			button#nav_button ☰
+			
+		div.sidebar#nav_menu
+			form#home(action = "/" method = "POST")
+				button.sideButton(type = "Submit") Home
+			br
+			
+			form#scores(action = "/scores" method = "POST")
+				button.sideButton(type = "Submit") Scores and Stats
+			br
 
-    block content
+			form#rules(action = "/rules" method = "POST")
+				button.sideButton(type = "Submit") Rules
+			br
 
-  script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js')
-  script(src='//code.jquery.com/ui/1.12.1/jquery-ui.js')
-  script(type='text/javascript', src='js/layout.js')
+			form#tutorial(action = "/tutorial" method = "POST")
+				button.sideButton(type = "Submit") Tutorial
+			br
+			
+			form#about(action = "/about" method = "POST")
+				button.sideButton(type = "Submit") About
+
+		block content
+
+	script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+	script(src='//code.jquery.com/ui/1.12.1/jquery-ui.js')
+	script(type='text/javascript', src='js/layout.js')
