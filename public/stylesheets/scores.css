@@ -1,0 +1,17 @@
+.outlined {
+    padding: 6px;
+    border: 2px solid #800;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.test {
+    margin: 0 auto;
+}
+
+.center_div {
+    margin: 0 auto;
+    width: 80%;
+}
