@@ -41,8 +41,10 @@ app.use(function(err, req, res, next) {
   res.render('error', { message: err.message, status: err.status, stack: err.stack });
 });
 
-app.listen(PORT, function() {
-  console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
-});
+if (!module.parent) {
+  app.listen(PORT, function() {
+    console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
+  });
+}
 
 module.exports = app;
