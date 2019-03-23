@@ -19,10 +19,6 @@ describe('Should get all pages of the website', () => {
         request(app).get('/rules').expect(200, done);
     });
 
-    it('GET /enter-scores', (done) => {
-        request(app).get('/scores').expect(200, done);
-    });
-
     it('GET /scores', (done) => {
         request(app).get('/scores').expect(200, done);
     });
