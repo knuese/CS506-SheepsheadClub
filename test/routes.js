@@ -1,7 +1,10 @@
 const request = require('supertest');
 const app = require('../app');
 
+<<<<<<< HEAD
 // Run tests with "npm test"
+=======
+>>>>>>> Created some basic unit tests for GET
 describe('Should get all pages of the website', () => {
     it('GET /', (done) => {
         request(app).get('/').expect(200, done);
@@ -19,10 +22,13 @@ describe('Should get all pages of the website', () => {
         request(app).get('/rules').expect(200, done);
     });
 
+<<<<<<< HEAD
     it('GET /enter-scores', (done) => {
         request(app).get('/scores').expect(200, done);
     });
 
+=======
+>>>>>>> Created some basic unit tests for GET
     it('GET /scores', (done) => {
         request(app).get('/scores').expect(200, done);
     });
