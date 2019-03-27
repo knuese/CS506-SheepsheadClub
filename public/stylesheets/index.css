@@ -1,34 +1,45 @@
-.my-container {
-    border: 2px solid green;
+.website-links {
+    padding-top: 25px;
 }
 
-.my-row {
-    border: 3px solid red;
-    height: 200px;
-    margin-top:20px;
+.card-block {
+    padding: 25px;
 }
 
-.my-col {
-    border: 3px dotted blue;
-}
-
-.box_title {
-    color: white;
+.card-title {
     background-color: #800;
-    //line-height: 30px;
-    padding: 20px;
+    color: white;
+    width: 50%;
+    padding: 5px;
+    padding-left: 10px;
 }
 
-.box-title-row {
+.btn {
+    background-color: #800;
+    color: white;
 }
 
-.button {
-  text-decoration: none;
-  background-color: #800;
-  color: White;
-  padding: 2px 6px 2px 6px;
-  border-top: 1px solid red;
-  border-right: 1px solid #800;
-  border-bottom: 1px solid #800;
-  border-left: 1px solid red;
+.sub-row {
+    padding-top: 15px;
+}
+
+.announcements-row {
+    height: 100%;
+}
+
+.announcements-card {
+    height: 100%;
+
+}
+
+.announcement-content{
+    margin-left: 5%
+}
+
+.post-header {
+    background-color: #FAA6A6;
+}
+
+.post{
+    margin-top: 10px;
 }
