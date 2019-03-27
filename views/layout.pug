@@ -2,35 +2,44 @@ doctype html
 html
 	head
 		title Sheepshead Club - UW Madison
+		link(href="https://fonts.googleapis.com/css?family=Germania+One" rel="stylesheet")
 		link(rel='stylesheet', href='/stylesheets/style.css')
 		link(rel='stylesheet', href='/stylesheets/layout.css')
+		link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous")
 		meta(name='viewport' content='width=device-width, initial-scale=1')
 	body
-		div.sticky#title_bar
-			button#nav_button ☰
+		.sticky#title_bar
+			.row
+				button#nav_button ☰
+				.col.text-center
+					a#title(href='/') Sheepshead Club - UW Madison
 			
-		div.sidebar#nav_menu
-			form#home(action = "/" method = "POST")
-				button.sideButton(type = "Submit") Home
-			br
-			
-			form#scores(action = "/scores" method = "POST")
-				button.sideButton(type = "Submit") Scores and Stats
-			br
-
-			form#rules(action = "/rules" method = "POST")
-				button.sideButton(type = "Submit") Rules
-			br
-
-			form#tutorial(action = "/tutorial" method = "POST")
-				button.sideButton(type = "Submit") Tutorial
-			br
-			
-			form#about(action = "/about" method = "POST")
-				button.sideButton(type = "Submit") About
+		.sidebar#nav_menu
+			.row
+				.col
+					form#home(action = "/" method = "POST")
+						button.btn-block.side-button(type = "Submit") Home
+			.row
+				.col
+					form#scores(action = "/scores" method = "POST")
+						button.btn-block.side-button(type = "Submit") Scores and Stats
+			.row
+				.col
+					form#rules(action = "/rules" method = "POST")
+						button.btn-block.side-button(type = "Submit") Rules
+			.row
+				.col
+					form#tutorial(action = "/tutorial" method = "POST")
+						button.btn-block.side-button(type = "Submit") Tutorial
+			.row
+				.col
+					form#about(action = "/about" method = "POST")
+						button.btn-block.side-button(type = "Submit") About
 
 		block content
 
 	script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js')
 	script(src='//code.jquery.com/ui/1.12.1/jquery-ui.js')
 	script(type='text/javascript', src='js/layout.js')
+	script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous")
+	script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous")
