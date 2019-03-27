@@ -3,68 +3,73 @@ extends layout
 block content
     link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous")
     link(rel="stylesheet" href="/stylesheets/index.css")
+    -
+        var posts = ["Meeting is canceled today.  See you next week!",
+                     "This week we will have a change in venue.  We'll be meeting in the Sett this week!",
+                     "Remember to pay your dues by this Friday, or else we won't let you pay",
+                     "We're thinking about getting UW-Sheepshead t-shirts.  Let me know what you think"]
 
-    section.container-fluid.my-container#page_container
-        div.row.my-row#photos Photos
+    div.container-fluid.website-links
 
-        div.row.justify-content-between#boxes
-          div.col-5.my-col#small_boxes
-              div.row.my-row#scores_box
-                div.row.box-title-row
-                    div.col.box-title
-                        div.box_title.text-center Scores
-                div.row.box-content.justify-content-around
-                    div.col-10
-                        p.
-                            Check out this weeks point totals to see how you
-                            stack up against everyone this semester!
-                        br
-                        a.button(href="/scores") Check Out Scores
-                        br
+        div.row
+            div.col-md-6
+                div.row.sub-row
+                    div.col-12
+                        div.card
+                            h3.card-title Scores
+                            div.card-block
+                                p.
+                                    Check out this weeks point totals to see how you stack up
+                                    against everyone this semester!
+                                a.btn.btn-primary(href = "/scores") Check Out Scores
+                div.row.sub-row
+                    div.col-12
+                        div.card
+                            h3.card-title Cheat Sheet
+                            div.card-block
+                                p.
+                                    Played before but can't remember card ranks?  Look at this
+                                    little cheat sheet to get you back up to speed.
+                                a.btn.btn-primary(href = "/rules") I Could Use a Little Help
+                div.row.sub-row
+                    div.col-12
+                        div.card
+                            h3.card-title Tutorials
+                            div.card-block
+                                p.
+                                    New to the game?  See if some of our tutorials we've
+                                    created help you pick up the game faster!
+                                a.btn.btn-primary(href = "/tutorial") Learn More
+                div.row.sub-row
+                    div.col-12
+                        div.card
+                            h3.card-title About
+                            div.card-block
+                                p.
+                                    The sheepshead club at UW Madison has been around for
+                                    10,000 years...
+                                a.btn.btn-primary(href = "/about") Read More
 
-              div.row.my-row#rules_box
-                div.row.box-title-row
-                    div.col.box-title
-                        div.box_title.text-center Cheat Sheet
-                div.row.box-content.justify-content-around
-                    div.col-10
-                        p.
-                            Played before but can't remember card ranks? Look at this
-                            little cheat sheet to get you back up to speed.
-                        br
-                        a.button(href="/rules") I Could Use a Little Help
-                        br
+            div.col-md-6
+                div.row.sub-row.announcements-row
+                    div.col-12
+                        div.card.announcements-card
+                            h3.card-title Announcements
+                            div.card-block
+                                each post in posts
+                                    div.card.post
+                                        div.card-header.post-header
+                                            b By {insert poster here}
+                                            i  on {insert date here}
+                                        div.card-block
+                                            p.announcement-content
+                                                = post
 
 
-              div.row.my-row#tutorials_box
-                div.row.box-title-row
-                    div.col.box-title
-                        div.box_title.text-center Tutorials
-                div.row.box-content.justify-content-around
-                    div.col-10
-                        p.
-                            New to the game? See if some of our tutorials
-                            we've created for you help you pick up the game faster!
-                        br
-                        a.button(href="/rules") I Could Use a Little Help
-                        br
 
-              div.row.my-row#about_box
-                div.row.box-title-row
-                    div.col.box-title
-                        div.box_title.text-center About
-                div.row.box-content.justify-content-around
-                    div.col-10
-                        p.
-                            The sheepshead club at UW Madison has been around
-                            for 10,000 years...
-                        br
-                        a.button(href="/about") Read More
-                        br
 
-          div.col-5.my-col#announcements_box
-            span.box_title Announcements
 
-        script(src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous")
-        script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous")
-        script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous")
+
+    script(src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous")
+    script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous")
