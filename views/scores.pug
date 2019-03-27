@@ -11,15 +11,18 @@ block content
         h3 Scores and Stats
     .row
       .col-md-5
-      .col-md-2.outlined.shaded
-        .form-inline
-          .form-group.centered
-            label.font-weight-bold.mr-2(for='semester') Semester
-            select.form-control#semester
+      .col-md-2
+        .card.shaded.outlined.text-center
+          .card-block
+            label.font-weight-bold(for='semester') Semester
+            br
+            select.input-small#semester
+    br
     .row
       .col-lg-12
-        .table-responsive
-          table.table.table-hover.table-bordered.table-striped#scores_table
+        .outlined.shaded-gray
+          .table-responsive-xs
+            table.table.table-hover.table-bordered#scores_table
 
   script(src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous")
   script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous")
