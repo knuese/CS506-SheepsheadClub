@@ -7,15 +7,6 @@
     padding: 25px;
 }
 
-.card-title {
-    background-color: #800;
-    color: #ffe6e6;
-    width: 50%;
-    padding: 5px;
-    padding-left: 10px;
-    font: 2vw 'Germania One', cursive;
-}
-
 .btn {
     background-color: #800;
     color: white;
@@ -38,11 +29,40 @@
     margin-left: 5%
 }
 
-.post-header {
-    background-color: #ffe6e6;
-    font: 1vw 'Germania One', cursive;
-}
-
 .post{
     margin-top: 10px;
+}
+
+@media (max-width: 768px)
+{
+    .post-header {
+        background-color: #ffe6e6;
+        font: 3.5vw 'Germania One', cursive;
+    }
+
+    .card-title {
+        background-color: #800;
+        color: #ffe6e6;
+        width: 50%;
+        padding: 5px;
+        padding-left: 10px;
+        font: 5vw 'Germania One', cursive;
+    }
+}
+
+/* Larger screens */
+@media (min-width: 768px) {
+    .post-header {
+        background-color: #ffe6e6;
+        font: 1.5vw 'Germania One', cursive;
+    }
+
+    .card-title {
+        background-color: #800;
+        color: #ffe6e6;
+        width: 50%;
+        padding: 5px;
+        padding-left: 10px;
+        font: 2vw 'Germania One', cursive;
+    }
 }
