@@ -16,7 +16,14 @@ jQuery(document).ready(function($) {
         [4, "Aaron Rodgers", 12, 12, 0, '--'],
         [5, "Ryan Braun", 8, 0, '--', 8],
         [6, "Tracy Lewis-Williams", -29, -10, -8, -13],
-        [7, "Anthony Rizzo", -42, -30, -2, -10]
+        [7, "Anthony Rizzo", -42, -30, -2, -10],
+        [8, "A", -100, -100, 0, 0],
+        [9, "B", -100, -100, 0, 0],
+        [10, "C", -100, -100, 0, 0],
+        [11, "D", -100, -100, 0, 0],
+        [12, "E", -100, -100, 0, 0],
+        [13, "F", -100, -100, 0, 0],
+        [14, "G", -100, -100, 0, 0]
     ];
 
     // Columns for the table
@@ -26,13 +33,17 @@ jQuery(document).ready(function($) {
         { title: 'Total' }
     ];
 
-    for (let i = 1; i < 4; i++) {
+    for (let i = 1; i < 15; i++) {
         cols.push({ title: `Week ${i}` });
+        if (i > 3) {
+            dataset.forEach(set => set.push(0));
+        }
     }
 
     // Define the data table
     $('#scores_table').DataTable( {
         data: dataset,
-        columns: cols
+        columns: cols,
+        scrollX: true
     });
 });
