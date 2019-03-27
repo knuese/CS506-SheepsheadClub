@@ -1,5 +1,6 @@
 .website-links {
     padding-top: 25px;
+    background-color: #EFEDED;
 }
 
 .card-block {
@@ -8,10 +9,11 @@
 
 .card-title {
     background-color: #800;
-    color: white;
+    color: #ffe6e6;
     width: 50%;
     padding: 5px;
     padding-left: 10px;
+    font: 2vw 'Germania One', cursive;
 }
 
 .btn {
@@ -37,7 +39,8 @@
 }
 
 .post-header {
-    background-color: #FAA6A6;
+    background-color: #ffe6e6;
+    font: 1vw 'Germania One', cursive;
 }
 
 .post{
