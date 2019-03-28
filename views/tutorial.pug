@@ -48,7 +48,7 @@ block content
         p This section will be filled in after further discussion with the client!
     .tutorial-content#hand
       .row
-        .col-md-4
+        .col-md-8
           .row
             label.col-xs-1.col-form-label.font-weight-bold.mr-1(for='hand-dropdown') Select your cards:
             .col-xs-1.mr-1
@@ -57,6 +57,8 @@ block content
                   option(value=c.code) #{c.name}
             .col-xs-1
               button.form-control#add-button Add
+            label.col-xs-1.col-form-label.font-weight-bold.ml-4#dup-error Card already selected!
+      br
       .row#cards-row
 
   script(src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous")
