@@ -6,7 +6,7 @@ $(document).ready(() => {
         displayForSelection(event.target.id);
     });
 
-    const roleDropdown = $('select#role');
+    const roleDropdown = $('select#strategies-role');
 
     roleDropdown.change(() => {
         console.log(`/tutorials/${roleDropdown.val()}.html`);

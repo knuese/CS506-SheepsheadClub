@@ -28,3 +28,9 @@ div.tutorial-content {
     float: none;
     margin: 0 auto;
 }
+
+img#jd {
+    float: right;
+    width: 15%;
+    height: 15%;
+}

@@ -25,7 +25,7 @@ block content
           .row
             label.col-xs-1.col-form-label.font-weight-bold.mr-1(for='role') I am...
             .col-xs-1
-              select.form-control#role
+              select.form-control#strategies-role
                 option(value="picker") the picker
                 option(value="partner") the partner
                 option(value="neither") not on the picking team
@@ -33,7 +33,19 @@ block content
       br
       #strategy-text.text-left
     .tutorial-content#scenarios
-      h4 Scenarios
+      .row
+        .col-md-4
+          .row
+            label.col-xs-1.col-form-label.font-weight-bold.mr-1(for='role') I am...
+            .col-xs-1
+              select.form-control#strategies-role
+                option(value="picker") the picker
+                option(value="partner") the partner
+                option(value="neither") not on the picking team
+                option(value="leaster") playing a leaster
+      br
+      #scenario-text
+        p This section will be filled in after further discussion with the client!
     .tutorial-content#hand
       h4 Hand
 
