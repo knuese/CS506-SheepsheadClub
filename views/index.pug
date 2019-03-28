@@ -8,6 +8,22 @@ block content
                      "This week we will have a change in venue.  We'll be meeting in the Sett this week!",
                      "Remember to pay your dues by this Friday, or else we won't let you play",
                      "We're thinking about getting UW-Sheepshead t-shirts.  Let me know what you think"]
+    - var imageUrls = ['/images/home_p1.png', '/images/home_p2.png', '/images/home_p3.png'];
+    .container-fluid.website-links
+      .row.col-sm-12
+        #carouselExampleControls.carousel.slide(data-ride='carousel')
+          .carousel-inner
+            .carousel-item.active
+                img.img-fluid(src='/images/home_p1.png' alt="Responsive image")
+            each imagUrl in imageUrls
+              .carousel-item
+                img.img-fluid(src=imagUrl alt="Responsive image")
+          a.carousel-control-prev(href='#carouselExampleControls' role='button' data-slide='prev')
+            span.carousel-control-prev-icon(aria-hidden='true')
+            span.sr-only Previous
+          a.carousel-control-next(href='#carouselExampleControls' role='button' data-slide='next')
+            span.carousel-control-next-icon(aria-hidden='true')
+            span.sr-only Next
 
     div.container-fluid.website-links
 
