@@ -25,3 +25,6 @@ button:active {
 button:focus {
   outline: 0;
 }
+.carousel-inner {
+  height: 40vh;
+}
