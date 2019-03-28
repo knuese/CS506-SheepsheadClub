@@ -1,0 +1,65 @@
+/* Small screen */
+@media (max-width: 768px) 
+{
+    button.tutorial {
+        width: 100%;
+        font-size: 4.5vw;
+    }
+
+    div.my-card {
+        width: 75%;
+        height: 100%;
+        text-align: center;
+    }
+}
+
+/* Larger screens */
+@media (min-width: 768px) {
+    button.tutorial {
+        width: 100%;
+        font-size: 1.8vw;
+    }
+
+    div.my-card {
+        width: 15%;
+        height: 100%;
+        text-align: center;
+    }
+}
+
+button.selected {
+    background-color: red;
+}
+
+div.tutorial-content {
+    display: none;
+    padding-left: 16px;
+}
+
+.col-centered {
+    float: none;
+    margin: 0 auto;
+}
+
+img.card {
+    max-width: 50%;
+    height: auto;
+    margin: 0 auto;
+}
+
+img#jd {
+    float: right;
+    width: 15%;
+    height: 15%;
+}
+
+button#add-button {
+    background-color: green;
+    color: white;
+    border-radius: 8px;
+}
+
+label#dup-error {
+    color: red;
+    display: none;
+}
