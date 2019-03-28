@@ -18,6 +18,8 @@ block content
             label(for='pw') Password:
             input#pw.form-control(type='password' name='password')
           button.btn.btn-primary(type='submit') Login
+        br
+        p #{err}
 
 script(src="https://www.gstatic.com/firebasejs/5.9.0/firebase.js")
 script(src='//code.jquery.com/ui/1.12.1/jquery-ui.js')

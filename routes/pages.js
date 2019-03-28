@@ -46,7 +46,7 @@ router.get('/tutorial', (req, res, next) => {
 
 //login page 
 router.get('/login', function (req, res, next) {
-  res.render('login');
+  res.render('login', {err: ""});
 });
 
 router.post('/', function (req, res) {
@@ -81,8 +81,7 @@ router.post('/login', function (req, res, next) {
 
     console.log("Error Code: " + errorCode + " \nError Message: " + errorMessage)
     
-    res.redirect('/login');
-
+    res.render('login', {err: errorMessage});
   });
 
   firebase.auth().onAuthStateChanged(function (user) {
@@ -94,7 +93,6 @@ router.post('/login', function (req, res, next) {
     }
    
   });
-
 
 });
 
