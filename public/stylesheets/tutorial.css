@@ -9,6 +9,7 @@
     div.my-card {
         width: 75%;
         height: 100%;
+        text-align: center;
     }
 }
 
@@ -22,6 +23,7 @@
     div.my-card {
         width: 15%;
         height: 100%;
+        text-align: center;
     }
 }
 
@@ -42,6 +44,7 @@ div.tutorial-content {
 img.card {
     max-width: 50%;
     height: auto;
+    margin: 0 auto;
 }
 
 img#jd {
@@ -54,4 +57,9 @@ button#add-button {
     background-color: green;
     color: white;
     border-radius: 8px;
+}
+
+label#dup-error {
+    color: red;
+    display: none;
 }
