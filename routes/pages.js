@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var cards = require('../public/js/cards');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -28,7 +29,7 @@ router.get('/scores', (req, res, next) => {
 
 /* GET tutorial page */
 router.get('/tutorial', (req, res, next) => {
-  res.render('tutorial');
+  res.render('tutorial', { cards: cards });
 });
 
 router.post('/', function(req, res){

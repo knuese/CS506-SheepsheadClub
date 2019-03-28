@@ -5,6 +5,11 @@
         width: 100%;
         font-size: 4.5vw;
     }
+
+    div.my-card {
+        width: 75%;
+        height: 100%;
+    }
 }
 
 /* Larger screens */
@@ -12,6 +17,11 @@
     button.tutorial {
         width: 100%;
         font-size: 1.8vw;
+    }
+
+    div.my-card {
+        width: 15%;
+        height: 100%;
     }
 }
 
@@ -29,8 +39,19 @@ div.tutorial-content {
     margin: 0 auto;
 }
 
+img.card {
+    max-width: 50%;
+    height: auto;
+}
+
 img#jd {
     float: right;
     width: 15%;
     height: 15%;
+}
+
+button#add-button {
+    background-color: green;
+    color: white;
+    border-radius: 8px;
 }
