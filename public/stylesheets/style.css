@@ -1,26 +1,9 @@
 body {
-  padding: 12px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
-}
-
-div.sticky {
-  position: sticky;
-  top: 0;
-  background-color: rgb(255, 0, 0);
-  border: 2px solid rgb(128, 0, 0);
-}
-
-div.sidebar {
-  position: fixed;
-  height: 100%;
-  width: 35%;
-  z-index: 1;
-  background-color: black;
-  display: none;
 }
 
 button {
@@ -31,14 +14,14 @@ button {
   padding: 0px;
 }
 
-    button:hover {
-      background-color: rgb(224, 0, 0);
-    }
+button:hover {
+  background-color: rgb(224, 0, 0);
+}
 
-    button:active {
-      background-color: rgb(100, 0, 0);
-    }
+button:active {
+  background-color: rgb(100, 0, 0);
+}
 
-    button:focus {
-      outline: 0;
-    }
+button:focus {
+  outline: 0;
+}

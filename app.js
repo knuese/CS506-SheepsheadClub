@@ -10,6 +10,8 @@ var usersRouter = require('./routes/users');
 // Setting up port
 const PORT = process.env.PORT || 5500;
 
+const errorController = require('./controllers/error');
+
 var app = express();
 
 // view engine setup
@@ -26,22 +28,14 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+app.use(errorController.get404);
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error', { message: err.message, status: err.status, stack: err.stack });
-});
-
-app.listen(PORT, function() {
+app.listen(PORT, function () {
   console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
 });
 
