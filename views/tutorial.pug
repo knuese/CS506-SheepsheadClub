@@ -1,4 +1,46 @@
 extends layout
 
 block content
-  h1 Tutorial
+  link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous")
+  link(rel="stylesheet" href="/stylesheets/tutorial.css")
+
+  .main.container-fluid
+    .row
+      .col.text-center
+        h3 Tutorial
+    .row  
+      .col-md-4
+        .card
+          button.tutorial#strategy General Strategy
+      .col-md-4
+        .card
+          button.tutorial#scenarios Scenarios
+      .col-md-4
+        .card
+          button.tutorial#hand Hand Assistance
+    br
+    .tutorial-content#strategy.text-center
+      .row
+        .col-md-4
+          .row
+            label.col-xs-1.col-form-label.font-weight-bold.mr-1(for='role') I am...
+            .col-xs-1
+              select.form-control#role
+                option(value="picker") the picker
+                option(value="partner") the partner
+                option(value="neither") not on the picking team
+                option(value="leaster") playing a leaster
+      br
+      #strategy-text.text-left
+    .tutorial-content#scenarios
+      h4 Scenarios
+    .tutorial-content#hand
+      h4 Hand
+
+
+
+
+  script(src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous")
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous")
+  script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous")
+  script(type='text/javascript', src='js/tutorial.js')
