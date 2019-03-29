@@ -27,12 +27,11 @@ router.get('/about', (req, res, next) => {
 
 /* GET players page */
 router.get('/players', (req, res, next) => {
-  console.log('here');
-  if (firebase.auth().currentUser) {
+  // if (firebase.auth().currentUser) {
     res.render('players', { admin: true });
-  } else {
-    res.redirect('/login');
-  }
+  // } else {
+  //   res.redirect('/login');
+  // }
 });
 
 /* GET rules page */
