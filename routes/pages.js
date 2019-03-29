@@ -27,12 +27,11 @@ router.get('/about', (req, res, next) => {
 
 /* GET players page */
 router.get('/players', (req, res, next) => {
-  console.log('here');
-  if (firebase.auth().currentUser) {
+  // if (firebase.auth().currentUser) {
     res.render('players', { admin: true });
-  } else {
-    res.redirect('/login');
-  }
+  // } else {
+  //   res.redirect('/login');
+  // }
 });
 
 /* GET rules page */
@@ -43,6 +42,25 @@ router.get('/rules', (req, res, next) => {
 /* GET help page */
 router.get('/help', (req, res, next) => {
   res.render('help', { cards: cards, admin: loggedIn() });
+});
+
+/* GET scores page */
+router.get('/scores', (req, res, next) => {
+  res.render('scores', { admin: loggedIn() });
+});
+
+/* GET score entry page */
+router.get('/enter-scores', (req, res, next) => {
+  // if (firebase.auth().currentUser) {
+    res.render('enter-scores', { admin: true });
+  // } else {
+  //   res.redirect('/login');
+  // }
+});
+
+/* GET tutorial page */
+router.get('/tutorial', (req, res, next) => {
+  res.render('tutorial', { cards: cards, admin: loggedIn() });
 });
 
 router.post('/', function(req, res){
