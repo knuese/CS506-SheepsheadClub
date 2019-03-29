@@ -1,0 +1,10 @@
+table {
+    margin: 0px auto;
+}
+
+button.entry {
+    font: 1.5vw;
+    padding: 4px;
+    margin-right: 12px;
+    border-radius: 10px;
+}
