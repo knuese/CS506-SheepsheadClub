@@ -1,0 +1,40 @@
+.table td {
+    border: grey solid thin !important;
+    background-color: rgba(200, 0, 0, 0.2);
+    white-space: nowrap;
+    width: 1%;
+}
+
+.table th {
+    border: grey solid thin !important;
+    color: white;
+    background-color: #800;
+    white-space: nowrap;
+    width: 1%;
+}
+
+.outlined {
+    padding: 6px;
+    border: 2px solid #800;
+}
+
+.shaded {
+    background-color: rgba(200, 0, 0, 0.4);
+}
+
+.centered {
+    margin: 0 auto;
+}
+
+table.dataTable thead .sorting:after,
+table.dataTable thead .sorting:before,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_asc:before,
+table.dataTable thead .sorting_asc_disabled:after,
+table.dataTable thead .sorting_asc_disabled:before,
+table.dataTable thead .sorting_desc:after,
+table.dataTable thead .sorting_desc:before,
+table.dataTable thead .sorting_desc_disabled:after,
+table.dataTable thead .sorting_desc_disabled:before {
+    bottom: .5em;
+}

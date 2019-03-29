@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var cards = require('../public/js/cards');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -26,9 +27,14 @@ router.get('/scores', (req, res, next) => {
   res.render('scores');
 });
 
+/* GET score entry page */
+router.get('/enter-scores', (req, res, next) => {
+  res.render('enter-scores');
+});
+
 /* GET tutorial page */
 router.get('/tutorial', (req, res, next) => {
-  res.render('tutorial');
+  res.render('tutorial', { cards: cards });
 });
 
 router.post('/', function(req, res){
@@ -37,6 +43,10 @@ router.post('/', function(req, res){
 
 router.post('/scores', function(req, res){
     res.redirect('scores');
+});
+
+router.post('/enter-scores', function(req, res){
+  res.redirect('enter-scores');
 });
 
 router.post('/rules', function(req, res){
