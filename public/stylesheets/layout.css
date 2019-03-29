@@ -40,9 +40,9 @@ a#title:hover {
         color: #ffe6e6;
     }
 
-    #nav_button {
+    .header-button {
         float: left;
-        font-size: 4vw;
+        font: 4vw 'Germania One', cursive;
         padding: 0.5vh 2vw;
         margin-left: 16px;
     }
@@ -60,11 +60,11 @@ a#title:hover {
         color: #ffe6e6;
     }
 
-    #nav_button {
+    .header-button {
         float: left;
-        font-size: 2vw;
+        font: 2vw 'Germania One', cursive;
         padding: 1vh 1vw;
-        margin: 12px 0px 12px 24px;
+        margin: 12px 24px 12px 24px;
     }
 }
   

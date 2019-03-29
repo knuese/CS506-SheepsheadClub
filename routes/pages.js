@@ -17,37 +17,45 @@ var cards = require('../public/js/cards');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  res.render('index', { admin: false });
+  res.render('index', { admin: loggedIn() });
 });
 
 /* GET about page */
 router.get('/about', (req, res, next) => {
-  res.render('about');
+  res.render('about', { admin: loggedIn() });
 });
 
 /* GET players page */
 router.get('/players', (req, res, next) => {
-  res.render('players');
+  if (firebase.auth().currentUser) {
+    res.render('players', { admin: true });
+  } else {
+    res.redirect('/login');
+  }
 });
 
 /* GET rules page */
 router.get('/rules', (req, res, next) => {
-  res.render('rules');
+  res.render('rules', { admin: loggedIn() });
 });
 
 /* GET scores page */
 router.get('/scores', (req, res, next) => {
-  res.render('scores');
+  res.render('scores', { admin: loggedIn() });
 });
 
 /* GET score entry page */
 router.get('/enter-scores', (req, res, next) => {
-  res.render('enter-scores');
+  if (firebase.auth().currentUser) {
+    res.render('enter-scores', { admin: true });
+  } else {
+    res.redirect('/login');
+  }
 });
 
 /* GET tutorial page */
 router.get('/tutorial', (req, res, next) => {
-  res.render('tutorial', { cards: cards });
+  res.render('tutorial', { cards: cards, admin: loggedIn() });
 });
 
 router.post('/', function(req, res){
@@ -130,7 +138,7 @@ router.post('/logout', function (req, res, next) {
 
   firebase.auth().signOut().then(function () {
 
-    res.redirect('/login');
+    res.redirect('/');
    
   }).catch(function (error) {
     console.log("Error: " + error);
@@ -140,6 +148,10 @@ router.post('/logout', function (req, res, next) {
 
 });
 
+// Check to see if admin user logged in
+function loggedIn() {
+  return firebase.auth().currentUser != null;
+}
 
 
 module.exports = router;
