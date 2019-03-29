@@ -45,7 +45,7 @@ $('button#add-button').on('click', () => {
         hand.push(card);
 
         cardsRow.append(`<div class='card my-card' id='${card.code}'>
-                            <img src='/img/cards/${card.code}.png' class='card'/>
+                            <img src='/images/cards/${card.code}.png' class='card'/>
                             <label style='font-weight:bold'>${card.name}</label>
                             <label>Point value: ${card.pointValue}</label>
                             <label>Is trump? ${card.isTrump ? 'Yes' : 'No'}</label>
