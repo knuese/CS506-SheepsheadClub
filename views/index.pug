@@ -1,9 +1,107 @@
 extends layout
 
 block content
-  .row
-    .col
-      h1 Welcome!
-      h1 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-      h1 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-      h1 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+
+    link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous")
+    link(rel="stylesheet" href="/stylesheets/index.css")
+    -
+        var posts = ["Meeting is canceled today.  See you next week!",
+                     "This week we will have a change in venue.  We'll be meeting in the Sett this week!",
+                     "Remember to pay your dues by this Friday, or else we won't let you play",
+                     "We're thinking about getting UW-Sheepshead t-shirts.  Let me know what you think"]
+    - var imageUrls = ['/images/home_p1.png', '/images/home_p2.png', '/images/home_p3.png'];
+    //- .container-fluid.website-links
+    //-   .row.col-sm-12
+    //-     #carouselExampleControls.carousel.slide(data-ride='carousel')
+    //-       .carousel-inner
+    //-         .carousel-item.active
+    //-             img.img-fluid.min-vw-100(src='/images/home_p1.png' alt="Responsive image")
+    //-         each imagUrl in imageUrls
+    //-           .carousel-item
+    //-             img.img-fluid(src=imagUrl alt="Responsive image")
+    //-       a.carousel-control-prev(href='#carouselExampleControls' role='button' data-slide='prev')
+    //-         span.carousel-control-prev-icon(aria-hidden='true')
+    //-         span.sr-only Previous
+    //-       a.carousel-control-next(href='#carouselExampleControls' role='button' data-slide='next')
+    //-         span.carousel-control-next-icon(aria-hidden='true')
+    //-         span.sr-only Next
+
+    div.container-fluid.website-links
+      .row
+        .col
+          #carouselExampleControls.carousel.slide(data-ride='carousel')
+            .carousel-inner
+              .carousel-item.active
+                  img.img-fluid(src='/images/home_p1.png' alt="Responsive image" )
+              each imagUrl in imageUrls
+                .carousel-item
+                  img.img-fluid(src=imagUrl alt="Responsive image")
+            //- a.carousel-control-prev(href='#carouselExampleControls' role='button' data-slide='prev')
+            //-   span.carousel-control-prev-icon(aria-hidden='true')
+            //-   span.sr-only Previous
+            a.carousel-control-next(href='#carouselExampleControls' role='button' data-slide='next')
+              span.carousel-control-next-icon(aria-hidden='true')
+              span.sr-only Next
+      div.row
+          div.col-md-6
+              div.row.sub-row
+                  div.col-12
+                      div.card
+                          h3.card-title Scores
+                          div.card-block
+                              p.
+                                  Check out this weeks point totals to see how you stack up
+                                  against everyone this semester!
+                              a.btn.btn-primary(href = "/scores") Check Out Scores
+              div.row.sub-row
+                  div.col-12
+                      div.card
+                          h3.card-title Cheat Sheet
+                          div.card-block
+                              p.
+                                  Played before but can't remember card ranks?  Look at this
+                                  little cheat sheet to get you back up to speed.
+                              a.btn.btn-primary(href = "/rules") I Could Use a Little Help
+              div.row.sub-row
+                  div.col-12
+                      div.card
+                          h3.card-title Tutorials
+                          div.card-block
+                              p.
+                                  New to the game?  See if some of our tutorials we've
+                                  created help you pick up the game faster!
+                              a.btn.btn-primary(href = "/tutorial") Learn More
+              div.row.sub-row
+                  div.col-12
+                      div.card
+                          h3.card-title About
+                          div.card-block
+                              p.
+                                  The sheepshead club at UW Madison has been around for
+                                  10,000 years...
+                              a.btn.btn-primary(href = "/about") Read More
+
+          div.col-md-6
+              div.row.sub-row.announcements-row
+                  div.col-12
+                      div.card.announcements-card
+                          h3.card-title Announcements
+                          div.card-block
+                              each post in posts
+                                  div.card.post
+                                      div.card-header.post-header
+                                          b By {insert poster here}
+                                          i  on {insert date here}
+                                      div.card-block
+                                          p.announcement-content
+                                              = post
+
+
+
+
+
+
+    script(src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous")
+    script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous")
+
