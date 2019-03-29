@@ -2,24 +2,32 @@ doctype html
 
 link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous")
 meta(name='viewport', content='width=device-width, initial-scale=1.0')
-
+link(rel='stylesheet', href='/stylesheets/style.css')
+link(rel='stylesheet', href='/stylesheets/layout.css')
+link(href="https://fonts.googleapis.com/css?family=Germania+One" rel="stylesheet")
 
 block content
-  .main.container
-    .row
-      .col-md-5.col-md-offset-4
-        h1.display-4.m-b-2 Login
 
-        form(method='POST' action='/login')
-          div.form-group
-            label(for='email') Email:
-            input#email.form-control(type='email', placeholder='name@email.com' name='email')
-          div.form-group
-            label(for='pw') Password:
-            input#pw.form-control(type='password' name='password')
-          button.btn.btn-primary(type='submit') Login
-        br
-        p #{err}
+	.sticky#title_bar
+		.row
+			.col.text-center
+				a#title(href='/') Sheepshead Club - UW Madison
+	
+	br
+	.main.container
+		.row
+			.col-md-5.col-md-offset-4
+		
+				form(method='POST' action='/login')
+					div.form-group
+						label(for='email') Email:
+						input#email.form-control(type='email', placeholder='name@email.com' name='email')
+					div.form-group
+						label(for='pw') Password:
+						input#pw.form-control(type='password' name='password')
+					button.btn.btn-primary(type='submit') Login
+				br
+				p #{err}
 
 script(src="https://www.gstatic.com/firebasejs/5.9.0/firebase.js")
 script(src='//code.jquery.com/ui/1.12.1/jquery-ui.js')
