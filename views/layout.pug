@@ -13,6 +13,8 @@ html
 				button#nav_button ☰
 				.col.text-center
 					a#title(href='/') Sheepshead Club - UW Madison
+				if admin == false
+					a(href="/login"): button#nav_button(type="button") Admin Login
 			
 		.sidebar#nav_menu
 			.row
@@ -30,10 +32,10 @@ html
 			.row
 				.col
 					form#tutorial(action = "/tutorial" method = "POST")
-						button.btn-block.side-button(type = "Submit") Tutorial
+						button.btn-block.side-button(type = "Submit") Tutorial		
+			
 			.row
 				.col
-
 					form#tutorial(action = "/enter-scores" method = "POST")
 						button.btn-block.side-button(type = "Submit") Enter Scores
 			.row
@@ -41,6 +43,12 @@ html
 
 					form#about(action = "/about" method = "POST")
 						button.btn-block.side-button(type = "Submit") About
+
+			if admin == true			
+				.row
+					.col
+						form#about(action = "/logout" method = "POST")
+							button.btn-block.side-button(type = "Submit") Logout			
 
 		block content
 
