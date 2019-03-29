@@ -1,6 +1,7 @@
 const request = require('supertest');
 const app = require('../app');
 
+// Run tests with "npm test"
 describe('Should get all pages of the website', () => {
     it('GET /', (done) => {
         request(app).get('/').expect(200, done);
@@ -16,6 +17,10 @@ describe('Should get all pages of the website', () => {
 
     it('GET /rules', (done) => {
         request(app).get('/rules').expect(200, done);
+    });
+
+    it('GET /enter-scores', (done) => {
+        request(app).get('/scores').expect(200, done);
     });
 
     it('GET /scores', (done) => {
