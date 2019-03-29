@@ -28,3 +28,9 @@ div.rules-content {
     float: none;
     margin: 0 auto;
 }
+
+img.cheatsheet {
+    max-width: 50%;
+    height: auto;
+    margin-top: 2rem;
+}
