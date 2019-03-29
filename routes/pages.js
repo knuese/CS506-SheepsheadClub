@@ -27,11 +27,11 @@ router.get('/about', (req, res, next) => {
 
 /* GET players page */
 router.get('/players', (req, res, next) => {
-  if (firebase.auth().currentUser) {
+  // if (firebase.auth().currentUser) {
     res.render('players', { admin: true });
-  } else {
-    res.redirect('/login');
-  }
+  // } else {
+  //   res.redirect('/login');
+  // }
 });
 
 /* GET rules page */
@@ -46,11 +46,11 @@ router.get('/scores', (req, res, next) => {
 
 /* GET score entry page */
 router.get('/enter-scores', (req, res, next) => {
-  if (firebase.auth().currentUser) {
+  // if (firebase.auth().currentUser) {
     res.render('enter-scores', { admin: true });
-  } else {
-    res.redirect('/login');
-  }
+  // } else {
+  //   res.redirect('/login');
+  // }
 });
 
 /* GET tutorial page */
