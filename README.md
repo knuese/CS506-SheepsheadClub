@@ -1,7 +1,5 @@
 # CS506-SheepsheadClub
 
-## Iteration 1 - Master
+## Iteration 1 README - Testing
 
-Build and run: two options
-1. Run nodemon in the terminal. If the package is missing, try npm install nodemon. Then visit 127.0.0.1 in your browser.
-2. Run node ./bin/www in the terminal. Then visit 127.0.0.1 in your browser.
+Run tests: to run the tests, simply type npm test in a terminal. This should automatically run all of the tests. If any packages are missing, try running npm install to pull them down.
