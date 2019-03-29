@@ -35,8 +35,10 @@ app.use(function (req, res, next) {
 // error handler
 app.use(errorController.get404);
 
-app.listen(PORT, function () {
-  console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
-});
+if (!module.parent) {
+  app.listen(PORT, function() {
+    console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
+  });
+}
 
 module.exports = app;
