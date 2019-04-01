@@ -1,6 +1,5 @@
 $(document).ready(() => {
     $('button.rules').on('click', (event) => {
-        console.log('clicked');
         $('button.rules').removeClass('selected');
         $(event.target).addClass('selected');
         displayForSelection(event.target.id);
@@ -14,7 +13,7 @@ $(document).ready(() => {
     });*/
 
     // Start with general cheetsheet selected
-    $('button#cheatsheet').trigger('click');
+    $('button#general').trigger('click');
     //roleDropdown.trigger('change');
 });
 
