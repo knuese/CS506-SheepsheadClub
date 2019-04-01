@@ -59,6 +59,11 @@ router.get('/help', (req, res, next) => {
   res.render('help', { cards: cards, admin: loggedIn() });
 });
 
+/* GET fun facts page */
+router.get('/fun-facts', (req, res, next) => {
+  res.render('fun-facts', { admin: loggedIn() });
+});
+
 router.post('/', function(req, res){
     res.redirect('/');
 });
@@ -81,6 +86,10 @@ router.post('/rules', function(req, res){
 
 router.post('/help', function(req, res){
     res.redirect('help');
+});
+
+router.post('/fun-facts', (req, res) => {
+  res.redirect('/fun-facts');
 });
 
 router.post('/about', function(req, res){

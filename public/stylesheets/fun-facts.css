@@ -1,0 +1,30 @@
+/* Small screen */
+@media (max-width: 768px) 
+{
+    button.fun {
+        width: 100%;
+        font-size: 4.5vw;
+    }
+}
+
+/* Larger screens */
+@media (min-width: 768px) {
+    button.fun {
+        width: 100%;
+        font-size: 1.8vw;
+    }
+}
+
+button.selected {
+    background-color: red;
+}
+
+div.fun-content {
+    display: none;
+    padding-left: 16px;
+}
+
+.col-centered {
+    float: none;
+    margin: 0 auto;
+}
