@@ -11,14 +11,14 @@ $(document).ready(() => {
     roleDropdown.trigger('change');
 });
 
-$('button.tutorial').on('click', (event) => {
-    $('button.tutorial').removeClass('selected');
+$('button.help').on('click', (event) => {
+    $('button.help').removeClass('selected');
     $(event.target).addClass('selected');
     displayForSelection(event.target.id);
 });
 
 roleDropdown.change(() => {
-    $('#strategy-text').load(`tutorials/${roleDropdown.val()}.html`);
+    $('#strategy-text').load(`help-files/${roleDropdown.val()}.html`);
 });
 
 // Hide the error when a different card is selected so as not to be confusing
@@ -76,8 +76,8 @@ function removeCard(event) {
     toRemove.remove();
 };
 
-// Display the correct tutorial information
+// Display the correct help information
 function displayForSelection(id) {
-    $('div.tutorial-content').css('display', 'none');
+    $('div.help-content').css('display', 'none');
     $(`div#${id}`).css('display', 'block');
 }

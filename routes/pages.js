@@ -27,6 +27,7 @@ router.get('/about', (req, res, next) => {
 
 /* GET players page */
 router.get('/players', (req, res, next) => {
+  console.log('here');
   if (firebase.auth().currentUser) {
     res.render('players', { admin: true });
   } else {
@@ -53,9 +54,9 @@ router.get('/enter-scores', (req, res, next) => {
   }
 });
 
-/* GET tutorial page */
-router.get('/tutorial', (req, res, next) => {
-  res.render('tutorial', { cards: cards, admin: loggedIn() });
+/* GET help page */
+router.get('/help', (req, res, next) => {
+  res.render('help', { cards: cards, admin: loggedIn() });
 });
 
 router.post('/', function(req, res){
@@ -70,12 +71,16 @@ router.post('/enter-scores', function(req, res){
   res.redirect('enter-scores');
 });
 
+router.post('/players', (req, res) => {
+  res.redirect('players');
+});
+
 router.post('/rules', function(req, res){
     res.redirect('rules');
 });
 
-router.post('/tutorial', function(req, res){
-    res.redirect('tutorial');
+router.post('/help', function(req, res){
+    res.redirect('help');
 });
 
 router.post('/about', function(req, res){
@@ -99,8 +104,8 @@ router.post('/rules', function (req, res) {
   res.redirect('rules');
 });
 
-router.post('/tutorial', function (req, res) {
-  res.redirect('tutorial');
+router.post('/help', function (req, res) {
+  res.redirect('help');
 });
 
 router.post('/about', function (req, res) {
