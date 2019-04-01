@@ -1,7 +1,7 @@
 /* Small screen */
 @media (max-width: 768px) 
 {
-    button.tutorial {
+    button.help {
         width: 100%;
         font-size: 4.5vw;
     }
@@ -15,7 +15,7 @@
 
 /* Larger screens */
 @media (min-width: 768px) {
-    button.tutorial {
+    button.help {
         width: 100%;
         font-size: 1.8vw;
     }
@@ -31,7 +31,7 @@ button.selected {
     background-color: red;
 }
 
-div.tutorial-content {
+div.help-content {
     display: none;
     padding-left: 16px;
 }
