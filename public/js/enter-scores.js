@@ -1,5 +1,14 @@
+const semesterInput = $('#semester');
+const datePicker = $('#date-picker');
+
 $(document).ready(() => {
-    $('#date-picker').val(todayFormatted());
+    datePicker.val(todayFormatted());
+    semesterInput.prop('disabled', true);
+    semesterInput.val(calculateSemester(datePicker.val()));
+});
+
+$(datePicker).change(() => {
+    semesterInput.val(calculateSemester(datePicker.val()));
 });
 
 function todayFormatted() {
@@ -11,4 +20,14 @@ function todayFormatted() {
     day = day < 10 ? ('0' + day) : day;
 
     return year + '-' + month + '-' + day;
+}
+
+function calculateSemester(date) {
+    let selectedDate = date.split('-');
+    let year = selectedDate[0].substr(2, 2);
+    let month = parseInt(selectedDate[1]);
+
+    const season = month < 7 ? 'Spring' : 'Fall';
+
+    return `${season} '${year}`;
 }
