@@ -25,9 +25,9 @@ block content
             .col-sm-6
               select.form-control#semester
           .form-group.row.text-left
-            label.col-sm-2.col-form-label.font-weight-bold(for='week') Week
+            label.col-sm-2.col-form-label.font-weight-bold(for='date-picker') Date
             .col-sm-6
-              select.form-control#week
+              input.form-control#date-picker(type='date')
           .form-group.row.text-left
             label.col-sm-2.col-form-label.font-weight-bold(for='score') Score
             .col-sm-6
@@ -55,3 +55,4 @@ block content
   script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous")
   script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous")
   script(src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/js/bootstrap-select.min.js")
+  script(type='text/javascript', src='js/enter-scores.js')
