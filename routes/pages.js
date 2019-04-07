@@ -40,20 +40,6 @@ router.get('/rules', (req, res, next) => {
   res.render('rules', { admin: loggedIn() });
 });
 
-/* GET scores page */
-router.get('/scores', (req, res, next) => {
-  res.render('scores', { admin: loggedIn() });
-});
-
-/* GET score entry page */
-router.get('/enter-scores', (req, res, next) => {
-  if (firebase.auth().currentUser) {
-    res.render('enter-scores', { admin: true });
-  } else {
-    res.redirect('/login');
-  }
-});
-
 /* GET help page */
 router.get('/help', (req, res, next) => {
   res.render('help', { cards: cards, admin: loggedIn() });
@@ -61,14 +47,6 @@ router.get('/help', (req, res, next) => {
 
 router.post('/', function(req, res){
     res.redirect('/');
-});
-
-router.post('/scores', function(req, res){
-    res.redirect('scores');
-});
-
-router.post('/enter-scores', function(req, res){
-  res.redirect('enter-scores');
 });
 
 router.post('/players', (req, res) => {
