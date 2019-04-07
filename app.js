@@ -6,6 +6,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/pages');
 var usersRouter = require('./routes/users');
+var scoresRouter = require('./controllers/scores');
 
 // Setting up port
 const PORT = process.env.PORT || 5500;
@@ -26,6 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/', scoresRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
