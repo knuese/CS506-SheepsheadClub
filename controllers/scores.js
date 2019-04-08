@@ -14,9 +14,9 @@ router.get('/enter-scores', (req, res, next) => {
         getPlayers().then((players) => {
             res.render('enter-scores', { admin: true, players: players });
         });
-    // } else {
-    //     res.redirect('/login');
-    // }
+    //} else {
+   //     res.redirect('/login');
+   // }
 });
 
 router.post('/scores', (req, res) => {
@@ -29,11 +29,11 @@ router.post('/enter-scores', (req, res) => {
 
 // API route to save a score to the database
 router.post('/enter-scores/save-score', (req, res) => {
-    firebase.firestore().collection('players')
-        .doc(req.body.playerId)
+    let semester = formatSemester(req.body.semester);
+    firebase.firestore().collection(semester)
+        .doc(req.body.date)
         .collection('scores') // Creates scores collection if it doesn't exist
-        .doc(req.body.date).set({ // Creates entry for the provided date
-            semester: req.body.semester,
+        .doc(req.body.playerId).set({ // Creates entry for the player
             score: req.body.score
         }).then(() => {
             res.send();
@@ -63,6 +63,13 @@ async function getPlayers() {
     let players = Array.from(snapshot.docs.map(doc => new Player(doc.id, doc.data().name)));
     players.sort((a, b) => {return a.compare(b)});
     return players;
+}
+
+function formatSemester(semester) {
+    let tokens = semester.split(" ");
+    tokens[0] = tokens[0].toLowerCase();
+    tokens[1] = tokens[1].substr(1);
+    return tokens[0] + '_' + tokens[1];
 }
 
 module.exports = router;
