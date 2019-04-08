@@ -1,8 +1,8 @@
-var express = require('express');
-var router = express.Router();
-var firebase = require('firebase');
-var Player = require('../models/player');
-var ScoreEntry = require('../models/scoreEntry');
+const express = require('express');
+const router = express.Router();
+const firebase = require('firebase');
+const Player = require('../models/player');
+const ScoreEntry = require('../models/scoreEntry');
 
 /* GET scores page */
 router.get('/scores', (req, res, next) => {
@@ -28,8 +28,13 @@ router.post('/enter-scores', (req, res) => {
     res.redirect('enter-scores');
 });
 
+router.post('/scores/get-semesters', (req, res) => {
+    getSemesters().then((semesters) => res.send({semesters: semesters}));
+});
+
 // Get data to display on the scores page
 router.post('/scores/get-data', (req, res) => {
+    getSemesters();
     let semester = formatSemester(req.body.semester);
 
     let myPromise = new Promise((resolve, reject) => {
@@ -48,6 +53,7 @@ router.post('/scores/get-data', (req, res) => {
 // API route to save a score to the database
 router.post('/enter-scores/save-score', (req, res) => {
     let semester = formatSemester(req.body.semester);
+    firebase.firestore().collection('semesters').doc(semester).set({}, {merge: true}); // Add a document for the semester if it doesn't exist in the list
     firebase.firestore().collection(semester).doc(req.body.date).set({}, {merge: true}); // Create document if it doesn't exist
     firebase.firestore().collection(semester) // Now add the entry for the score
         .doc(req.body.date)
@@ -82,6 +88,12 @@ async function getPlayers() {
     let players = Array.from(snapshot.docs.map(doc => new Player(doc.id, doc.data().name)));
     players.sort((a, b) => {return a.alphabetize(b)});
     return players;
+}
+
+// Gets all the semesters for which we have data
+async function getSemesters() {
+    const snapshot = await firebase.firestore().collection('semesters').get();
+    return Array.from(snapshot.docs.map(d => unformatSemester(d.id)));
 }
 
 // Gets the scores from the database and matches them up with the appropriate players
@@ -138,6 +150,13 @@ function formatSemester(semester) {
     tokens[0] = tokens[0].toLowerCase();
     tokens[1] = tokens[1].substr(1);
     return tokens[0] + tokens[1];
+}
+
+// Unformat the semester values from the database
+function unformatSemester(semester) {
+    let season = semester.startsWith('s') ? 'Spring' : 'Fall';
+    let year = semester.substr(semester.length - 2);
+    return `${season} '${year}`;
 }
 
 module.exports = router;
