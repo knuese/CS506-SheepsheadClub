@@ -5,4 +5,8 @@ class Player {
     }
 }
 
+Player.prototype.compare = function(that) {
+    return this.name.localeCompare(that.name);
+}
+
 module.exports = Player;
