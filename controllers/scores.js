@@ -19,12 +19,24 @@ router.get('/enter-scores', (req, res, next) => {
     // }
 });
 
-router.post('/scores', function(req, res){
+router.post('/scores', (req, res) => {
     res.redirect('scores');
 });
 
-router.post('/enter-scores', function(req, res){
+router.post('/enter-scores', (req, res) => {
     res.redirect('enter-scores');
+});
+
+router.post('/enter-scores/add-player', (req, res) => {
+    firebase.firestore().collection('players').add({
+        name: req.body.name
+    }).then(() => {
+        res.send();
+    }).catch((err) => {
+        res.status(500);
+        res.statusMessage = err;
+        res.send();
+    });
 });
 
 // Loads the players from the database

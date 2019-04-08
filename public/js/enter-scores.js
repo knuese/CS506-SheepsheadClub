@@ -1,5 +1,7 @@
-const semesterInput = $('#semester');
-const datePicker = $('#date-picker');
+const playerSelect = $('select#player');
+const semesterInput = $('input#semester');
+const datePicker = $('input#date-picker');
+const quickAddName = $('input#name');
 
 $(document).ready(() => {
     datePicker.val(todayFormatted());
@@ -7,10 +9,12 @@ $(document).ready(() => {
     semesterInput.val(calculateSemester(datePicker.val()));
 });
 
+// When a different date is selected, recalculate the semester
 $(datePicker).change(() => {
     semesterInput.val(calculateSemester(datePicker.val()));
 });
 
+// Format today's date so that the input element will accept it
 function todayFormatted() {
     let date = new Date();
     let year = date.getFullYear();
@@ -22,6 +26,7 @@ function todayFormatted() {
     return year + '-' + month + '-' + day;
 }
 
+// Determine the semester based on the date
 function calculateSemester(date) {
     let selectedDate = date.split('-');
     let year = selectedDate[0].substr(2, 2);
@@ -31,3 +36,17 @@ function calculateSemester(date) {
 
     return `${season} '${year}`;
 }
+
+// Handler for when the save button is clicked for adding a player quickly
+$('#save-player').click(() => {
+    let name = quickAddName.val();
+
+    if (name) {
+        $.post('/enter-scores/add-player', {name: name})
+            .then(location.reload())
+            .catch((err) => {
+                console.error(err);
+            }
+        );
+    }
+});
