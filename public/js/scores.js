@@ -1,12 +1,14 @@
 // This call is required to enable the data tables
-$.noConflict();
+let jq = $.noConflict();
 
-// Pass the $ in so that we can use regular jQuery syntax
-// https://www.w3schools.com/jquery/jquery_noconflict.asp
-jQuery(document).ready(function($) {
-    // Load semesters into dropdown (later will get from database)
-    const semesters = ["Spring '19", "Fall '18", "Spring '18", "Fall '17"];
-    semesters.forEach(sem => $('#semester').append(new Option(sem)));
+const semesterDropdown = jq('select#semester');
+
+semesterDropdown.change(() => {
+    loadData(semesterDropdown.val());
+});
+
+function loadData(semester) {
+    jq.post('scores/get-data', { semester: semester }).then((playerScores) => console.log(playerScores));
 
     // Data for the table (later will get from database)
     const dataset = [
@@ -41,9 +43,19 @@ jQuery(document).ready(function($) {
     }
 
     // Define the data table
-    $('#scores_table').DataTable( {
+    jq('#scores_table').DataTable( {
         data: dataset,
         columns: cols,
         scrollX: true
     });
+}
+
+// Pass the $ in so that we can use regular jQuery syntax
+// https://www.w3schools.com/jquery/jquery_noconflict.asp
+jq(document).ready(() => {
+    // Load semesters into dropdown (later will get from database)
+    const semesters = ["Spring '19", "Fall '18", "Spring '18", "Fall '17"];
+    semesters.forEach(sem => $('#semester').append(new Option(sem)));
+    
+    loadData(semesterDropdown.val());
 });
