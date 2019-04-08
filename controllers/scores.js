@@ -32,8 +32,8 @@ router.post('/enter-scores', (req, res) => {
 router.post('/scores/get-data', (req, res) => {
     let semester = formatSemester(req.body.semester);
 
-    let myPromise = new Promise((resolve) => {
-        getScores(semester, resolve);
+    let myPromise = new Promise((resolve, reject) => {
+        getScores(semester, resolve, reject);
     });
 
     // The callback we pass in is to send the result with the data
@@ -80,14 +80,15 @@ router.post('/enter-scores/add-player', (req, res) => {
 async function getPlayers() {
     const snapshot = await firebase.firestore().collection('players').get();
     let players = Array.from(snapshot.docs.map(doc => new Player(doc.id, doc.data().name)));
-    players.sort((a, b) => {return a.compare(b)});
+    players.sort((a, b) => {return a.alphabetize(b)});
     return players;
 }
 
 // Gets the scores from the database and matches them up with the appropriate players
-async function getScores(semester, callback) {
+async function getScores(semester, accept, reject) {
     const snapshot = await firebase.firestore().collection(semester).get();
-    let players = {};
+    let playersMap = {};
+
     snapshot.docs.map(doc => {
         doc.ref.collection('scores').get().then((scores) => {
             const myPromise = new Promise((resolve) => {
@@ -99,7 +100,7 @@ async function getScores(semester, callback) {
                             .get()
                             .then((doc) => {
                                 let player = new Player(doc.id, doc.data().name);
-                                players[d.id] = player;
+                                playersMap[d.id] = player;
                                 resolve2();
                             });
                     });     
@@ -113,14 +114,22 @@ async function getScores(semester, callback) {
             myPromise.then(() => {
                 // Now we can read all the scores and add the entries to the players
                 scores.docs.map(d => {
-                    players[d.id].addScore(new ScoreEntry(doc.id, d.data().score));
+                    playersMap[d.id].addScore(new ScoreEntry(doc.id, parseInt(d.data().score)));
                 });
 
+                // We don't need the IDs on the front end, so we can drop them
+                let players = [];
+                Object.keys(playersMap).forEach(key => players.push(playersMap[key]));
+
                 // Once that is done, we call the callback to indicate that we have finished
-                callback(players);
+                accept(players);
             });
         });
     });
+
+    // If we didn't find any documents, send the reject callback
+    if (snapshot.docs.length === 0)
+        reject();
 }
 
 // Format a semester value to what we use for the keys in the database
