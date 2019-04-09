@@ -3,7 +3,9 @@ const app = require('../app');
 const assert = require('assert');
 
 // Run tests with "npm test"
-describe('Should check for elements on the score entry page', () => {
+describe('Should check for elements on the score entry page', function() {
+    this.timeout(5000);
+
     it('Has the title', (done) => {
         request(app).get('/enter-scores').end((err, res) => {
             assert(res.text.includes("<h3>Enter Scores</h3>")); 

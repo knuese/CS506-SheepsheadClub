@@ -6,12 +6,12 @@ let cookieParser = require('cookie-parser');
 let logger = require('morgan');
 
 let config = {
-  apiKey: "AIzaSyCuQwvJ_OrT7cSqv2-J-a_CyJJ9hW7wIPQ",
-  authDomain: "sheepshead-7d106.firebaseapp.com",
-  databaseURL: "https://sheepshead-7d106.firebaseio.com",
-  projectId: "sheepshead-7d106",
-  storageBucket: "sheepshead-7d106.appspot.com",
-  messagingSenderId: "102887155459"
+  apiKey: "AIzaSyB2zjYoFr16FOqUDi4KNnr7h1p4d1mcOos",
+  authDomain: "sheepshead-test.firebaseapp.com",
+  databaseURL: "https://sheepshead-test.firebaseio.com",
+  projectId: "sheepshead-test",
+  storageBucket: "sheepshead-test.appspot.com",
+  messagingSenderId: "860179167527"
 };
 
 firebase.initializeApp(config);
