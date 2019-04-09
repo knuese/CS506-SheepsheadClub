@@ -93,7 +93,9 @@ async function getPlayers() {
 // Gets all the semesters for which we have data
 async function getSemesters() {
     const snapshot = await firebase.firestore().collection('semesters').get();
-    return Array.from(snapshot.docs.map(d => unformatSemester(d.id)));
+    let semesters = Array.from(snapshot.docs.map(d => unformatSemester(d.id)));
+    semesters = sortSemesters(semesters);
+    return semesters;
 }
 
 // Gets the scores from the database and matches them up with the appropriate players
@@ -157,6 +159,26 @@ function unformatSemester(semester) {
     let season = semester.startsWith('s') ? 'Spring' : 'Fall';
     let year = semester.substr(semester.length - 2);
     return `${season} '${year}`;
+}
+
+// Sorts a list of semesters of the form "Spring '19"
+function sortSemesters(semesters) {
+    return semesters.sort((a, b) => {
+        let aTokens = a.split(' ');
+        let bTokens = b.split(' ');
+        let aYear = parseInt(aTokens[1].substr(1));
+        let bYear = parseInt(bTokens[1].substr(1));
+
+        if (aYear === bYear) {
+            if (aTokens[0] === 'Spring') {
+                return 1;
+            } else {
+                return -1;
+            }
+        } else {
+            return bYear - aYear;
+        }
+    });
 }
 
 module.exports = router;

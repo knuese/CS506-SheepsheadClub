@@ -10,10 +10,7 @@ semesterDropdown.change(() => {
 });
 
 function loadData(semester) {
-    if (dataTable) {
-        console.log('destroying');
-        dataTable.destroy();
-    }
+    jq('div.table-responsive-xs').remove();
     jq('label#no-data').remove();   
 
     let html = `<div class='scores-alert'>
@@ -55,8 +52,14 @@ function loadData(semester) {
         // Format the column titles to make them a little nicer
         cols = formatColumnTitles(cols);
 
-        //Define the data table
-        dataTable = jq('#scores_table').DataTable( {
+        // Add the HTML for the table
+        html = `<div class="table-responsive-xs">
+                    <table class="table table-hover table-bordered" id="scores-table"/>
+                </div>`;
+        tableContainer.append(html);
+
+        // Define the data table
+        dataTable = jq('table#scores-table').DataTable( {
             data: dataset,
             columns: cols,
             scrollX: true
