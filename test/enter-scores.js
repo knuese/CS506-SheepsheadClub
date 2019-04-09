@@ -18,16 +18,16 @@ describe('Should check for elements on the score entry page', () => {
         });
     });
 
-    it('Has the semester dropdown', (done) => {
+    it('Has the semester input', (done) => {
         request(app).get('/enter-scores').end((err, res) => {
-            assert(res.text.includes(`<select class="form-control" id="semester">`)); 
+            assert(res.text.includes(`<input class="form-control" id="semester">`)); 
             done();
         });
     });
 
-    it('Has the week dropdown', (done) => {
+    it('Has the date input', (done) => {
         request(app).get('/enter-scores').end((err, res) => {
-            assert(res.text.includes(`<select class="form-control" id="week">`)); 
+            assert(res.text.includes(`<input class="form-control" id="date-picker" type="date">`)); 
             done();
         });
     });

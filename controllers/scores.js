@@ -11,13 +11,13 @@ router.get('/scores', (req, res, next) => {
   
 /* GET score entry page */
 router.get('/enter-scores', (req, res, next) => {
-    if (firebase.auth().currentUser) {
+    //if (firebase.auth().currentUser) {
         getPlayers().then((players) => {
             res.render('enter-scores', { admin: true, players: players });
         });
-    } else {
-        res.redirect('/login');
-    }
+    // } else {
+    //     res.redirect('/login');
+    // }
 });
 
 router.post('/scores', (req, res) => {

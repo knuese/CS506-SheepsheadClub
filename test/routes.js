@@ -20,15 +20,15 @@ describe('Should get all pages of the website', () => {
     });
 
     it('GET /enter-scores', (done) => {
-        request(app).get('/scores').expect(200, done);
+        request(app).get('/enter-scores').expect(200, done);
     });
 
     it('GET /scores', (done) => {
         request(app).get('/scores').expect(200, done);
     });
 
-    it('GET /tutorial', (done) => {
-        request(app).get('/tutorial').expect(200, done);
+    it('GET /help', (done) => {
+        request(app).get('/help').expect(200, done);
     });
 });
 
