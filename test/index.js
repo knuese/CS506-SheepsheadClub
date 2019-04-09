@@ -20,7 +20,7 @@ describe('Should check for elements on the homepage', () => {
 
     it('Has the Tutorials card', (done) => {
         request(app).get('/').end((err, res) => {
-            assert(res.text.includes('<h3 class="card-title">Tutorials</h3>'));
+            assert(res.text.includes('<h3 class="card-title">Help</h3>'));
             done();
         });
     });
