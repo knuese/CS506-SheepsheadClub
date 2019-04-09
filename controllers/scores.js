@@ -82,6 +82,11 @@ router.post('/enter-scores/add-player', (req, res) => {
     });
 });
 
+// Get the players from the database
+router.get('/enter-scores/get-players', (req, res) => {
+    getPlayers().then((players) => res.send({players: players}));
+});
+
 // Loads the players from the database
 async function getPlayers() {
     const snapshot = await firebase.firestore().collection('players').get();
