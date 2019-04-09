@@ -16,9 +16,4 @@ Player.prototype.addScore = function(scoreEntry) {
     this.totalScore += scoreEntry.score;
 }
 
-Player.prototype.scoreForDate = function(date) {
-    let entry = this.scores.find(e => e.date = date);
-    return entry ? entry.score : 0;
-}
-
 module.exports = Player;
