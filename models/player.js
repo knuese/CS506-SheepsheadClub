@@ -11,16 +11,14 @@ Player.prototype.alphabetize = function(that) {
     return this.name.localeCompare(that.name);
 }
 
-Player.prototype.rank = function(that) {
-    if (this.totalScore == that.totalScore)
-        return this.alphabetize(that);
-    else
-        return this.totalScore - that.totalScore;
-}
-
 Player.prototype.addScore = function(scoreEntry) {
     this.scores.push(scoreEntry);
     this.totalScore += scoreEntry.score;
+}
+
+Player.prototype.scoreForDate = function(date) {
+    let entry = this.scores.find(e => e.date = date);
+    return entry ? entry.score : 0;
 }
 
 module.exports = Player;
