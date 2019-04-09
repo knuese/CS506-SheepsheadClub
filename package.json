@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "test": "./node_modules/.bin/mocha --reporter spec"
+    "test": "nyc ./node_modules/.bin/mocha --reporter spec --exit"
   },
   "dependencies": {
     "chai": "^4.2.0",
@@ -17,6 +17,7 @@
     "js-yaml": "^3.13.0",
     "mocha": "^6.0.2",
     "morgan": "^1.9.1",
+    "nyc": "^13.3.0",
     "pug": "^2.0.3"
   },
   "devDependencies": {
