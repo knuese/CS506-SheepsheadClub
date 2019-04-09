@@ -38,3 +38,9 @@ table.dataTable thead .sorting_desc_disabled:after,
 table.dataTable thead .sorting_desc_disabled:before {
     bottom: .5em;
 }
+
+div.scores-alert {
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+}
