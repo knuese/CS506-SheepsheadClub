@@ -34,6 +34,10 @@ describe('Should get all pages of the website', () => {
     it('GET /help', (done) => {
         request(app).get('/help').expect(200, done);
     });
+
+    it('GET /fun-facts', (done) => {
+        request(app).get('/fun-facts').expect(200, done);
+    });
 });
 
 // Code 302 = redirect
@@ -68,6 +72,10 @@ describe('Should redirect when making POST request for pages', () => {
     
     it('POST /logout', (done) => {
         request(app).post('/logout').expect(302, done);
+    });
+
+    it('POST /fun-facts', (done) => {
+        request(app).post('/fun-facts').expect(302, done);
     });
 });
 
