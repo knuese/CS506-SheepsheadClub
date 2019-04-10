@@ -19,7 +19,7 @@ block content
             .col-sm-6
               select.form-control#player
                 each player in players
-                  option(value=player.id) #{player.name}
+                  option(value=player.id) #{player.fullName}
           .form-group.row.text-left
             label.col-sm-2.col-form-label.font-weight-bold(for='semester') Semester
             .col-sm-6

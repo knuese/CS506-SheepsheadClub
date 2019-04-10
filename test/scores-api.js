@@ -36,7 +36,7 @@ describe('Should test the scores API', function() {
 
     it('Can add a player to the database', (done) => {
         let name = "John Smith";
-        request(app).post('/enter-scores/add-player').send({ name: name }).end((err, res) => {
+        request(app).post('/enter-scores/add-player').send({ name: name, semester: "Spring '19" }).end((err, res) => {
             request(app).get('/enter-scores/get-players').end((err2, res2) => {
                 let players = res2.body.players;
                 
