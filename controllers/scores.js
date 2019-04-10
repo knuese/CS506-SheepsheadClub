@@ -71,8 +71,10 @@ router.post('/enter-scores/save-score', (req, res) => {
 
 // API route to save a played added from the "Quick Add" area
 router.post('/enter-scores/add-player', (req, res) => {
+    let name = req.body.name.split(' ');
     firebase.firestore().collection('players').add({
-        name: req.body.name
+        firstName: name[0],
+        lastName: name[1]
     }).then(() => {
         res.send();
     }).catch((err) => {
