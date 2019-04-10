@@ -5,8 +5,8 @@ const Player = require('../models/player');
 const ScoreEntry = require('../models/scoreEntry');
 
 /* GET scores page */
-router.get('/scores', (req, res, next) => {
-    res.render('scores', { admin: firebase.auth().currentUser != null });
+router.get('/scores', (req, res) => {
+    getSemesters().then((semesters) => res.render('scores', { semesters: semesters, admin: firebase.auth().currentUser != null }));
 });
   
 /* GET score entry page */
@@ -74,7 +74,8 @@ router.post('/enter-scores/add-player', (req, res) => {
     let name = req.body.name.split(' ');
     firebase.firestore().collection('players').add({
         firstName: name[0],
-        lastName: name[1]
+        lastName: name[1],
+        semester: formatSemester(req.body.semester)
     }).then(() => {
         res.send();
     }).catch((err) => {
