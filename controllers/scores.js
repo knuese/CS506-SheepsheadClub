@@ -74,7 +74,8 @@ router.post('/enter-scores/add-player', (req, res) => {
     let name = req.body.name.split(' ');
     firebase.firestore().collection('players').add({
         firstName: name[0],
-        lastName: name[1]
+        lastName: name[1],
+        semester: formatSemester(req.body.semester)
     }).then(() => {
         res.send();
     }).catch((err) => {
