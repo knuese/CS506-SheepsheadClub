@@ -37,7 +37,7 @@ function loadData(semester) {
             // Rank
             row.push(i + 1);
             // Name
-            row.push(player.name);
+            row.push(player.fullName);
             // Total
             row.push(player.totalScore);
 
