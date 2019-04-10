@@ -1,5 +1,5 @@
 // This call is required to enable the data tables
-$.noConflict();
+let jq = $.noConflict();
 
 // Pass the $ in so that we can use regular jQuery syntax
 // https://www.w3schools.com/jquery/jquery_noconflict.asp
@@ -29,5 +29,8 @@ jQuery(document).ready(function($) {
         columns: cols,
         scrollX: true
     });
+
 });
+
+
 
