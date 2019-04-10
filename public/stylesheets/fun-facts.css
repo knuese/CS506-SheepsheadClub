@@ -22,9 +22,24 @@ button.selected {
 div.fun-content {
     display: none;
     padding-left: 16px;
+    padding-right: 16px;
 }
 
 .col-centered {
     float: none;
     margin: 0 auto;
+}
+
+.tab {
+    text-align: justify;
+    text-justify: inter-word;
+    text-indent: 30px;
+    line-height: 1.5;
+}
+
+img#card-players {
+    float: right;
+    max-width: 20%;
+    height: auto;
+    padding: 0 15px;
 }
