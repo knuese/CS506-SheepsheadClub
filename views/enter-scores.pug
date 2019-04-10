@@ -18,25 +18,24 @@ block content
             label.col-sm-2.col-form-label.font-weight-bold(for='player') Player
             .col-sm-6
               select.form-control#player
-                  option Ryan Knuese
-                  option Giannis Antetokounmpo
-                  option Aaron Rodgers
-                  option Ryan Braun
+                each player in players
+                  option(value=player.id) #{player.name}
           .form-group.row.text-left
             label.col-sm-2.col-form-label.font-weight-bold(for='semester') Semester
             .col-sm-6
-              select.form-control#semester
+              input.form-control#semester
           .form-group.row.text-left
-            label.col-sm-2.col-form-label.font-weight-bold(for='week') Week
+            label.col-sm-2.col-form-label.font-weight-bold(for='date-picker') Date
             .col-sm-6
-              select.form-control#week
+              input.form-control#date-picker(type='date')
           .form-group.row.text-left
             label.col-sm-2.col-form-label.font-weight-bold(for='score') Score
             .col-sm-6
               input.form-control#score(type='number')
           .form-group.row.mx-auto
-            button.entry Save
-            button.entry Clear
+            button.entry#save-score Save
+            button.entry#clear Clear
+            label.font-weight-bold#save-error Insufficient data!
     br
     .text-center
       h5 Quick Add Player
@@ -50,10 +49,11 @@ block content
               .col-sm-6
                 input.form-control#name
             .form-group.row.mx-auto
-              button.entry Save   
+              button.entry#save-player Save   
 
 
   script(src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous")
   script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous")
   script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous")
   script(src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/js/bootstrap-select.min.js")
+  script(type='text/javascript', src='js/enter-scores.js')
