@@ -5,8 +5,8 @@ const Player = require('../models/player');
 const ScoreEntry = require('../models/scoreEntry');
 
 /* GET scores page */
-router.get('/scores', (req, res, next) => {
-    res.render('scores', { admin: firebase.auth().currentUser != null });
+router.get('/scores', (req, res) => {
+    getSemesters().then((semesters) => res.render('scores', { semesters: semesters, admin: firebase.auth().currentUser != null }));
 });
   
 /* GET score entry page */
