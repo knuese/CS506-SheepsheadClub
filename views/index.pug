@@ -10,22 +10,10 @@ block content
                      "Remember to pay your dues by this Friday, or else we won't let you play",
                      "We're thinking about getting UW-Sheepshead t-shirts.  Let me know what you think"]
     - var imageUrls = ['/images/home_p1.png', '/images/home_p2.png', '/images/home_p3.png'];
-    //- .container-fluid.website-links
-    //-   .row.col-sm-12
-    //-     #carouselExampleControls.carousel.slide(data-ride='carousel')
-    //-       .carousel-inner
-    //-         .carousel-item.active
-    //-             img.img-fluid.min-vw-100(src='/images/home_p1.png' alt="Responsive image")
-    //-         each imagUrl in imageUrls
-    //-           .carousel-item
-    //-             img.img-fluid(src=imagUrl alt="Responsive image")
-    //-       a.carousel-control-prev(href='#carouselExampleControls' role='button' data-slide='prev')
-    //-         span.carousel-control-prev-icon(aria-hidden='true')
-    //-         span.sr-only Previous
-    //-       a.carousel-control-next(href='#carouselExampleControls' role='button' data-slide='next')
-    //-         span.carousel-control-next-icon(aria-hidden='true')
-    //-         span.sr-only Next
 
+
+    
+    //- corousel part
     div.container-fluid.website-links
       .row
         .col
@@ -36,12 +24,11 @@ block content
               each imagUrl in imageUrls
                 .carousel-item
                   img.img-fluid(src=imagUrl alt="Responsive image")
-            //- a.carousel-control-prev(href='#carouselExampleControls' role='button' data-slide='prev')
-            //-   span.carousel-control-prev-icon(aria-hidden='true')
-            //-   span.sr-only Previous
             a.carousel-control-next(href='#carouselExampleControls' role='button' data-slide='next')
               span.carousel-control-next-icon(aria-hidden='true')
               span.sr-only Next
+      
+      //- navigation part
       div.row
           div.col-md-6
               div.row.sub-row
@@ -80,12 +67,13 @@ block content
                                   The sheepshead club at UW Madison has been around for
                                   10,000 years...
                               a.btn.btn-primary(href = "/about") Read More
-
+          //- announcements part
           div.col-md-6
               div.row.sub-row.announcements-row
                   div.col-12
                       div.card.announcements-card
                           h3.card-title Announcements
+                          button.btn.btn-primary(type='button', data-toggle='modal', data-target='#publishModal', data-whatever='@fat') Add Announcements
                           div.card-block
                               each post in posts
                                   div.card.post
@@ -95,9 +83,25 @@ block content
                                       div.card-block
                                           p.announcement-content
                                               = post
-
-
-
+      //- component of pop up window
+      #publishModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='publishModalLabel', aria-hidden='true')
+        .modal-dialog(role='document')
+          .modal-content
+            .modal-header
+              h5#publishModalLabel.modal-title New Announcement
+              button.close(type='button', data-dismiss='modal', aria-label='Close')
+                span(aria-hidden='true') ×
+            .modal-body
+              form
+                .form-group
+                  label.col-form-label Title:
+                  input#message-text.form-control(type='text')
+                .form-group
+                  label.col-form-label Content:
+                  textarea#message-text.form-control
+            .modal-footer
+              button.btn.btn-secondary(type='button', data-dismiss='modal') Close
+              button.btn.btn-primary(type='button') Publish announcement
 
 
 
