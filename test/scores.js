@@ -13,7 +13,7 @@ describe('Should check for elements on the scores page', () => {
 
     it('Has the semester dropdown', (done) => {
         request(app).get('/scores').end((err, res) => {
-            assert(res.text.includes(`<select class="input-small" id="semester"></select>`)); 
+            assert(res.text.includes(`<select class="input-small" id="semester">`)); 
             done();
         });
     });
