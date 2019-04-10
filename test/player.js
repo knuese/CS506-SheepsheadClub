@@ -4,8 +4,9 @@ const ScoreEntry = require('../models/scoreEntry');
 
 describe('Should be able to create a new player', () => {
     let id = 'ABC123';
-    let name = 'John Smith'
-    let player = new Player(id, name);
+    let firstName = 'John'
+    let lastName = 'Smith'
+    let player = new Player(id, firstName, lastName);
 
     it('New player has the correct ID', (done) => {
         assert(player.id === id, 'ID was not set correctly');
@@ -13,7 +14,9 @@ describe('Should be able to create a new player', () => {
     });
 
     it('New player has the correct name', (done) => {
-        assert(player.name === name, 'Name was not set correctly');
+        assert(player.firstName === firstName, 'First name was not set correctly');
+        assert(player.lastName === lastName, 'Last name was not set correctly');
+        assert(player.fullName === firstName + ' ' + lastName, 'Full name was not set correctly');
         done();
     });
 
@@ -30,8 +33,9 @@ describe('Should be able to create a new player', () => {
 
 describe('Should be able to add score entries to a player', () => {
     let id = 'ABC123';
-    let name = 'John Smith'
-    let player = new Player(id, name);
+    let firstName = 'John';
+    let lastName = 'Smith'
+    let player = new Player(id, firstName, lastName);
 
     it('Should be able to add a new score entry to a player', (done) => {
         let scoreEntry = new ScoreEntry('2019-04-09', 100);
@@ -53,9 +57,9 @@ describe('Should be able to add score entries to a player', () => {
 });
 
 describe('Should be able to sort players correctly by name', () => {
-    let aaron = new Player('123', 'Aaron');
-    let beth = new Player('234', 'Beth');
-    let chris = new Player('345', 'Chris');
+    let aaron = new Player('123', 'Aaron', 'Adams');
+    let beth = new Player('234', 'Beth', 'Bowman');
+    let chris = new Player('345', 'Chris', 'Carter');
 
     it('Should return -1 when person 1 comes before person 2 alphabetically', (done) => {
         assert(aaron.alphabetize(beth) === -1, 'Should return -1');

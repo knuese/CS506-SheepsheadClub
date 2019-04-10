@@ -35,7 +35,7 @@ describe('Should test the scores API', function() {
     });
 
     it('Can add a player to the database', (done) => {
-        let name = "Test Player 2";
+        let name = "John Smith";
         request(app).post('/enter-scores/add-player').send({ name: name }).end((err, res) => {
             request(app).get('/enter-scores/get-players').end((err2, res2) => {
                 let players = res2.body.players;
@@ -44,8 +44,9 @@ describe('Should test the scores API', function() {
                 assert(players, "Should have gotten player data but didn't");
 
                 let found = false;
+                let exp = name.split(' ');
                 for (let i = 0; i < players.length; i++) {
-                    if (players[i].name === name) {
+                    if (players[i].firstName === exp[0] && players[i].lastName === exp[1]) {
                         found = true;
                         break;
                     }
