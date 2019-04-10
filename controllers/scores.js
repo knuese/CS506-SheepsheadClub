@@ -71,8 +71,10 @@ router.post('/enter-scores/save-score', (req, res) => {
 
 // API route to save a played added from the "Quick Add" area
 router.post('/enter-scores/add-player', (req, res) => {
+    let name = req.body.name.split(' ');
     firebase.firestore().collection('players').add({
-        name: req.body.name
+        firstName: name[0],
+        lastName: name[1]
     }).then(() => {
         res.send();
     }).catch((err) => {
@@ -85,7 +87,7 @@ router.post('/enter-scores/add-player', (req, res) => {
 // Loads the players from the database
 async function getPlayers() {
     const snapshot = await firebase.firestore().collection('players').get();
-    let players = Array.from(snapshot.docs.map(doc => new Player(doc.id, doc.data().name)));
+    let players = Array.from(snapshot.docs.map(doc => new Player(doc.id, doc.data().firstName, doc.data().lastName)));
     players.sort((a, b) => {return a.alphabetize(b)});
     return players;
 }
@@ -113,7 +115,7 @@ async function getScores(semester, accept, reject) {
                             .doc(d.id)
                             .get()
                             .then((doc) => {
-                                let player = new Player(doc.id, doc.data().name);
+                                let player = new Player(doc.id, doc.data().firstName, doc.data().lastName);
                                 playersMap[d.id] = player;
                                 resolve2();
                             });
