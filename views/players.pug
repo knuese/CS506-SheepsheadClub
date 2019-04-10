@@ -5,12 +5,36 @@ block content
     link(rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css")
     link(rel="stylesheet" href="/stylesheets/players.css")
 
+    if added == true
+        script.
+          alert("Player Added");
+
     .main.container-fluid
       .row
         .col.text-left
           h3 Players
           // Currently a dummy button that redirects to the players page. Blocking on database integration.
-          a.btn.btn-primary(href = "/players") Add Player
+          a.btn.btn-primary(data-toggle="modal", href="#addmodal") Add Player
+          #addmodal(class="modal fade")
+            div(class="modal-dialog")
+              div(class="modal-content")
+                div(class="modal-header")
+                  h4(class="modal-title") Add Player
+                
+                div(class="modal-body")
+                  form(method='POST' action='/addplayer')
+                    div.form-group
+                      label(for='fn') First Name:
+                      input#fn.form-control(type='text' name='firstname')
+                    div.form-group
+                      label(for='ln') Last Name:
+                      input#ln.form-control(type='text' name='lastname')
+                    div.form-group
+                      label(for='sem') Semester:
+                      input#sem.form-control(type='text' name='semester' placeholder='Spring 2018')
+                    button(type="button" class="btn btn-default" data-dismiss="modal") Close
+                    button(type='submit' class="btn btn-primary") Add
+                  
       br
       .row
         .col-lg-12
