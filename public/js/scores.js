@@ -73,14 +73,9 @@ function loadData(semester) {
     });
 }
 
-// Pass the $ in so that we can use regular jQuery syntax
-// https://www.w3schools.com/jquery/jquery_noconflict.asp
-jq(document).ready(() => {
-    // Load semesters into dropdown (later will get from database)
-    jq.post('scores/get-semesters').then((data) => {
-        data.semesters.forEach(sem => $('#semester').append(new Option(sem)));
-        loadData(semesterDropdown.val());
-    })    
+// When the document is ready, load the data for the default selected semester
+jq(document).ready(() => {    
+    loadData(semesterDropdown.val());
 });
 
 // Get the columns for the data table
