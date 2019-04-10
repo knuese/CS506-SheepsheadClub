@@ -17,6 +17,8 @@ block content
             label.font-weight-bold(for='semester') Semester
             br
             select.input-small#semester
+              each sem in semesters
+                option #{sem}
     br
     .row
       .col-lg-12
