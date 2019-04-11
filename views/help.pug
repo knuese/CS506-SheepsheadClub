@@ -14,7 +14,7 @@ block content
           button.help#strategy General Strategy
       .col-md-3
         .card
-          button.help#scenarios Should I Pick?
+          button.help#picking Should I Pick?
       .col-md-3
         .card
           button.help#scenarios What to Play?
@@ -35,6 +35,51 @@ block content
                 option(value="leaster") playing a leaster
       br
       #strategy-text.text-left
+    .help-content#picking
+      .row
+        h4 Should I pick up the blind?
+            
+      .row  
+        div.card.my-card#QH
+          img(src='/images/cards/QH.png').card
+          b Queen of Hearts
+          label Point Value: 3
+          label Is trump? Yes
+        div.card.my-card#AD
+          img(src='/images/cards/AD.png').card
+          b Ace of Diamonds
+          label Point Value: 11
+          label Is trump? Yes
+        div.card.my-card#8C
+          img(src='/images/cards/8C.png').card
+          b Eight of Clubs
+          label Point Value: 0
+          label Is trump? No
+        div.card.my-card#10S
+          img(src='/images/cards/10S.png').card
+          b Ten of Spades
+          label Point Value: 10
+          label Is trump? No
+        div.card.my-card#AS
+          img(src='/images/cards/AS.png').card
+          b Ace of Spades
+          label Point Value: 11
+          label Is trump? Yes
+        div.card.my-card#JC
+          img(src='/images/cards/JC.png').card
+          b Jack of Clubs
+          label Point Value: 2
+          label Is trump? Yes
+      br
+      .row
+        .col-md-5
+          button.help Pick it up!
+          br
+          button.help Pass    
+            
+          
+      br
+      #scenario-text
     .help-content#scenarios
       .row
         .col-md-4
