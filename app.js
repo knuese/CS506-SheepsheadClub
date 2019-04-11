@@ -16,7 +16,7 @@ let config = {
 
 firebase.initializeApp(config);
 
-let indexRouter = require('./controllers/index');
+let indexRouter = require('./routes/index');
 let scoresRouter = require('./controllers/scores');
 let playersRouter = require('./controllers/players');
 let staticPageRouter = require('./controllers/staticPages');
