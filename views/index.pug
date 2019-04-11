@@ -8,7 +8,7 @@ block content
         var posts = ["Meeting is canceled today.  See you next week!",
                      "This week we will have a change in venue.  We'll be meeting in the Sett this week!",
                      "Remember to pay your dues by this Friday, or else we won't let you play",
-                     "We're thinking about getting UW-Sheepshead t-shirts.  Let me know what you think"]
+                     "We're thinking about getting UW-Sheepshead t-shirts.  Let me know what you think", "1", "2"]
     - var imageUrls = ['/images/home_p1.png', '/images/home_p2.png', '/images/home_p3.png'];
 
 
@@ -70,19 +70,22 @@ block content
           //- announcements part
           div.col-md-6
               div.row.sub-row.announcements-row
-                  div.col-12
+                  div.col-12.border
                       div.card.announcements-card
                           h3.card-title Announcements
                           button.btn.btn-primary(type='button', data-toggle='modal', data-target='#publishModal', data-whatever='@fat') Add Announcements
-                          div.card-block
+                          div.card-block.pre-scrollable
                               each post in posts
-                                  div.card.post
+                                  .card.post
                                       div.card-header.post-header
                                           b By {insert poster here}
                                           i  on {insert date here}
                                       div.card-block
                                           p.announcement-content
                                               = post
+                                  button.btn.btn-primary(type='button', data-toggle='modal', data-target='#publishModal', data-whatever='@fat') Edit Announcements
+                                  
+
       //- component of pop up window
       #publishModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='publishModalLabel', aria-hidden='true')
         .modal-dialog(role='document')
