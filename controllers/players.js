@@ -35,42 +35,25 @@ router.post('/addplayer', (req, res) => {
 });
 // Get data to display on the scores page
 router.post('/players/get-data', (req, res) => {
-    var players = [""]
-    var jsonStr = '{"player":[]}';
-    var obj = JSON.parse(jsonStr);
-    var db = firebase.firestore();
-   
-    var playersRef = db.collection('players');
-    var allPlayers = playersRef.get()
-
- .then(snapshot => {
-   snapshot.forEach(doc => {
-    obj['player'].push({"playerID":doc.id, "playerData":doc.data()});
-    //  console.log(doc.id, '=>', doc.data());
-   players.push(doc); 
-   });
- })
- .catch(err => {
-   console.log('Error getting documents', err);
- });
-
-jsonStr = JSON.stringify(obj);
-console.log(players);
-res.json(players);
-// var docRef = db.collection("cities").doc("SF");
-// docRef.get().then(function(doc) {
-//    if (doc.exists) {
-//        console.log("Document data:", doc.data());
-//    } else {
-//        // doc.data() will be undefined in this case
-//        console.log("No such document!");
-//    }
-// }).catch(function(error) {
-//    console.log("Error getting document:", error);
-// });
-// // var db = firebase.firestore();
-// // const snapshot = firebase.firestore().collection('players').get();
-// // res.json({snapshot});    
+if (firebase.auth().currentUser) {
+    getPlayers().then((snapshot) => {
+        var tmp = [];
+        snapshot.forEach(doc => {
+            // console.log(doc.id, '=>', doc.data());
+            tmp.push([doc.id,doc.data()]);
+          });
+          console.log(tmp)
+         res.json(tmp);
+    });
+} else {
+    res.redirect('/login');
+}
+  
 });
+
+async function getPlayers() {
+    const snapshot = await firebase.firestore().collection('players').get();
+    return snapshot;
+}
 
 module.exports = router;
