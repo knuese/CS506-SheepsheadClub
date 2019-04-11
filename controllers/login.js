@@ -17,7 +17,6 @@ router.post('/login', function (req, res, next) {
     errorMessage = error.message;
 
     console.log("Error Code: " + errorCode + " \nError Message: " + errorMessage)
-    
     res.render('login', {err: errorMessage});
   });
 
@@ -25,10 +24,7 @@ router.post('/login', function (req, res, next) {
     if (user) {
       console.log("logging in");
       res.render('index', { admin: true });
-    } else {
-      console.log("logged in or error");
-    }
-   
+    } 
   });
 
 });
