@@ -62,3 +62,9 @@ img.cheatsheet {
     text-indent: 30px;
     line-height: 1.5;
 }
+
+.justified {
+    text-align: justify;
+    text-justify: inter-word;
+    line-height: 1.5;
+}
