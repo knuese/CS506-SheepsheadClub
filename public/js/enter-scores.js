@@ -55,7 +55,10 @@ $(savePlayerButton).click(() => {
     let name = quickAddName.val();
 
     if (name) {
-        $.post('/enter-scores/add-player', {name: name})
+        $.post('/enter-scores/add-player', {
+            name: name,
+            semester: semesterInput.val()
+        })
             .then(location.reload())
             .catch((err) => {
                 console.error(err);
