@@ -26,7 +26,7 @@ describe('Should Login and Logout', () => {
     
     it('Has the logout button', (done) => {
         request(app).get('/').end((err, res) => {
-            assert(res.text.includes(`<button class="btn-block side-button" type="Submit">Logout                    </button>`)); 
+            assert(res.text.includes(`<button class="btn-block side-button" type="Submit">Logout			</button>`)); 
             done();
         });
     });
