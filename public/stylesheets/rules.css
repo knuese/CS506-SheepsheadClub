@@ -5,6 +5,11 @@
         width: 100%;
         font-size: 4.5vw;
     }
+
+    #credit {
+        text-align: center;
+        font-size: 3vw;
+    }
 }
 
 /* Larger screens */
@@ -12,6 +17,11 @@
     button.rules {
         width: 100%;
         font-size: 1.8vw;
+    }
+
+    #credit {
+        text-align: center;
+        font-size: 0.75vw;
     }
 }
 
@@ -22,6 +32,7 @@ button.selected {
 div.rules-content {
     display: none;
     padding-left: 16px;
+    padding-right: 16px;
 }
 
 .col-centered {
@@ -43,4 +54,11 @@ img.cheatsheet {
     max-width: 100%;
     height: auto;
     float: right;
+}
+
+.tab {
+    text-align: justify;
+    text-justify: inter-word;
+    text-indent: 30px;
+    line-height: 1.5;
 }
