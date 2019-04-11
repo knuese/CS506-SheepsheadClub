@@ -11,22 +11,22 @@ describe('Should Login and Logout', () => {
     });
 
     it('Has the Enter Score button', (done) => {
-        request(app).get('/layout').end((err, res) => {
+        request(app).get('/').end((err, res) => {
             assert(res.text.includes(`<button class="btn-block side-button" type="Submit">Enter Scores</button>`)); 
             done();
         });
     });
 
     it('Has the Manage Player button', (done) => {
-        request(app).get('/layout').end((err, res) => {
+        request(app).get('/').end((err, res) => {
             assert(res.text.includes(`<button class="btn-block side-button" type="Submit">Manage Players</button>`)); 
             done();
         });
     });
     
     it('Has the logout button', (done) => {
-        request(app).get('/layout').end((err, res) => {
-            assert(res.text.includes(`<button class="btn-block side-button" type="Submit">Logout</button>`)); 
+        request(app).get('/').end((err, res) => {
+            assert(res.text.includes(`<button class="btn-block side-button" type="Submit">Logout                    </button>`)); 
             done();
         });
     });
