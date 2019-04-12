@@ -17,7 +17,7 @@ router.post('/players', (req, res) => {
     res.redirect('players');
 });
 
-router.post('/players/add-player', (req, res) => {
+router.post('/add-player', (req, res) => {
   let player = req.body ;
   let db = firebase.firestore();
   
