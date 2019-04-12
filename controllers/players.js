@@ -5,12 +5,12 @@ const Player = require('../models/player');
 
 /* GET players page */
 router.get('/players', (req, res, next) => {
-    console.log('here');
-    if (firebase.auth().currentUser) {
+    // console.log('here');
+    // if (firebase.auth().currentUser) {
       res.render('players', { admin: true, added: false, deleted:false, updated:false});
-    } else {
-      res.redirect('/login');
-    }
+    // } else {
+    //   res.redirect('/login');
+    // }
 });
 
 router.post('/players', (req, res) => {
@@ -83,25 +83,21 @@ router.post('/delete-player', (req, res) => {
     .catch(function(error) {
         console.error("Error updating document: ", error);
         res.status(500);
-        res.statusMessage = err;
+        res.statusMessage = error;
         res.send();
     });
     
   });
 
 async function getData(accept, reject) {
-    if (firebase.auth().currentUser) {
-        const snapshot = await firebase.firestore().collection('players').get();
-        let players = Array.from(snapshot.docs.map(doc => new Player(doc.id, 
-                                                                        doc.data().firstName, 
-                                                                        doc.data().lastName, 
-                                                                        doc.data().semester, 
-                                                                        doc.data().duesPaid)));
-        console.log(players);
-        accept(players);
-    } else {
-        reject();
-    }
+    const snapshot = await firebase.firestore().collection('players').get();
+    let players = Array.from(snapshot.docs.map(doc => new Player(doc.id, 
+                                                                    doc.data().firstName, 
+                                                                    doc.data().lastName, 
+                                                                    doc.data().semester, 
+                                                                    doc.data().duesPaid)));
+   // console.log(players);
+    accept(players);
 }
 
 module.exports = router;

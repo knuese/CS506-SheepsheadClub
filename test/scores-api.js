@@ -34,6 +34,8 @@ describe('Should test the scores API', function() {
         });
     });
 
+    let id;
+
     it('Can add a player to the database', (done) => {
         let name = "John Smith";
         request(app).post('/enter-scores/add-player').send({ name: name, semester: "Spring '19" }).end((err, res) => {
@@ -48,11 +50,33 @@ describe('Should test the scores API', function() {
                 for (let i = 0; i < players.length; i++) {
                     if (players[i].firstName === exp[0] && players[i].lastName === exp[1]) {
                         found = true;
+                        id = players[i].id;
                         break;
                     }
                 }
 
                 assert(found, "Should have found the player we just added but didn't"); 
+                done();
+            });
+        });
+    });
+
+    it('Can delete the player we just added', (done) => {
+        // DELETE PLAYER
+        request(app).post('/delete-player').send({id: id}).end((err, res) => {
+            request(app).post('/players/get-data').end((err, res) => {                                            
+                let players = res.body.players;
+                let found;
+                for (let i = 0; i < players.length; i++) {
+                    let player = players[i];
+                    if (player.fullName == "John Smith") {
+                        found = player;
+                        break;
+                    }
+                }
+
+                assert(!found, "John Smith should be gone");
+
                 done();
             });
         });
