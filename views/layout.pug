@@ -13,8 +13,8 @@ html
 				button.header-button#nav-button ☰
 				.col.text-center
 					a#title(href='/') Sheepshead Club - UW Madison
-				if admin == false
-					a(href="/login"): button.header-button(type="button") Admin Login
+				//- if admin == false
+				//- 	a(href="/login"): button.header-button#login(type="button") Admin Login
 			
 		.sidebar#nav-menu
 			.row
@@ -50,12 +50,18 @@ html
 			.row
 				.col
 					form#about(action = "/about" method = "POST")
-						button.btn-block.side-button(type = "Submit") About
+						button.btn-block.side-button(type = "Submit") About the Club
+
+			if admin == false
+				.row
+					.col
+						form#login(action = "/login" method = "GET")
+							button.btn-block.side-button(type = "Submit") Admin Login	
 
 			if admin == true			
 				.row
 					.col
-						form#about(action = "/logout" method = "POST")
+						form#logout(action = "/logout" method = "POST")
 							button.btn-block.side-button(type = "Submit") Logout			
 
 		block content
