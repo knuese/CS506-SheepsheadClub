@@ -4,24 +4,26 @@ const assert = require('assert');
 
 // Run tests with "npm test"
 describe('Should check for elements on the about page', () => {
-    it('Has the title', (done) => {
+    it('Has the About the Club card', (done) => {
         request(app).get('/about').end((err, res) => {
-            assert(res.text.includes("<h3>About</h3>")); 
+            assert(res.text.includes('<h3 class="card-title">About the Club</h3>'));
             done();
         });
     });
 
-    it('Has the semester dropdown', (done) => {
-        request(app).get('/scores').end((err, res) => {
-            assert(res.text.includes(`<select class="input-small" id="semester">`)); 
+    it('Has the Club Officers card', (done) => {
+        request(app).get('/about').end((err, res) => {
+            assert(res.text.includes('<h3 class="card-title">Club Officers</h3>'));
             done();
         });
     });
 
-    it('Has the scores table', (done) => {
-        request(app).get('/scores').end((err, res) => {
-            assert(res.text.includes(`<table class="table table-hover table-bordered" id="scores_table"></table>`)); 
+    /*
+    it('Has the UW logo img', (done) => {
+        request(app).get('/about').end((err, res) => {
+            assert(res.text.includes('<img src="/images/badger_logo.png" class="logo">'));
             done();
         });
     });
+    */
 });
