@@ -1,5 +1,3 @@
-let express = require('express');
-let router = express.Router();
 let firebase = require("firebase");
 
 exports.post = (req, res, next) => {
