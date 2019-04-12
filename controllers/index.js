@@ -44,7 +44,6 @@ router.post('/submit_post', function(req, res){
 });
 
 router.post('/delete_post', function(req, res){
-    console.log(req.body.id);
     firebase.firestore().collection('announcements').doc(req.body.id).delete().then(() => {
         res.send("success");
     }).catch((err) => {
