@@ -38,48 +38,25 @@ block content
     .help-content#picking
       .row
         h4 Should I pick up the blind?
-            
-      .row  
-        div.card.my-card#QH
-          img(src='/images/cards/QH.png').card
-          b Queen of Hearts
-          label Point Value: 3
-          label Is trump? Yes
-        div.card.my-card#AD
-          img(src='/images/cards/AD.png').card
-          b Ace of Diamonds
-          label Point Value: 11
-          label Is trump? Yes
-        div.card.my-card#8C
-          img(src='/images/cards/8C.png').card
-          b Eight of Clubs
-          label Point Value: 0
-          label Is trump? No
-        div.card.my-card#10S
-          img(src='/images/cards/10S.png').card
-          b Ten of Spades
-          label Point Value: 10
-          label Is trump? No
-        div.card.my-card#AS
-          img(src='/images/cards/AS.png').card
-          b Ace of Spades
-          label Point Value: 11
-          label Is trump? Yes
-        div.card.my-card#JC
-          img(src='/images/cards/JC.png').card
-          b Jack of Clubs
-          label Point Value: 2
-          label Is trump? Yes
-      br
       .row
-        .col-md-5
-          button.help Pick it up!
-          br
-          button.help Pass    
-            
+        select.form-control#picking-examples
+          option(value="example1") Example 1
+          option(value="example2") Example 2
+          option(value="example3") Example 3
+          option(value="example4") Example 4      
+      .row  
+        #pick-text
+      .row
+        div.col-md-5
+          button.form-control#pickup Pick it up!
+          button.form-control#pass Pass!
+
+          label#correct-pick Hurray! You made the right decision!
+          label#incorrect-pick Oh no! Check again! (hint: look at the number of trump)
+        
           
       br
-      #scenario-text
+      
     .help-content#what-to-play
       .row
         .col-md-4
