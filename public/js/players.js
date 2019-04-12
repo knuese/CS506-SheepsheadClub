@@ -22,7 +22,7 @@ function loadData() {
             let row = [];
             let cols = [];
             let player = players[i];
-            row.push("Asdf");
+            row.push(player.firstName);
             row.push(player.lastName);
             row.push(player.semester);
 
