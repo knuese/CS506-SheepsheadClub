@@ -42,6 +42,7 @@ function loadData() {
     });
 }
 
+
 jq(document).ready(() => {
     loadData();
 });
