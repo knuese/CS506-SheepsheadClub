@@ -9,7 +9,18 @@
 
 .btn {
     background-color: #800;
+    border-color: #800;
     color: white;
+}
+
+.btn:hover {
+    background-color: #800;
+    border-color: #800;
+    opacity: .8;
+}
+
+#addAnnouncement  {
+    text-align: center;
 }
 
 .sub-row {
@@ -22,7 +33,6 @@
 
 .announcements-card {
     height: 100%;
-
 }
 
 .announcement-content{
@@ -65,4 +75,9 @@
         padding-left: 10px;
         font: 2vw 'Germania One', cursive;
     }
+}
+
+.pre-scrollable {
+  max-height: 750px;
+  overflow-y: scroll;
 }

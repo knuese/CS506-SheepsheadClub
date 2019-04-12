@@ -11,6 +11,25 @@
         height: 100%;
         text-align: center;
     }
+
+    img.play-card {
+        max-width: 100%;
+        height: auto;
+        margin: 0 auto;
+    }
+
+    img.long {
+        max-width: 100%;
+        height: auto;
+        margin: 0 auto;
+    }
+
+    img.right {
+        float: right;
+        max-width: 100%;
+        height: auto;
+        padding: 0 15px;
+    }
 }
 
 /* Larger screens */
@@ -23,6 +42,30 @@
     div.my-card {
         width: 15%;
         height: 100%;
+        text-align: center;
+    }
+
+    img.right {
+        float: right;
+        max-width: 25%;
+        height: auto;
+        padding: 0 15px;
+    }
+
+    img.play-card {
+        max-width: 50%;
+        height: auto;
+        margin: 0 auto;
+    }
+
+    img.long {
+        max-width: 72.5%;
+        height: auto;
+        margin: 0 auto;
+    }
+    
+    div.play-card {
+        width: 50%;
         text-align: center;
     }
 }
@@ -48,20 +91,17 @@ img.card {
     margin: 0 auto;
 }
 
+p.card {
+    padding: 0 12px;
+    border: none;
+}
+
 .tab {
     text-align: justify;
     text-justify: inter-word;
     text-indent: 30px;
     line-height: 1.5;
 }
-
-img.right {
-    float: right;
-    max-width: 25%;
-    height: auto;
-    padding: 0 15px;
-}
-
 
 button#add-button {
     background-color: green;

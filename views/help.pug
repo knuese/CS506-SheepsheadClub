@@ -17,7 +17,7 @@ block content
           button.help#picking Should I Pick?
       .col-md-3
         .card
-          button.help#scenarios What to Play?
+          button.help#what-to-play What to Play?
       .col-md-3
         .card
           button.help#hand Hand Assistance
@@ -80,20 +80,20 @@ block content
           
       br
       #scenario-text
-    .help-content#scenarios
+    .help-content#what-to-play
       .row
         .col-md-4
           .row
             label.col-xs-1.col-form-label.font-weight-bold.mr-1(for='role') I am...
             .col-xs-1
-              select.form-control#strategies-role
+              select.form-control#play-role
                 option(value="picker") the picker
                 option(value="partner") the partner
                 option(value="neither") not on the picking team
                 option(value="leaster") playing a leaster
       br
-      #scenario-text
-        p This section will be filled in after further discussion with the client!
+      #play-text.text-left
+
     .help-content#hand
       .row
         .col-md-8
