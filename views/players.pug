@@ -37,8 +37,54 @@ block content
                       input#dp.form-control(type="date" name="duesPaid" placeholder="Date of payment" data-date="" data-date-format="MMMM DD YYYY" value="2015-08-09")
                     button(type="button" class="btn btn-default" data-dismiss="modal") Close
                     button(type='submit' class="btn btn-primary") Add
-          a.btn.btn-primary.ml-2#update(data-toggle="modal", href="#addmodal") Update Player
-          a.btn.btn-primary.ml-2#delete(data-toggle="modal", href="#addmodal") Delete Player
+          a.btn.btn-primary.ml-2#update(data-toggle="modal", href="#update-modal") Update Player
+          #update-modal(class="modal fade")
+            div(class="modal-dialog")
+              div(class="modal-content")
+                div(class="modal-header")
+                  h4(class="modal-title") Update Player
+                
+                div(class="modal-body")
+                  form(method='POST' action='/update-player')
+                    input#id(type='hidden' name='id')
+                    div.form-group
+                      label(for='fn') First Name:
+                      input#fn.form-control(type='text' name='firstname')
+                    div.form-group
+                      label(for='ln') Last Name:
+                      input#ln.form-control(type='text' name='lastname')
+                    div.form-group
+                      label(for='sem') Semester:
+                      input#sem.form-control(type='text' name='semester' placeholder='Spring 2018')
+                    div.form-group
+                      label(for='dp') Dues Paid:
+                      input#dp.form-control(type="date" name="duesPaid" placeholder="Date of payment" data-date="" data-date-format="MMMM DD YYYY" value="2015-08-09")
+                    button(type="button" class="btn btn-default" data-dismiss="modal") Close
+                    button(type='submit' class="btn btn-primary") Update
+          a.btn.btn-primary.ml-2#delete(data-toggle="modal", href="#delete-modal") Delete Player
+          #delete-modal(class="modal fade")
+            div(class="modal-dialog")
+              div(class="modal-content")
+                div(class="modal-header")
+                  h4(class="modal-title") Delete Player
+                
+                div(class="modal-body")
+                  form(method='POST' action='/delete-player')
+                    div.form-group
+                      input#id(type='hidden' name='id')
+                      label#name Are you sure you want to delete?
+                    //-   input#fn.form-control(type='text' name='firstname')
+                    //- div.form-group
+                    //-   label(for='ln') Last Name:
+                    //-   input#ln.form-control(type='text' name='lastname')
+                    //- div.form-group
+                    //-   label(for='sem') Semester:
+                    //-   input#sem.form-control(type='text' name='semester' placeholder='Spring 2018')
+                    //- div.form-group
+                    //-   label(for='dp') Dues Paid:
+                    //-   input#dp.form-control(type="date" name="duesPaid" placeholder="Date of payment" data-date="" data-date-format="MMMM DD YYYY" value="2015-08-09")
+                    button(type='submit' class="btn btn-primary") Yes
+                    button(type="button" class="btn btn-default" data-dismiss="modal") No
           
           //- div.modal.fade#update-modal
           //-   div(class="modal-dialog")
