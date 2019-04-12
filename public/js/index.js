@@ -5,7 +5,6 @@ const poster = $('input#poster');
 //add event listener to each delete button for every post dynamically
 Array.from(document.querySelectorAll('.deleteButton')).forEach(function(button) {
     $('#'+button.id).on('click', (event) => {
-        console.log(button.id);
         $.ajax({
           type: 'POST',
           url: '/delete_post',
