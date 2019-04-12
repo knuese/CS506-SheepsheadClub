@@ -1,49 +1,126 @@
 // This call is required to enable the data tables
-$.noConflict();
+let jq = $.noConflict();
 
-// Pass the $ in so that we can use regular jQuery syntax
-// https://www.w3schools.com/jquery/jquery_noconflict.asp
-jQuery(document).ready(function($) {
-    // Load semesters into dropdown (later will get from database)
-    const semesters = ["Spring '19", "Fall '18", "Spring '18", "Fall '17"];
-    semesters.forEach(sem => $('#semester').append(new Option(sem)));
+const tableContainer = jq('div#table-container');
+const semesterDropdown = jq('select#semester');
+let dataTable;
 
-    // Data for the table (later will get from database)
-    const dataset = [
-        [1, "Ryan Knuese", 100, 30, 40, 30],
-        [2, "Ethan Happ", 42, 23, -9, 28],
-        [3, "Giannis Antetokounmpo", 34, 10, 20, 4],
-        [4, "Aaron Rodgers", 12, 12, 0, '--'],
-        [5, "Ryan Braun", 8, 0, '--', 8],
-        [6, "Tracy Lewis-Williams", -29, -10, -8, -13],
-        [7, "Anthony Rizzo", -42, -30, -2, -10],
-        [8, "A", -100, -100, 0, 0],
-        [9, "B", -100, -100, 0, 0],
-        [10, "C", -100, -100, 0, 0],
-        [11, "D", -100, -100, 0, 0],
-        [12, "E", -100, -100, 0, 0],
-        [13, "F", -100, -100, 0, 0],
-        [14, "G", -100, -100, 0, 0]
-    ];
+semesterDropdown.change(() => {
+    loadData(semesterDropdown.val());
+});
 
-    // Columns for the table
-    let cols = [
-        { title: 'Rank' },
-        { title: 'Name' },
-        { title: 'Total' }
-    ];
+function loadData(semester) {
+    jq('div.table-responsive-xs').remove();
+    jq('label#no-data').remove();   
 
-    for (let i = 1; i < 15; i++) {
-        cols.push({ title: `Week ${i}` });
-        if (i > 3) {
-            dataset.forEach(set => set.push(0));
+    let html = `<div class='scores-alert'>
+                    <label>Loading data...</label>
+                </div>`;
+    tableContainer.append(html);
+
+    jq.post('scores/get-data', { semester: semester }).then((data) => { 
+        jq('div.scores-alert').remove();
+
+        let players = data.playerScores;
+        players = players.sort((a, b) => {return b.totalScore - a.totalScore;});
+        console.log(players);
+
+        let cols = getTableColumns(data);
+        
+        // Data for the table (later will get from database)
+        let dataset = [];
+
+        for (let i = 0; i < players.length; i++) {
+            let row = [];
+            let player = players[i]
+            
+            // Rank
+            row.push(i + 1);
+            // Name
+            row.push(player.fullName);
+            // Total
+            row.push(player.totalScore);
+
+            // Scores for the weeks
+            cols.forEach(col => {
+                row.push(scoreForDate(player, col));
+            });
+
+            dataset.push(row);
+        }
+
+        // Format the column titles to make them a little nicer
+        cols = formatColumnTitles(cols);
+
+        // Add the HTML for the table
+        html = `<div class="table-responsive-xs">
+                    <table class="table table-hover table-bordered" id="scores-table"/>
+                </div>`;
+        tableContainer.append(html);
+
+        // Define the data table
+        dataTable = jq('table#scores-table').DataTable( {
+            data: dataset,
+            columns: cols,
+            scrollX: true
+        });
+    }).catch(() => {
+        jq('div.scores-alert').remove();
+        let html = `<div class='scores-alert'>
+                        <label>No data to display!</label>
+                    </div>`;
+        tableContainer.append(html);
+    });
+}
+
+// When the document is ready, load the data for the default selected semester
+jq(document).ready(() => {    
+    loadData(semesterDropdown.val());
+});
+
+// Get the columns for the data table
+function getTableColumns(data) {
+    let cols = [];
+    data.playerScores.forEach(p => {
+        p.scores.forEach(s => {
+            if (cols.indexOf(s.date) === -1) {
+                cols.push(s.date);
+            }
+        });
+    });
+
+    cols = cols.sort();
+
+    return cols;
+}
+
+// Format the column titles
+function formatColumnTitles(cols) {
+    let columns = [];
+    cols.forEach(c => {
+        let tokens = c.split('-');
+        let title = tokens[1] + '/' + tokens[2] + '/' + tokens[0];
+        columns.push({title:title});
+    });
+
+    // Always add these columns at the front
+    columns.unshift({title: 'Total'});
+    columns.unshift({title: 'Name'});
+    columns.unshift({title: 'Rank'});
+
+    return columns;
+}
+
+// Get the score for a particular date from the user
+function scoreForDate(player, date) {
+    let entry;
+
+    for (let i = 0; i < player.scores.length; i++) {
+        if (player.scores[i].date == date) {
+            entry = player.scores[i];
+            break;
         }
     }
 
-    // Define the data table
-    $('#scores_table').DataTable( {
-        data: dataset,
-        columns: cols,
-        scrollX: true
-    });
-});
+    return entry ? entry.score : '';
+}

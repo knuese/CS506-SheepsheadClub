@@ -2,24 +2,27 @@ extends layout
 
 block content
   link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous")
-  link(rel="stylesheet" href="/stylesheets/tutorial.css")
+  link(rel="stylesheet" href="/stylesheets/help.css")
 
   .main.container-fluid
     .row
       .col.text-center
-        h3 Tutorial
+        h3 Help
     .row  
-      .col-md-4
+      .col-md-3
         .card
-          button.tutorial#strategy General Strategy
-      .col-md-4
+          button.help#strategy General Strategy
+      .col-md-3
         .card
-          button.tutorial#scenarios Scenarios
-      .col-md-4
+          button.help#picking Should I Pick?
+      .col-md-3
         .card
-          button.tutorial#hand Hand Assistance
+          button.help#scenarios What to Play?
+      .col-md-3
+        .card
+          button.help#hand Hand Assistance
     br
-    .tutorial-content#strategy.text-center
+    .help-content#strategy.text-center
       .row
         .col-md-4
           .row
@@ -32,7 +35,52 @@ block content
                 option(value="leaster") playing a leaster
       br
       #strategy-text.text-left
-    .tutorial-content#scenarios
+    .help-content#picking
+      .row
+        h4 Should I pick up the blind?
+            
+      .row  
+        div.card.my-card#QH
+          img(src='/images/cards/QH.png').card
+          b Queen of Hearts
+          label Point Value: 3
+          label Is trump? Yes
+        div.card.my-card#AD
+          img(src='/images/cards/AD.png').card
+          b Ace of Diamonds
+          label Point Value: 11
+          label Is trump? Yes
+        div.card.my-card#8C
+          img(src='/images/cards/8C.png').card
+          b Eight of Clubs
+          label Point Value: 0
+          label Is trump? No
+        div.card.my-card#10S
+          img(src='/images/cards/10S.png').card
+          b Ten of Spades
+          label Point Value: 10
+          label Is trump? No
+        div.card.my-card#AS
+          img(src='/images/cards/AS.png').card
+          b Ace of Spades
+          label Point Value: 11
+          label Is trump? Yes
+        div.card.my-card#JC
+          img(src='/images/cards/JC.png').card
+          b Jack of Clubs
+          label Point Value: 2
+          label Is trump? Yes
+      br
+      .row
+        .col-md-5
+          button.help Pick it up!
+          br
+          button.help Pass    
+            
+          
+      br
+      #scenario-text
+    .help-content#scenarios
       .row
         .col-md-4
           .row
@@ -46,7 +94,7 @@ block content
       br
       #scenario-text
         p This section will be filled in after further discussion with the client!
-    .tutorial-content#hand
+    .help-content#hand
       .row
         .col-md-8
           .row
@@ -64,5 +112,5 @@ block content
   script(src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous")
   script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous")
   script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous")
-  script(type='text/javascript', src='js/tutorial.js')
+  script(type='text/javascript', src='js/help.js')
   script(type='text/javascript', src='js/cards.js')
