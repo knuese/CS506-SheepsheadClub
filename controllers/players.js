@@ -7,7 +7,7 @@ const Player = require('../models/player');
 router.get('/players', (req, res, next) => {
     console.log('here');
     if (firebase.auth().currentUser) {
-      res.render('players', { added: false});
+      res.render('players', { added: false, deleted:false, updated:false});
     } else {
       res.redirect('/login');
     }
@@ -27,7 +27,7 @@ router.post('/add-player', (req, res) => {
         semester: player.semester,
         duesPaid: player.duesPaid
     }).then(() => {
-        res.render('players', {added: true});
+        res.render('players', {added: true, deleted:false, updated:false});
     }).catch((err) => {
         res.status(500);
         res.statusMessage = err;
@@ -49,6 +49,45 @@ router.post('/players/get-data', (req, res) => {
         res.send();
     });
 });
+
+router.post('/delete-player', (req, res) => {
+    let player = req.body ;
+    let db = firebase.firestore();
+    
+    db.collection('players').doc(player.id).delete()
+    .then(() => {
+          res.render('players', {added:false, deleted: true, updated:false});
+      }).catch((err) => {
+          res.status(500);
+          res.statusMessage = err;
+          res.send();
+      });
+  });
+
+  router.post('/update-player', (req, res) => {
+    let player = req.body ;
+    let db = firebase.firestore();
+    
+    var updateRef = db.collection("players").doc(player.id);
+
+    return updateRef.update({
+        firstName: player.firstname,
+        lastName: player.lastname,
+        semester: player.semester,
+        duesPaid: player.duesPaid
+    })
+    .then(function() {
+        console.log("Document successfully updated!");
+        res.render('players', {added:false, deleted: false, updated:true});
+    })
+    .catch(function(error) {
+        console.error("Error updating document: ", error);
+        res.status(500);
+        res.statusMessage = err;
+        res.send();
+    });
+    
+  });
 
 async function getData(accept, reject) {
     if (firebase.auth().currentUser) {
