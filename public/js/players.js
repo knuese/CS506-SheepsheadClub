@@ -22,7 +22,6 @@ function loadData() {
             { title: 'First Name' },
             { title: 'Last Name' },
             { title: 'Semester' },
-            { title: 'Dues Paid' }
         ];
     
         for (let i = 0; i < players.length; i++){
@@ -34,7 +33,7 @@ function loadData() {
 
             dataset.push(row);
         }
-       
+        jq('div.players-alert').remove();
         html = `<div class="table-responsive-xs">
                     <table class="table table-hover table-bordered" id="players-table"/>
                 </div>`;

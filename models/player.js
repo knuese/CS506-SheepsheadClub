@@ -1,14 +1,17 @@
 class Player {
-    constructor(id, name) {
+    constructor(id, firstName, lastName, semester) {
         this.id = id;
-        this.name = name;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.semester = semester;
+        this.fullName = firstName + ' ' + lastName;
         this.scores = [];
         this.totalScore = 0;
     }
 }
 
 Player.prototype.alphabetize = function(that) {
-    return this.name.localeCompare(that.name);
+    return this.fullName.localeCompare(that.fullName);
 }
 
 Player.prototype.addScore = function(scoreEntry) {

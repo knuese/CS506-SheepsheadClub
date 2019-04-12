@@ -39,8 +39,8 @@ if (firebase.auth().currentUser) {
     getPlayers().then((snapshot) => {
         var tmp = [];
         snapshot.forEach(doc => {
-            // console.log(doc.id, '=>', doc.data());
-            tmp.push([doc.id,doc.data()]);
+            tmp.push(new Player(doc.id, doc.data().firstName, doc.data().lastName, doc.data().semester)
+            );
           });
           console.log(tmp)
          res.json(tmp);
