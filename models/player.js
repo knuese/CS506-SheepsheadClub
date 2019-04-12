@@ -1,10 +1,11 @@
 class Player {
-    constructor(id, firstName, lastName, semester) {
+    constructor(id, firstName, lastName, semester, duesPaidDate) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.semester = semester;
         this.fullName = firstName + ' ' + lastName;
+        this.semester = semester;
+        this.duesPaidDate = duesPaidDate;
         this.scores = [];
         this.totalScore = 0;
     }

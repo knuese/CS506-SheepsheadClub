@@ -14,26 +14,21 @@ function loadData() {
 
     tableContainer.append(html);
 
-    $.post( "players/get-data", function( data ){
-        console.log(data);
-        let players = data.tmp;
+    $.post( "players/get-data", (data) => {
+        jq('div.players-alert').remove();
+
+        console.log(data.players);
+        let players = data.players;
         let dataset = [];
         let cols = [
             { title: 'First Name' },
             { title: 'Last Name' },
             { title: 'Semester' },
+            { title: 'Dues Paid On'}
         ];
-    
-        for (let i = 0; i < players.length; i++){
-            let row = [];
-            let player = players[i];
-            row.push(player.firstName);
-            row.push(player.lastName);
-            row.push(player.semester);
 
-            dataset.push(row);
-        }
-        jq('div.players-alert').remove();
+        players.forEach(p => dataset.push([p.firstName, p.lastName, p.semester, p.duesPaidDate]));
+
         html = `<div class="table-responsive-xs">
                     <table class="table table-hover table-bordered" id="players-table"/>
                 </div>`;
