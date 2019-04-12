@@ -12,6 +12,18 @@
         text-align: center;
     }
 
+    img.play-card {
+        max-width: 100%;
+        height: auto;
+        margin: 0 auto;
+    }
+
+    img.long {
+        max-width: 100%;
+        height: auto;
+        margin: 0 auto;
+    }
+
     img.right {
         float: right;
         max-width: 100%;
@@ -39,6 +51,18 @@
         height: auto;
         padding: 0 15px;
     }
+
+    img.play-card {
+        max-width: 50%;
+        height: auto;
+        margin: 0 auto;
+    }
+
+    img.long {
+        max-width: 72.5%;
+        height: auto;
+        margin: 0 auto;
+    }
     
     div.play-card {
         width: 50%;
@@ -62,12 +86,6 @@ div.help-content {
 }
 
 img.card {
-    max-width: 50%;
-    height: auto;
-    margin: 0 auto;
-}
-
-img.play-card {
     max-width: 50%;
     height: auto;
     margin: 0 auto;
