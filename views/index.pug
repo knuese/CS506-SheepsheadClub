@@ -25,8 +25,36 @@ block content
                 .carousel-item
                   img.img-fluid(src=imagUrl alt="Responsive image")
 
-      //- navigation part
+      
       div.row
+          //- announcements part
+          div.col-md-6
+              div.row.sub-row.announcements-row
+                  div.col-12
+                      div.card.announcements-card
+                          h3.card-title Announcements
+                          if admin
+                            br
+                            div#addAnnouncement
+                                button.btn.btn-primary(type='button', data-toggle='modal', data-target='#publishModal', data-whatever='@fat') Add Announcement
+                          div.card-block.pre-scrollable
+                              each announcement in announcements
+                                  .card.post
+                                      div.card-header.post-header
+                                          b By
+                                          b
+                                            = " " + announcement.posterName
+                                          i  on
+                                          i
+                                            = " " + announcement.date
+                                          br
+                                      div.card-block
+                                          p.announcement-content
+                                              = announcement.content
+                                          if admin
+                                              br
+                                              button.btn.deleteButton.btn-primary(type='button' id=announcement.id) Delete Announcement
+          //- navigation part
           div.col-md-6
               div.row.sub-row
                   div.col-12
@@ -64,33 +92,6 @@ block content
                                   The sheepshead club at UW Madison has been around for
                                   10,000 years...
                               a.btn.btn-primary(href = "/about") Read More
-          //- announcements part
-          div.col-md-6
-              div.row.sub-row.announcements-row
-                  div.col-12
-                      div.card.announcements-card
-                          h3.card-title Announcements
-                          if admin
-                            br
-                            div#addAnnouncement
-                                button.btn.btn-primary(type='button', data-toggle='modal', data-target='#publishModal', data-whatever='@fat') Add Announcement
-                          div.card-block
-                              each announcement in announcements
-                                  .card.post
-                                      div.card-header.post-header
-                                          b By
-                                          b
-                                            = " " + announcement.posterName
-                                          i  on
-                                          i
-                                            = " " + announcement.date
-                                          br
-                                      div.card-block
-                                          p.announcement-content
-                                              = announcement.content
-                                          if admin
-                                              br
-                                              button.btn.deleteButton.btn-primary(type='button' id=announcement.id) Delete Announcement
 
 
       //- component of pop up window
