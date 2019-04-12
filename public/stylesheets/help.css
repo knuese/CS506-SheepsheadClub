@@ -113,3 +113,13 @@ label#dup-error {
     color: red;
     display: none;
 }
+
+label#correct-pick {
+    color: green;
+    display: none;
+}
+
+label#incorrect-pick {
+    color: red;
+    display: none;
+}
