@@ -20,6 +20,11 @@ router.get('/help', (req, res, next) => {
     res.render('help', { cards: cards, admin: firebase.auth().currentUser != null });
 });
 
+/* GET fun facts page */
+router.get('/fun-facts', (req, res, next) => {
+    res.render('fun-facts', { admin: firebase.auth().currentUser != null });
+});
+
 router.post('/rules', function (req, res) {
     res.redirect('rules');
 });
@@ -30,6 +35,10 @@ router.post('/help', function (req, res) {
 
 router.post('/about', function (req, res) {
     res.redirect('about');
+});
+
+router.post('/fun-facts', function (req, res) {
+    res.redirect('fun-facts');
 });
 
 module.exports = router;
