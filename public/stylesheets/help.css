@@ -11,6 +11,13 @@
         height: 100%;
         text-align: center;
     }
+
+    img.right {
+        float: right;
+        max-width: 100%;
+        height: auto;
+        padding: 0 15px;
+    }
 }
 
 /* Larger screens */
@@ -24,6 +31,13 @@
         width: 15%;
         height: 100%;
         text-align: center;
+    }
+
+    img.right {
+        float: right;
+        max-width: 25%;
+        height: auto;
+        padding: 0 15px;
     }
 }
 
@@ -53,13 +67,6 @@ img.card {
     text-justify: inter-word;
     text-indent: 30px;
     line-height: 1.5;
-}
-
-img.right {
-    float: right;
-    max-width: 25%;
-    height: auto;
-    padding: 0 15px;
 }
 
 
