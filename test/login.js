@@ -6,7 +6,7 @@ describe('Should Login and Logout', () => {
     it('Logs in', (done) => {
         request(app).post('/login')
         .send({email:"sheepshead.test@gmail.com", password:"cs5062019!"})
-        .expect(200)
+        .expect(302)
         .end(done);
     });
 
