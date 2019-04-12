@@ -12,7 +12,7 @@ block content
     - var imageUrls = ['/images/home_p1.png', '/images/home_p2.png', '/images/home_p3.png'];
 
 
-    
+
     //- corousel part
     div.container-fluid.website-links
       .row
@@ -27,7 +27,7 @@ block content
             a.carousel-control-next(href='#carouselExampleControls' role='button' data-slide='next')
               span.carousel-control-next-icon(aria-hidden='true')
               span.sr-only Next
-      
+
       //- navigation part
       div.row
           div.col-md-6
@@ -74,19 +74,27 @@ block content
                       div.card.announcements-card
                           h3.card-title Announcements
                           if admin
-                            button.btn.btn-primary(type='button', data-toggle='modal', data-target='#publishModal', data-whatever='@fat') Add Announcements
+                            br
+                            div#addAnnouncement
+                                button.btn.btn-primary(type='button', data-toggle='modal', data-target='#publishModal', data-whatever='@fat') Add Announcement
                           div.card-block.pre-scrollable
-                              each post in posts
-                                  .card.post
-                                      div.card-header.post-header
-                                          b By {insert poster here}
-                                          i  on {insert date here}
-                                      div.card-block
-                                          p.announcement-content
-                                              = post
-                                  if admin
-                                    button.btn.btn-primary(type='button', data-toggle='modal', data-target='#publishModal', data-whatever='@fat') Delete Announcements
-                                  
+                          each announcement in announcements
+                              .card.post
+                                  div.card-header.post-header
+                                      b By
+                                      b
+                                        = " " + announcement.posterName
+                                      i  on
+                                      i
+                                        = " " + announcement.date
+                                      br
+                                  div.card-block
+                                      p.announcement-content
+                                          = announcement.content
+                                      if admin
+                                          br
+                                          button.btn.btn-primary(type='button') Delete Announcement
+
 
       //- component of pop up window
       #publishModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='publishModalLabel', aria-hidden='true')
@@ -99,18 +107,18 @@ block content
             .modal-body
               form
                 .form-group
-                  label.col-form-label Title:
-                  input#message-text.form-control(type='text')
+                  label.col-form-label Posted By:
+                  input#poster.form-control(type='text')
                 .form-group
                   label.col-form-label Content:
-                  textarea#message-text.form-control
+                  textarea#postContent.form-control
             .modal-footer
               button.btn.btn-secondary(type='button', data-dismiss='modal') Close
-              button.btn.btn-primary(type='button') Publish announcement
+              button.btn#postButton.btn-primary(type='button') Publish announcement
 
 
 
     script(src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous")
     script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous")
     script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous")
-
+    script(type='text/javascript', src='js/index.js')

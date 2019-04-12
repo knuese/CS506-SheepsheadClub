@@ -9,7 +9,18 @@
 
 .btn {
     background-color: #800;
+    border-color: #800;
     color: white;
+}
+
+.btn:hover {
+    background-color: #800;
+    border-color: #800;
+    opacity: .8;
+}
+
+#addAnnouncement  {
+    text-align: center;
 }
 
 .sub-row {
