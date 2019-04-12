@@ -1,27 +1,29 @@
 /* Small screen */
 @media (max-width: 768px) 
 {
-    button.rules {
+    button.fun {
         width: 100%;
         font-size: 4.5vw;
     }
 
-    #credit {
-        text-align: center;
-        font-size: 3vw;
+    img#card-players {
+        max-width: 100%;
+        height: auto;
     }
 }
 
 /* Larger screens */
 @media (min-width: 768px) {
-    button.rules {
+    button.fun {
         width: 100%;
         font-size: 1.8vw;
     }
 
-    #credit {
-        text-align: center;
-        font-size: 0.75vw;
+    img#card-players {
+        float: right;
+        max-width: 20%;
+        height: auto;
+        padding: 0 15px;
     }
 }
 
@@ -29,7 +31,7 @@ button.selected {
     background-color: red;
 }
 
-div.rules-content {
+div.fun-content {
     display: none;
     padding-left: 16px;
     padding-right: 16px;
@@ -40,31 +42,9 @@ div.rules-content {
     margin: 0 auto;
 }
 
-figure {
-    margin: 12px;
-    float: right;
-}
-
-figcaption {
-    text-align: center;
-    font-weight: bold;
-}
-
-img.cheatsheet {
-    max-width: 100%;
-    height: auto;
-    float: right;
-}
-
 .tab {
     text-align: justify;
     text-justify: inter-word;
     text-indent: 30px;
-    line-height: 1.5;
-}
-
-.justified {
-    text-align: justify;
-    text-justify: inter-word;
     line-height: 1.5;
 }

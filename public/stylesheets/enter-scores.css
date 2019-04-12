@@ -8,3 +8,8 @@ button.entry {
     margin-right: 12px;
     border-radius: 10px;
 }
+
+label#save-error {
+    color: red;
+    display: none;
+}

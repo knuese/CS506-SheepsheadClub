@@ -10,11 +10,13 @@ html
 	body
 		.sticky#title_bar
 			.row
-				button#nav_button ☰
+				button.header-button#nav-button ☰
 				.col.text-center
 					a#title(href='/') Sheepshead Club - UW Madison
+				//- if admin == false
+				//- 	a(href="/login"): button.header-button#login(type="button") Admin Login
 			
-		.sidebar#nav_menu
+		.sidebar#nav-menu
 			.row
 				.col
 					form#home(action = "/" method = "POST")
@@ -29,18 +31,38 @@ html
 						button.btn-block.side-button(type = "Submit") Rules
 			.row
 				.col
-					form#tutorial(action = "/tutorial" method = "POST")
-						button.btn-block.side-button(type = "Submit") Tutorial
+					form#help(action = "/help" method = "POST")
+						button.btn-block.side-button(type = "Submit") Help		
+			if admin == true
+				.row
+					.col
+						form#enter-scores(action = "/enter-scores" method = "POST")
+							button.btn-block.side-button(type = "Submit") Enter Scores
+			if admin == true
+				.row
+					.col
+						form#players(action = "/players" method = "POST")
+							button.btn-block.side-button(type = "Submit") Manage Players
 			.row
 				.col
-
-					form#tutorial(action = "/enter-scores" method = "POST")
-						button.btn-block.side-button(type = "Submit") Enter Scores
+					form#fun-facts(action = "/fun-facts" method = "POST")
+						button.btn-block.side-button(type = "Submit") Fun Facts
 			.row
 				.col
-
 					form#about(action = "/about" method = "POST")
-						button.btn-block.side-button(type = "Submit") About
+						button.btn-block.side-button(type = "Submit") About the Club
+
+			if admin == false
+				.row
+					.col
+						form#login(action = "/login" method = "GET")
+							button.btn-block.side-button(type = "Submit") Admin Login	
+
+			if admin == true			
+				.row
+					.col
+						form#logout(action = "/logout" method = "POST")
+							button.btn-block.side-button(type = "Submit") Logout			
 
 		block content
 
