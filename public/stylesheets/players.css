@@ -54,3 +54,15 @@ div.players-alert {
   [type="date"]::-webkit-calendar-picker-indicator {
     opacity: 0;
   }
+
+a.disabled {
+    /* Make the disabled links grayish*/
+    color: gray;
+    /* And disable the pointer events */
+    pointer-events: none;
+}
+
+tr.row-selected td{
+    color: white !important;
+    background-color:red !important;
+}

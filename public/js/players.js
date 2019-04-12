@@ -21,13 +21,14 @@ function loadData() {
         let players = data.players;
         let dataset = [];
         let cols = [
+            { title: 'ID' },
             { title: 'First Name' },
             { title: 'Last Name' },
             { title: 'Semester' },
             { title: 'Dues Paid On'}
         ];
 
-        players.forEach(p => dataset.push([p.firstName, p.lastName, p.semester, p.duesPaidDate]));
+        players.forEach(p => dataset.push([p.id, p.firstName, p.lastName, p.semester, p.duesPaidDate]));
 
         html = `<div class="table-responsive-xs">
                     <table class="table table-hover table-bordered" id="players-table"/>
@@ -37,12 +38,41 @@ function loadData() {
         dataTable = jq('table#players-table').DataTable( {
             data: dataset,
             columns: cols,
-            scrollX: true
+            scrollX: true,
+            columnDefs: [
+                {
+                    'targets': [0],
+                    'visible': false,
+                    'searchable': false
+                }
+            ]
+        });
+
+        jq('#players-table tbody').on('click', 'tr', function(e) {
+            e.stopPropagation();
+
+            let data = dataTable.row(this).data();
+            console.log(data);
+
+            $("#players-table tbody tr").removeClass('row-selected');        
+            $(this).addClass('row-selected');
+            
+            jq('a#update').removeClass('disabled');
+            jq('a#delete').removeClass('disabled');
         });
     });
 }
 
 
 jq(document).ready(() => {
+    jq('a#update').addClass('disabled');
+    jq('a#delete').addClass('disabled');
+
     loadData();
+});
+
+jq(document).click(() => {
+    jq("#players-table tbody tr").removeClass('row-selected');  
+    jq('a#update').addClass('disabled');
+    jq('a#delete').addClass('disabled'); 
 });
