@@ -1,0 +1,167 @@
+.website-links {
+    padding-top: 25px;
+    background-color: #EFEDED;
+}
+
+.card-block {
+    padding: 25px;
+}
+
+.btn {
+    background-color: #800;
+    color: white;
+}
+
+.sub-row {
+    padding-top: 15px;
+}
+
+.announcements-row {
+    height: 100%;
+}
+
+.announcements-card {
+    height: 100%;
+
+}
+
+.announcement-content{
+    margin-left: 5%
+}
+
+.post{
+    margin-top: 10px;
+}
+
+figure {
+    margin: 12px;
+    float: right;
+    width: 15%;
+}
+
+figcaption {
+    text-align: center;
+    font-weight: bold;
+}
+
+img.logo {
+    max-width: 100%;
+    height: auto;
+    float: right;
+}
+
+img.card {
+    height: 100px;
+    margin: 0 auto;
+}
+
+p.card {
+    padding: 0 12px;
+    border: none;
+}
+
+@media (max-width: 768px)
+{
+    .post-header {
+        background-color: #ffe6e6;
+        font: 3.5vw 'Germania One', cursive;
+    }
+
+    .card-title {
+        background-color: #800;
+        color: #ffe6e6;
+        width: 30%;
+        padding: 5px;
+        padding-left: 10px;
+        font: 5vw 'Germania One', cursive;
+    }
+
+    #credit {
+        text-align: center;
+        font-size: 3vw;
+    }
+
+    div.my-card {
+        width: 75%;
+        height: 100%;
+        text-align: center;
+    }
+
+    img.play-card {
+        height: 100px;
+        margin: 0 auto;
+    }
+
+    img.long {
+        max-width: 100%;
+        height: auto;
+        margin: 0 auto;
+    }
+
+    img.right {
+        float: right;
+        max-width: 100%;
+        height: auto;
+        padding: 0 15px;
+    }
+}
+
+/* Larger screens */
+@media (min-width: 768px) {
+    .post-header {
+        background-color: #ffe6e6;
+        font: 1.5vw 'Germania One', cursive;
+    }
+
+    .card-title {
+        background-color: #800;
+        color: #ffe6e6;
+        width: 30%;
+        padding: 5px;
+        padding-left: 10px;
+        font: 2vw 'Germania One', cursive;
+    }
+
+    #credit {
+        text-align: center;
+        font-size: 0.75vw;
+    }
+
+    div.my-card {
+        width: 30%;
+        height: 100%;
+        text-align: center;
+    }
+
+    img.right {
+        float: right;
+        max-width: 25%;
+        height: auto;
+        padding: 0 15px;
+    }
+
+    img.play-card {
+        max-width: 50%;
+        height: auto;
+        margin: 0 auto;
+    }
+
+    img.long {
+        max-width: 72.5%;
+        height: auto;
+        margin: 0 auto;
+    }
+    
+    div.play-card {
+        width: 50%;
+        text-align: center;
+    }
+}
+
+p {
+    font-size: 1em;
+}
+
+b {
+    font-size: 1em;
+}

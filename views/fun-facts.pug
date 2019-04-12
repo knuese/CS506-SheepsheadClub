@@ -1,0 +1,149 @@
+extends layout
+
+block content
+  link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous")
+  link(rel="stylesheet" href="/stylesheets/fun-facts.css")
+
+  .main.container-fluid
+    .row
+      .col.text-center
+        h3 Fun Facts
+    .row  
+      .col-md-6
+        .card
+          button.fun#vocab Vocabulary
+      .col-md-6
+        .card
+          button.fun#history History
+    .fun-content#vocab
+      .row
+        .col-md-4
+          .row
+            h4 Standard Terms
+      .row
+        .col
+          ul
+            li
+              p 
+                strong Blind: 
+                | the two cards that are not dealt to any player, which a player has the option of picking up.
+            li
+              p
+                strong Trump: 
+                | queens, jacks, and diamonds; the most powerful cards in the game that are useful for taking tricks.
+            li
+              p
+                strong Fail: 
+                | cards that aren't trump, i.e. hearts, spades, and clubs that aren't queens or jacks.
+            li  
+              p
+                strong Pass: 
+                | what you say when you do not want to pick up the blind.
+            li  
+              p 
+                strong Picker: 
+                | the person who picks up the blind.
+            li  
+              p
+                strong Partner: 
+                | (usually) the person who has the jack of diamonds.
+            li  
+              p
+                strong Going alone: 
+                | when the picker decides that they do not want a partner and will attempt to win without help.
+            li
+              p
+                strong Trick: 
+                | essentially a "round" of a game of sheepshead in which each player plays one card from his or her hand.
+            li
+              p
+                strong Game: 
+                | the picker's team gets 61 points, or the non-picking team gets 60 points.
+            li
+              p
+                strong Schneider: 
+                | the picker's team gets at least 31 points but not game, or the non-picking team gets at least 30 points but not game.
+            li
+              p
+                strong No tricker (also Schwarz): 
+                | one of the sides takes no tricks.
+            li
+              p
+                strong Doubler: 
+                | no one wanted to pick up the blind, so the next round will be worth double points.
+            li
+              p
+                strong Leaster: 
+                | no one wanted to pick up the blind, so the players keep their hands and try to take as few points as possible while still taking a trick.
+            li
+              p
+                strong Crack: 
+                | a player seated between the picker and the dealer thinks he or she has a winning hand. He or she knocks the table, doubling the points for the current hand.
+      .row
+        .col-md-4
+          .row
+            h4 Other Sheepshead Lingo
+      .row
+        .col
+          ul
+            li
+              p
+                strong Schmeer: 
+                | when a player plays a card that is worth a lot of points (usually a 10 or ace) onto a trick.
+            li
+              p
+                strong Mauer: 
+                | the action of not picking when one has a good hand.
+            li
+              p
+                strong Double on the bump: 
+                | if the picker loses a hand, he or she pays out double points.
+            li
+              p
+                strong On the end: 
+                | the last player to play a card for the current trick is "on the end".
+            li
+              p
+                strong Black death: 
+                | a player has the two black queens (the two highest cards in the game).
+    .fun-content#history
+      .row
+        h4 The History of Sheepshead
+      .row
+        .col
+          img#card-players(src='/images/cardplayers.jpg')
+          p.tab 
+            | The origin of sheepshead dates back to the early nineteenth century in Germany. Originally known as Schafkopf, the game became incredibly popular.
+            | When German immigrants came to the United States, they brought the game with them; sheepshead is most commonly played in Wisconsin due to the large number of
+            | German immigrants that settled in the state. To this day, Schafkopf is popular in both Germany and Wisconsin -- in fact, it is the national card game of Bavaria!
+            | Furthermore, Milwaukee's German Fest features daily tournaments for the duration of the festival. This stands as a testament to the enjoyable nature of the game;
+            | it is popular among both young and old generations.
+          p.tab
+            | Many people wonder about why the game is called "sheepshead". There are two common theories about this. The first idea is that shepherds in Bavaria enjoyed playing
+            | Schafkopf; when they kept track of the score, they would do so by tracing out the head of a sheep. Whoever traced the head first would win the game. The other theory
+            | is that the name of the game, Schafkopf, was incorrectly translated into English as "sheepshead". The old German word for barrel is "schaff". Putting together "schaff"
+            | and "kopf" would literally mean "barrel head", referring to the practice of playing the game on the head of a beer barrel.
+      .row
+        h5 Read More about Sheepshead and Schafkopf!
+      .row
+        .col
+          ul
+            li
+              a(href='https://en.wikipedia.org/wiki/Sheepshead_(card_game)') Sheepshead
+            li
+              a(href='https://en.wikipedia.org/wiki/Schafkopf') Schafkopf
+      .row
+        h5 Attributions
+      .row
+        .col
+          p
+            | Text: see above Wikipedia pages. Also, check out Robert M. Strupp's "How to Play 'Winning' 5 Handed Sheepshead" (Strupp Publishing, 1980).
+          p 
+            | Image: Eduard von Grützner's "The Card Players" (1883), acquired 
+            a(href='https://blog.mam.org/2015/02/10/german-tankards-and-steins-part-5-introduction-to-late-19th-century-germany/') here
+            | .
+
+  script(src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous")
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous")
+  script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous")
+  script(type='text/javascript', src='js/fun-facts.js')

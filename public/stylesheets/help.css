@@ -11,6 +11,25 @@
         height: 100%;
         text-align: center;
     }
+
+    img.play-card {
+        max-width: 100%;
+        height: auto;
+        margin: 0 auto;
+    }
+
+    img.long {
+        max-width: 100%;
+        height: auto;
+        margin: 0 auto;
+    }
+
+    img.right {
+        float: right;
+        max-width: 100%;
+        height: auto;
+        padding: 0 15px;
+    }
 }
 
 /* Larger screens */
@@ -25,6 +44,30 @@
         height: 100%;
         text-align: center;
     }
+
+    img.right {
+        float: right;
+        max-width: 25%;
+        height: auto;
+        padding: 0 15px;
+    }
+
+    img.play-card {
+        max-width: 50%;
+        height: auto;
+        margin: 0 auto;
+    }
+
+    img.long {
+        max-width: 72.5%;
+        height: auto;
+        margin: 0 auto;
+    }
+    
+    div.play-card {
+        width: 50%;
+        text-align: center;
+    }
 }
 
 button.selected {
@@ -34,6 +77,7 @@ button.selected {
 div.help-content {
     display: none;
     padding-left: 16px;
+    padding-right: 16px;
 }
 
 .col-centered {
@@ -47,10 +91,16 @@ img.card {
     margin: 0 auto;
 }
 
-img#jd {
-    float: right;
-    width: 15%;
-    height: 15%;
+p.card {
+    padding: 0 12px;
+    border: none;
+}
+
+.tab {
+    text-align: justify;
+    text-justify: inter-word;
+    text-indent: 30px;
+    line-height: 1.5;
 }
 
 button#add-button {
@@ -60,6 +110,16 @@ button#add-button {
 }
 
 label#dup-error {
+    color: red;
+    display: none;
+}
+
+label#correct-pick {
+    color: green;
+    display: none;
+}
+
+label#incorrect-pick {
     color: red;
     display: none;
 }
