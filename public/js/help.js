@@ -1,6 +1,10 @@
 const roleDropdown = $('select#strategies-role');
+const playDropdown = $('select#play-role');
 const cardDropdown = $('select#card-dropdown');
+const pickDropdown = $('select#picking-examples');
 let dupErrorLabel = $('label#dup-error');
+let correctPickLabel = $('label#correct-pick');
+let incorrectPickLabel = $('label#incorrect-pick');
 
 // Array of cards that have been selected
 let hand = [];
@@ -8,7 +12,12 @@ let hand = [];
 $(document).ready(() => {
     // Start with general strategy selected
     $('button#strategy').trigger('click');
+    $('button#pickup').trigger('click');
+    $('button#pass').trigger('click');
+
     roleDropdown.trigger('change');
+    playDropdown.trigger('change');
+    pickDropdown.trigger('change');
 });
 
 $('button.help').on('click', (event) => {
@@ -21,9 +30,22 @@ roleDropdown.change(() => {
     $('#strategy-text').load(`help-files/${roleDropdown.val()}.html`);
 });
 
+playDropdown.change(() => {
+    $('#play-text').load(`what-to-play/${playDropdown.val()}.html`);
+});
+
+pickDropdown.change(() => {
+    $('#pick-text').load(`should-I-pick/${pickDropdown.val()}.html`);
+});
+
 // Hide the error when a different card is selected so as not to be confusing
 cardDropdown.change(() => {
     dupErrorLabel.css('display', 'none');
+});
+
+pickDropdown.change(() => {
+    correctPickLabel.css('display', 'none');
+    incorrectPickLabel.css('display', 'none');
 });
 
 $('button#add-button').on('click', () => {
@@ -61,6 +83,44 @@ $('button#add-button').on('click', () => {
 
         // Hide label after 1 second
         setTimeout(() => dupErrorLabel.css('display', 'none'), 1000);
+    }
+});
+
+$('button#pickup').on('click', () => {
+    $('label#correct-pick').css('display', 'none');
+    $('label#incorrect-pick').css('display', 'none');
+
+    if(pickDropdown.val() == 'example1' || pickDropdown.val() == 'example3') {
+        $('label#correct-pick').css('display', 'block');
+
+        // Hide label after 10 second        
+        setTimeout(() => correctPickLabel.css('display', 'none'), 10000);
+
+    }
+    else {
+        $('label#incorrect-pick').css('display', 'block');
+
+        // Hide label after 10 second
+        setTimeout(() => incorrectPickLabel.css('display', 'none'), 10000);
+    }
+});
+
+$('button#pass').on('click', () => {
+    $('label#correct-pick').css('display', 'none');
+    $('label#incorrect-pick').css('display', 'none');
+
+    if(pickDropdown.val() == 'example1' || pickDropdown.val() == 'example3') {
+        $('label#incorrect-pick').css('display', 'block');
+
+        // Hide label after 10 second        
+        setTimeout(() => incorrectPickLabel.css('display', 'none'), 10000);
+
+    }
+    else {
+        $('label#correct-pick').css('display', 'block');
+
+        // Hide label after 10 second
+        setTimeout(() => correctPickLabel.css('display', 'none'), 10000);
     }
 });
 
