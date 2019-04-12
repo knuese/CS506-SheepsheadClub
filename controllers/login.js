@@ -17,26 +17,17 @@ router.post('/login', function (req, res, next) {
     errorMessage = error.message;
 
     console.log("Error Code: " + errorCode + " \nError Message: " + errorMessage)
-<<<<<<< HEAD
-=======
-
->>>>>>> master
     res.render('login', {err: errorMessage});
   });
 
   firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
       console.log("logging in");
-<<<<<<< HEAD
-      res.render('index', { admin: true });
-    } 
-=======
       res.redirect('/');
     } else {
       console.log("logged in or error");
     }
 
->>>>>>> master
   });
 
 });
