@@ -85,16 +85,6 @@ p.card {
     line-height: 1.5;
 }
 
-<<<<<<< Updated upstream
-=======
-img.right {
-    float: right;
-    max-width: 25%;
-    height: auto;
-    padding: 0 15px;
-}
->>>>>>> Stashed changes
-
 button#add-button {
     background-color: green;
     color: white;
