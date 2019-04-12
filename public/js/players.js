@@ -18,9 +18,15 @@ function loadData() {
         console.log(data);
         let players = data.tmp;
         let dataset = [];
+        let cols = [
+            { title: 'First Name' },
+            { title: 'Last Name' },
+            { title: 'Semester' },
+            { title: 'Dues Paid' }
+        ];
+    
         for (let i = 0; i < players.length; i++){
             let row = [];
-            let cols = [];
             let player = players[i];
             row.push(player.firstName);
             row.push(player.lastName);
