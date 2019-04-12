@@ -39,6 +39,11 @@
         height: auto;
         padding: 0 15px;
     }
+    
+    div.play-card {
+        width: 50%;
+        text-align: center;
+    }
 }
 
 button.selected {
@@ -62,6 +67,17 @@ img.card {
     margin: 0 auto;
 }
 
+img.play-card {
+    max-width: 50%;
+    height: auto;
+    margin: 0 auto;
+}
+
+p.card {
+    padding: 0 12px;
+    border: none;
+}
+
 .tab {
     text-align: justify;
     text-justify: inter-word;
@@ -69,6 +85,15 @@ img.card {
     line-height: 1.5;
 }
 
+<<<<<<< Updated upstream
+=======
+img.right {
+    float: right;
+    max-width: 25%;
+    height: auto;
+    padding: 0 15px;
+}
+>>>>>>> Stashed changes
 
 button#add-button {
     background-color: green;
