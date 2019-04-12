@@ -33,6 +33,23 @@
     margin-top: 10px;
 }
 
+figure {
+    margin: 12px;
+    float: right;
+    width: 15%;
+}
+
+figcaption {
+    text-align: center;
+    font-weight: bold;
+}
+
+img.logo {
+    max-width: 100%;
+    height: auto;
+    float: right;
+}
+
 @media (max-width: 768px)
 {
     .post-header {
@@ -47,6 +64,11 @@
         padding: 5px;
         padding-left: 10px;
         font: 5vw 'Germania One', cursive;
+    }
+
+    #credit {
+        text-align: center;
+        font-size: 3vw;
     }
 }
 
@@ -65,4 +87,17 @@
         padding-left: 10px;
         font: 2vw 'Germania One', cursive;
     }
+
+    #credit {
+        text-align: center;
+        font-size: 0.75vw;
+    }
+}
+
+p {
+    font-size: 1em;
+}
+
+b {
+    font-size: 1em;
 }
