@@ -17,14 +17,15 @@ router.post('/players', (req, res) => {
     res.redirect('players');
 });
 
-router.post('/addplayer', (req, res) => {
-  var player = req.body ;
-  var db = firebase.firestore();
+router.post('/players/add-player', (req, res) => {
+  let player = req.body ;
+  let db = firebase.firestore();
   
   db.collection('players').add({
         firstName: player.firstname,
         lastName: player.lastname,
-        semester: player.semester
+        semester: player.semester,
+        duesPaid: player.duesPaid
     }).then(() => {
         res.render('players', {added: true});
     }).catch((err) => {
@@ -33,27 +34,35 @@ router.post('/addplayer', (req, res) => {
         res.send();
     });
 });
+
 // Get data to display on the scores page
 router.post('/players/get-data', (req, res) => {
-if (firebase.auth().currentUser) {
-    getPlayers().then((snapshot) => {
-        var tmp = [];
-        snapshot.forEach(doc => {
-            tmp.push(new Player(doc.id, doc.data().firstName, doc.data().lastName, doc.data().semester)
-            );
-          });
-          console.log(tmp)
-         res.json(tmp);
+    let myPromise = new Promise((resolve, reject) => {
+        getData(resolve, reject);
     });
-} else {
-    res.redirect('/login');
-}
-  
+
+    // The callback we pass in is to send the result with the data
+    myPromise.then((players) => {
+        res.send({players: players});
+    }).catch(() => {
+        res.status(500);
+        res.send();
+    });
 });
 
-async function getPlayers() {
-    const snapshot = await firebase.firestore().collection('players').get();
-    return snapshot;
+async function getData(accept, reject) {
+    if (firebase.auth().currentUser) {
+        const snapshot = await firebase.firestore().collection('players').get();
+        let players = Array.from(snapshot.docs.map(doc => new Player(doc.id, 
+                                                                        doc.data().firstName, 
+                                                                        doc.data().lastName, 
+                                                                        doc.data().semester, 
+                                                                        doc.data().duesPaid)));
+        console.log(players);
+        accept(players);
+    } else {
+        reject();
+    }
 }
 
 module.exports = router;
