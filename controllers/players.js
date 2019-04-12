@@ -7,7 +7,7 @@ const Player = require('../models/player');
 router.get('/players', (req, res, next) => {
     console.log('here');
     if (firebase.auth().currentUser) {
-      res.render('players', { added: false, deleted:false, updated:false});
+      res.render('players', { admin: true, added: false, deleted:false, updated:false});
     } else {
       res.redirect('/login');
     }
@@ -27,7 +27,7 @@ router.post('/add-player', (req, res) => {
         semester: player.semester,
         duesPaid: player.duesPaid
     }).then(() => {
-        res.render('players', {added: true, deleted:false, updated:false});
+        res.render('players', { admin: true, added: true, deleted:false, updated:false});
     }).catch((err) => {
         res.status(500);
         res.statusMessage = err;
@@ -56,7 +56,7 @@ router.post('/delete-player', (req, res) => {
     
     db.collection('players').doc(player.id).delete()
     .then(() => {
-          res.render('players', {added:false, deleted: true, updated:false});
+          res.render('players', { admin: true, added:false, deleted: true, updated:false});
       }).catch((err) => {
           res.status(500);
           res.statusMessage = err;
@@ -78,7 +78,7 @@ router.post('/delete-player', (req, res) => {
     })
     .then(function() {
         console.log("Document successfully updated!");
-        res.render('players', {added:false, deleted: false, updated:true});
+        res.render('players', { admin: true, added:false, deleted: false, updated:true});
     })
     .catch(function(error) {
         console.error("Error updating document: ", error);
