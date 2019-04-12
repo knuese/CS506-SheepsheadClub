@@ -1,4 +1,5 @@
 const roleDropdown = $('select#strategies-role');
+const playDropdown = $('select#play-role');
 const cardDropdown = $('select#card-dropdown');
 let dupErrorLabel = $('label#dup-error');
 
@@ -9,6 +10,7 @@ $(document).ready(() => {
     // Start with general strategy selected
     $('button#strategy').trigger('click');
     roleDropdown.trigger('change');
+    playDropdown.trigger('change');
 });
 
 $('button.help').on('click', (event) => {
@@ -19,6 +21,10 @@ $('button.help').on('click', (event) => {
 
 roleDropdown.change(() => {
     $('#strategy-text').load(`help-files/${roleDropdown.val()}.html`);
+});
+
+playDropdown.change(() => {
+    $('#play-text').load(`what-to-play/${playDropdown.val()}.html`);
 });
 
 // Hide the error when a different card is selected so as not to be confusing
