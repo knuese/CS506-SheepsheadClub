@@ -1,33 +1,100 @@
 // This call is required to enable the data tables
-$.noConflict();
+let jq = $.noConflict();
 
-// Pass the $ in so that we can use regular jQuery syntax
-// https://www.w3schools.com/jquery/jquery_noconflict.asp
-jQuery(document).ready(function($) {
+const tableContainer = jq('div#table-container');
+let dataTable;
+let selectedRow;
 
-    // Data for the players table (later wiill get from database)
-    const dataset = [
-        ["Ryan", "Knuese", "Spring 200 BC", "Yes"],
-        ["Emmet", "Ryan", "Spring 2019", "No"],
-        ["Blake", "Baranowski", "Spring 2019", "Yes"],
-        ["Evan", "Williams", "Fall 2018", "Yes"],
-        ["Nafis", "Khan", "Fall 2017", "No"],
-        ["Xiangjun", "Ma", "Spring 2019", "Yes"]
-    ];
+function loadData() {
+    jq('div.table-responsive-xs').remove();
+    jq('label#no-data').remove();
 
-    // Columns for the table
-    let cols = [
-        { title: 'First Name' },
-        { title: 'Last Name' },
-        { title: 'Semester' },
-	{ title: 'Dues Paid' }
-    ];
+    let html = `<div class='players-alert'>
+		    <label>Loading data...</label>
+		</div>`;
 
-    // Define the data table
-    $('#players_table').DataTable( {
-        data: dataset,
-        columns: cols,
-        scrollX: true
+    tableContainer.append(html);
+
+    $.post( "players/get-data", (data) => {
+        jq('div.players-alert').remove();
+
+        console.log(data.players);
+        let players = data.players;
+        let dataset = [];
+        let cols = [
+            { title: 'ID' },
+            { title: 'First Name' },
+            { title: 'Last Name' },
+            { title: 'Semester' },
+            { title: 'Dues Paid On'}
+        ];
+
+        players.forEach(p => dataset.push([p.id, p.firstName, p.lastName, p.semester, p.duesPaidDate]));
+
+        html = `<div class="table-responsive-xs">
+                    <table class="table table-hover table-bordered" id="players-table"/>
+                </div>`;
+        tableContainer.append(html);
+
+        dataTable = jq('table#players-table').DataTable( {
+            data: dataset,
+            columns: cols,
+            scrollX: true,
+            columnDefs: [
+                {
+                    'targets': [0],
+                    'visible': false,
+                    'searchable': false
+                }
+            ]
+        });
+
+        jq('#players-table tbody').on('click', 'tr', function(e) {
+            e.stopPropagation();
+
+            selectedRow = dataTable.row(this).data();
+
+            $("#players-table tbody tr").removeClass('row-selected');        
+            $(this).addClass('row-selected');
+            
+            jq('a#update').removeClass('disabled');
+            jq('a#delete').removeClass('disabled');
+        });
     });
+}
+
+
+jq(document).ready(() => {
+    jq('a#update').addClass('disabled');
+    jq('a#delete').addClass('disabled');
+
+    loadData();
 });
 
+jq('a#update').click(() => {
+    let id = selectedRow[0];
+    let firstName = selectedRow[1];
+    let lastName = selectedRow[2];
+    let semester = selectedRow[3];
+    let duesPaidDate = selectedRow[4];
+
+    $('#update-modal #id').val(id);
+    $('#update-modal #fn').val(firstName);
+    $('#update-modal #ln').val(lastName);
+    $('#update-modal #sem').val(semester);
+    $('#update-modal #dp').val(duesPaidDate);
+});
+
+jq('a#delete').click(() => {
+    let id = selectedRow[0];
+    let firstName = selectedRow[1];
+
+    $('#delete-modal #id').val(id);
+    $('#delete-modal label#name').val(`Are you sure you want to delete ${firstName}?`);
+});
+
+jq(document).click(() => {
+    jq("#players-table tbody tr").removeClass('row-selected');  
+    jq('a#update').addClass('disabled');
+    jq('a#delete').addClass('disabled'); 
+});
