@@ -3,6 +3,7 @@ let jq = $.noConflict();
 
 const tableContainer = jq('div#table-container');
 let dataTable;
+let selectedRow;
 
 function loadData() {
     jq('div.table-responsive-xs').remove();
@@ -51,8 +52,7 @@ function loadData() {
         jq('#players-table tbody').on('click', 'tr', function(e) {
             e.stopPropagation();
 
-            let data = dataTable.row(this).data();
-            console.log(data);
+            selectedRow = dataTable.row(this).data();
 
             $("#players-table tbody tr").removeClass('row-selected');        
             $(this).addClass('row-selected');
@@ -69,6 +69,28 @@ jq(document).ready(() => {
     jq('a#delete').addClass('disabled');
 
     loadData();
+});
+
+jq('a#update').click(() => {
+    let id = selectedRow[0];
+    let firstName = selectedRow[1];
+    let lastName = selectedRow[2];
+    let semester = selectedRow[3];
+    let duesPaidDate = selectedRow[4];
+
+    $('#update-modal #id').val(id);
+    $('#update-modal #fn').val(firstName);
+    $('#update-modal #ln').val(lastName);
+    $('#update-modal #sem').val(semester);
+    $('#update-modal #dp').val(duesPaidDate);
+});
+
+jq('a#delete').click(() => {
+    let id = selectedRow[0];
+    let firstName = selectedRow[1];
+
+    $('#delete-modal #id').val(id);
+    $('#delete-modal label#name').val(`Are you sure you want to delete ${firstName}?`);
 });
 
 jq(document).click(() => {
