@@ -5,6 +5,8 @@ const tableContainer = jq('div#table-container');
 let dataTable;
 let selectedRow;
 
+jq('input#dp').val(todayFormatted());
+
 function loadData() {
     jq('div.table-responsive-xs').remove();
     jq('label#no-data').remove();
@@ -44,6 +46,10 @@ function loadData() {
                 {
                     'targets': [0],
                     'visible': false,
+                    'searchable': false
+                },
+                {
+                    'targets': [4],
                     'searchable': false
                 }
             ]
@@ -90,7 +96,7 @@ jq('a#delete').click(() => {
     let firstName = selectedRow[1];
 
     $('#delete-modal #id').val(id);
-    $('#delete-modal label#name').val(`Are you sure you want to delete ${firstName}?`);
+    $('#delete-modal label#name').text(`Are you sure you want to delete ${firstName}?`);
 });
 
 jq(document).click(() => {
@@ -98,3 +104,15 @@ jq(document).click(() => {
     jq('a#update').addClass('disabled');
     jq('a#delete').addClass('disabled'); 
 });
+
+// Format today's date so that the input element will accept it
+function todayFormatted() {
+    let date = new Date();
+    let year = date.getFullYear();
+    let month = date.getMonth() + 1;
+    month = month < 10 ? ('0' + month) : month;
+    let day = date.getDate();
+    day = day < 10 ? ('0' + day) : day;
+
+    return year + '-' + month + '-' + day;
+}

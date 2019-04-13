@@ -75,7 +75,8 @@ router.post('/enter-scores/add-player', (req, res) => {
     firebase.firestore().collection('players').add({
         firstName: name[0],
         lastName: name[1],
-        semester: formatSemester(req.body.semester)
+        semester: formatSemesterPlayerAdd(req.body.semester),
+        duesPaid: ""
     }).then(() => {
         res.send();
     }).catch((err) => {
@@ -147,6 +148,11 @@ async function getScores(semester, accept, reject) {
     // If we didn't find any documents, send the reject callback
     if (snapshot.docs.length === 0)
         reject();
+}
+
+function formatSemesterPlayerAdd(semester) {
+    let tokens = semester.split(" ");
+    return tokens[0] + ' 20' + tokens[1].substr(1);
 }
 
 // Format a semester value to what we use for the keys in the database

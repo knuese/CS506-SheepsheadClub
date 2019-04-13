@@ -13,11 +13,11 @@
     color: white;
 }
 
-.btn:hover {
+/* .btn:hover {
     background-color: #800;
     border-color: #800;
     opacity: .8;
-}
+} */
 
 #addAnnouncement  {
     text-align: center;
@@ -78,6 +78,6 @@
 }
 
 .pre-scrollable {
-  max-height: 750px;
+  max-height: 900px;
   overflow-y: scroll;
 }

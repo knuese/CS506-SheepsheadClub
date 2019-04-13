@@ -109,6 +109,10 @@ button#add-button {
     border-radius: 8px;
 }
 
+#add-button:hover {
+    background-color: #00b300;
+}
+
 label#dup-error {
     color: red;
     display: none;
