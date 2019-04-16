@@ -20,7 +20,6 @@ function loadData() {
     $.post( "players/get-data", (data) => {
         jq('div.players-alert').remove();
 
-        console.log(data.players);
         let players = data.players;
         let dataset = [];
         let cols = [

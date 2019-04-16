@@ -97,7 +97,7 @@ async function getData(accept, reject) {
                                                                         doc.data().lastName, 
                                                                         doc.data().semester, 
                                                                         doc.data().duesPaid)));
-        console.log(players);
+        //console.log(players);
         accept(players);
     } else {
         reject();
