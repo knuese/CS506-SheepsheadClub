@@ -1,7 +1,3 @@
-*:focus {
-    outline-color: #f00 !important;
-}
-
 div.sticky {
     position: sticky;
     top: 0;
