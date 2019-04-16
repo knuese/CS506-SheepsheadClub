@@ -111,7 +111,7 @@ async function getScores(semester, accept, reject) {
         doc.ref.collection('scores').get().then((scores) => {
             const myPromise = new Promise((resolve) => {
                 scores.docs.forEach((d, i, arr) => {
-                    const nestedPromise = new Promise((resolve2) => {
+                    const nestedPromise = new Promise((resolve2, reject2) => {
                         // Look up all the players we need for this semester
                         firebase.firestore().collection('players')
                             .doc(d.id)
@@ -120,11 +120,16 @@ async function getScores(semester, accept, reject) {
                                 let player = new Player(doc.id, doc.data().firstName, doc.data().lastName);
                                 playersMap[d.id] = player;
                                 resolve2();
+                            }) // It's possible that the player no longer exists in the database
+                            .catch((err) => {
+                                // Delete the score entry that no longer maps to the player
+                                doc.ref.collection('scores').doc(d.id).delete();
+                                reject2();
                             });
                     });     
                     
                     // Done going through the loop
-                    nestedPromise.then(() => {if (i === arr.length - 1) resolve();});
+                    nestedPromise.then(() => {if (i === arr.length - 1) resolve();}).catch((err) => {if (i === arr.length - 1) resolve();});
                 });
             });
 
@@ -132,7 +137,11 @@ async function getScores(semester, accept, reject) {
             myPromise.then(() => {
                 // Now we can read all the scores and add the entries to the players
                 scores.docs.map(d => {
-                    playersMap[d.id].addScore(new ScoreEntry(doc.id, parseInt(d.data().score)));
+                    // The score entry might not have mapped to a player (ex. the player was deleted)
+                    // Therefore, we can ignore those
+                    if (playersMap[d.id]) {
+                        playersMap[d.id].addScore(new ScoreEntry(doc.id, parseInt(d.data().score)));
+                    }
                 });
 
                 // We don't need the IDs on the front end, so we can drop them
