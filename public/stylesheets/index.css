@@ -77,7 +77,6 @@
     }
 }
 
-.pre-scrollable {
-  max-height: 750px;
-  overflow-y: scroll;
+.pagination-container {
+  min-height: 650px;
 }
