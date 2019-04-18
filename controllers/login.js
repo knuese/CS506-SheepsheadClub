@@ -11,7 +11,7 @@ admin.initializeApp({
 });
 
 
-//login page 
+//login page
 router.get('/login', function (req, res, next) {
   res.render('login', {err: ""});
 });
@@ -32,8 +32,11 @@ router.post('/login', function (req, res, next) {
   firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
       console.log("logging in");
-      res.render('index', { admin: true });
-    } 
+      res.redirect('/');
+    } else {
+      console.log("logged in or error");
+    }
+
   });
 
 });
@@ -43,7 +46,7 @@ router.post('/logout', function (req, res, next) {
   firebase.auth().signOut().then(function () {
 
     res.redirect('/');
-   
+
   }).catch(function (error) {
     console.log("Error: " + error);
   });
