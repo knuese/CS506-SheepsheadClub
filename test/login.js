@@ -10,6 +10,12 @@ describe('Should Login and Logout', () => {
         .end(done);
     });
 
+    it('Active Session', (done) => {
+        request(app).post('/session')
+        .expect(200)
+        .end(done);
+    });
+
     it('Has the Enter Score button', (done) => {
         request(app).get('/').end((err, res) => {
             assert(res.text.includes(`<button class="btn-block side-button" type="Submit">Enter Scores</button>`)); 
@@ -36,6 +42,12 @@ describe('Should Login and Logout', () => {
     it('Logs out', (done) => {
         request(app).post('/logout')
         .expect(302)
+        .end(done);
+    });
+
+    it('Inactive Session', (done) => {
+        request(app).post('/session')
+        .expect(200)
         .end(done);
     });
     

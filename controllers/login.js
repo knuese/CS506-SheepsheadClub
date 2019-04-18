@@ -1,6 +1,15 @@
 let express = require('express');
 let router = express.Router();
 let firebase = require("firebase");
+var admin = require('firebase-admin');
+
+var serviceAccount = require(__dirname+'/../public/sheepshead-test-firebase-adminsdk-77rq4-55c963a2ea.json');
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://sheepshead-test.firebaseio.com"
+});
+
 
 //login page 
 router.get('/login', function (req, res, next) {
@@ -38,6 +47,39 @@ router.post('/logout', function (req, res, next) {
   }).catch(function (error) {
     console.log("Error: " + error);
   });
+
+});
+
+
+router.post('/session', function (req, res, next) {
+// Verify the ID token while checking if the token is revoked by passing
+// checkRevoked true.
+
+firebase.auth().currentUser.getIdToken()
+  .then((idToken) => {
+      // idToken can be passed back to server.
+    let checkRevoked = true;
+    admin.auth().verifyIdToken(idToken, checkRevoked)
+      .then(payload => {
+        // Token is valid.
+        res.status(200);
+      })
+      .catch(error => {
+        if (error.code == 'auth/id-token-revoked') {
+          // Token has been revoked. Inform the user to reauthenticate or signOut() the user.
+          res.status(404);
+        } else {
+          // Token is invalid.
+          res.status(404);
+        }
+      })
+      ;
+
+  })
+  .catch((error) => {
+    // Error occurred.
+  });
+
 
 });
 
