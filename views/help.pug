@@ -39,22 +39,37 @@ block content
       .row
         h4 Should I pick up the blind?
       .row
-        select.form-control#picking-examples
+        select.form-control#picking-simulator
+          option(value="hard_coded") Hard Coded Examples
+          option(value="randomized") Random Examples
+        br
+        select.form-control.hardcode#picking-examples
           option(value="example1") Example 1
           option(value="example2") Example 2
           option(value="example3") Example 3
-          option(value="example4") Example 4      
-      .row  
-        #pick-text
-      .row
+          option(value="example4") Example 4 
+      br     
+      .row.hardcode#pick-text
+      .row.random#pick-text-random
+      br
+      .hardcode.row
+        div.col-md-1
         div.col-md-5
-          button.form-control#pickup Pick it up!
-          button.form-control#pass Pass!
-
+          button.btn-primary.form-control#pickuphard Pick it up!
+          button.btn-primary.form-control#passhard Pass!
+        div.col-md-5
           label#correct-pick Hurray! You made the right decision!
-          label#incorrect-pick Oh no! Check again! (hint: look at the number of trump)
-        
-          
+          label#incorrect-pick Oh no, try again!
+      .random.row
+        div.col-md-1
+        div.col-md-5
+          button.btn-primary.form-control#pickuprandom Pick it up!
+          button.btn-primary.form-control#passrandom Pass!
+          button.btn-primary.form-control#newdeal New Deal!
+        div.col-md-5
+          label#correct-pick Hurray! You made the right decision!
+          label#maybe-pick This one's a little tougher. If you are feeling aggressive you could pick it up, otherwise play it safe and pass.
+          label#incorrect-pick Oh no! Check again! (hint: look at the number of trump) 
       br
       
     .help-content#what-to-play

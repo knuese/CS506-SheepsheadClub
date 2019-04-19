@@ -74,6 +74,10 @@ button.selected {
     background-color: red;
 }
 
+.btn-primary {
+    border-color: black !important;
+}
+
 div.help-content {
     display: none;
     padding-left: 16px;
@@ -123,7 +127,24 @@ label#correct-pick {
     display: none;
 }
 
+label#maybe-pick {
+    color: orange;
+    display: none;
+}
+
 label#incorrect-pick {
     color: red;
     display: none;
+}
+
+.hardcoded {
+    display: block;
+}
+
+.random {
+    display: none;
+}
+
+.displayed {
+    display: block;
 }
