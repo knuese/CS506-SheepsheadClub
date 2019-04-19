@@ -90,6 +90,11 @@ a#title:hover {
         margin: 12px 24px 12px 24px;
     }
 }
+
+select {
+    background-color: #800 !important;
+    color: white !important;
+}
   
 #title_bar {
     width: 100%;
