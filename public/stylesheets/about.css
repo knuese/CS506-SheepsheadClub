@@ -46,7 +46,7 @@ figcaption {
 
 img.logo {
     max-width: 100%;
-    height: auto;
+    height: 250px;
     float: right;
 }
 
@@ -164,4 +164,8 @@ p {
 
 b {
     font-size: 1em;
+}
+
+.sized-for-image {
+    height: 300px !important;
 }

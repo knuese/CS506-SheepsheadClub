@@ -113,6 +113,17 @@ button#add-button {
     border-radius: 8px;
 }
 
+button#clear-button {
+    background-color: red;
+    color: white;
+    border-radius: 8px;
+}
+
+#add-button:hover {
+    background-color: rgb(255, 80, 80);
+}
+
+
 #add-button:hover {
     background-color: #00b300;
 }
@@ -137,6 +148,21 @@ label#incorrect-pick {
     display: none;
 }
 
+label#good-hand {
+    color: green;
+    display: none;
+}
+
+label#okay-hand {
+    color: orange;
+    display: none;
+}
+
+label#bad-hand {
+    color: red;
+    display: none;
+}
+
 .hardcoded {
     display: block;
 }
@@ -146,5 +172,9 @@ label#incorrect-pick {
 }
 
 .displayed {
+    display: block;
+}
+
+.clear {
     display: block;
 }
