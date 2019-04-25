@@ -13,7 +13,11 @@ admin.initializeApp({
 
 //login page
 router.get('/login', function (req, res, next) {
-  res.render('login', {err: ""});
+  if (firebase.auth().currentUser) {
+    res.redirect('/');
+  } else {
+    res.render('login', {err: "", admin: false});
+  }
 });
 
 router.post('/login', function (req, res, next) {

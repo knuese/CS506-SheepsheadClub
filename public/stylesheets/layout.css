@@ -22,6 +22,29 @@ div.sidebar {
     float: none;
 }
 
+.btn-primary {
+    background-color: #800 !important;
+    border-color: #800 !important;
+    color: white !important;
+}
+
+.btn-primary:hover {
+    background-color: #F00 !important;
+    border-color: #F00 !important;
+}
+
+.btn-default {
+    background-color: #808080 !important;
+    border-color: #808080 !important;
+    color: white !important;
+}
+
+.btn-default:hover {
+    background-color: #000 !important;
+    border-color: #000 !important;
+    color: white !important;
+}
+
 a#title:hover {
     color: #fff;
     text-decoration: none;
@@ -70,4 +93,24 @@ a#title:hover {
   
 #title_bar {
     width: 100%;
+}
+
+.pagination .page-item.active .page-link { 
+    background-color: #800; 
+    border-color: #800; 
+}
+
+.pagination .page-item .page-link { 
+    color:#800; 
+    border-color: #800;
+}
+
+div.dataTables_wrapper div.dataTables_paginate ul.pagination .page-item.active .page-link:focus {
+    background-color: #800;
+    border-color: #800;
+}
+
+.pagination .page-item.active .page-link:hover {
+    background-color: #F00;
+    color: white;
 }

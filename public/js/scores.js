@@ -23,7 +23,6 @@ function loadData(semester) {
 
         let players = data.playerScores;
         players = players.sort((a, b) => {return b.totalScore - a.totalScore;});
-        console.log(players);
 
         let cols = getTableColumns(data);
         

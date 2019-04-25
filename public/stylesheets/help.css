@@ -74,6 +74,10 @@ button.selected {
     background-color: red;
 }
 
+.btn-primary {
+    border-color: black !important;
+}
+
 div.help-content {
     display: none;
     padding-left: 16px;
@@ -109,6 +113,21 @@ button#add-button {
     border-radius: 8px;
 }
 
+button#clear-button {
+    background-color: red;
+    color: white;
+    border-radius: 8px;
+}
+
+#add-button:hover {
+    background-color: rgb(255, 80, 80);
+}
+
+
+#add-button:hover {
+    background-color: #00b300;
+}
+
 label#dup-error {
     color: red;
     display: none;
@@ -119,7 +138,48 @@ label#correct-pick {
     display: none;
 }
 
+label#maybe-pick {
+    color: orange;
+    display: none;
+}
+
 label#incorrect-pick {
     color: red;
     display: none;
+}
+
+label#good-hand {
+    color: green;
+    display: none;
+}
+
+label#okay-hand {
+    color: orange;
+    display: none;
+}
+
+label#bad-hand {
+    color: red;
+    display: none;
+}
+
+select#picking-simulator, select#picking-examples {
+    background-color: #800 !important;
+    color: white !important;
+}
+
+.hardcoded {
+    display: block;
+}
+
+.random {
+    display: none;
+}
+
+.displayed {
+    display: block;
+}
+
+.clear {
+    display: block;
 }

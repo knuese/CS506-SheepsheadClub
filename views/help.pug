@@ -39,22 +39,37 @@ block content
       .row
         h4 Should I pick up the blind?
       .row
-        select.form-control#picking-examples
+        select.form-control#picking-simulator
+          option(value="hard_coded") Hard Coded Examples
+          option(value="randomized") Random Examples
+        br
+        select.form-control.hardcode#picking-examples
           option(value="example1") Example 1
           option(value="example2") Example 2
           option(value="example3") Example 3
-          option(value="example4") Example 4      
-      .row  
-        #pick-text
-      .row
+          option(value="example4") Example 4 
+      br     
+      .row.hardcode#pick-text
+      .row.random#pick-text-random
+      br
+      .hardcode.row
+        div.col-md-1
         div.col-md-5
-          button.form-control#pickup Pick it up!
-          button.form-control#pass Pass!
-
-          label#correct-pick Hurray! You made the right decision!
-          label#incorrect-pick Oh no! Check again! (hint: look at the number of trump)
-        
-          
+          button.btn-primary.form-control#pickuphard Pick it up!
+          button.btn-primary.form-control#passhard Pass!
+        div.col-md-5
+          label#correct-pick Good Job! You made the right decision!
+          label#incorrect-pick Oh no, try again!
+      .random.row
+        div.col-md-1
+        div.col-md-5
+          button.btn-primary.form-control#pickuprandom Pick it up!
+          button.btn-primary.form-control#passrandom Pass!
+          button.btn-primary.form-control#newdeal New Deal!
+        div.col-md-5
+          label#correct-pick Good Job! You made the right decision!
+          label#maybe-pick This one's a little tougher. If you are feeling aggressive you could pick it up, otherwise play it safe and pass.
+          label#incorrect-pick Oh no, try again!
       br
       
     .help-content#what-to-play
@@ -82,9 +97,16 @@ block content
                   option(value=c.code) #{c.name}
             .col-xs-1
               button.form-control#add-button Add
-            label.col-xs-1.col-form-label.font-weight-bold.ml-4#dup-error Card already selected!
+            .col-xs-1
+              button.form-control#clear-button Clear
+            label.col-xs-1.col-form-label.font-weight-bold.ml-4#dup-error Error! Card already selected or max cards reached!
       br
       .row#cards-row
+      br
+      .row
+        label#good-hand <b>Nice! Looks like you have a good hand!</b>
+        label#okay-hand <b>This is an okay/pretty good hand.</b>
+        label#bad-hand <b>This isn't the best hand.</b>
 
   script(src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous")
   script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous")
