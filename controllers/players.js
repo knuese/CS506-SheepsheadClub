@@ -5,12 +5,12 @@ const Player = require('../models/player');
 
 /* GET players page */
 router.get('/players', (req, res, next) => {
-    // console.log('here');
-    // if (firebase.auth().currentUser) {
+    //console.log('here');
+    if (firebase.auth().currentUser) {
       res.render('players', { admin: true, added: false, deleted:false, updated:false});
-    // } else {
-    //   res.redirect('/login');
-    // }
+    } else {
+      res.redirect('/login');
+    }
 });
 
 router.post('/players', (req, res) => {

@@ -2,7 +2,9 @@ const request = require('supertest');
 const app = require('../app');
 const assert = require('assert');
 
-describe('Should Login and Logout', () => {
+describe('Should Login and Logout', function() {
+    this.timeout(5000);
+
     it('Logs in', (done) => {
         request(app).post('/login')
         .send({email:"sheepshead.test@gmail.com", password:"cs5062019!"})
@@ -11,9 +13,14 @@ describe('Should Login and Logout', () => {
     });
 
     it('Active Session', (done) => {
-        request(app).post('/session')
-        .expect(200)
-        .end(done);
+        request(app).post('/login')
+        .send({email:"sheepshead.test@gmail.com", password:"cs5062019!"})
+        .expect(302)
+        .end(() => {
+            request(app).post('/session')
+            .expect(200)
+            .end(done);
+        })
     });
 
     it('Has the Enter Score button', (done) => {
@@ -47,7 +54,7 @@ describe('Should Login and Logout', () => {
 
     it('Inactive Session', (done) => {
         request(app).post('/session')
-        .expect(200)
+        .expect(500)
         .end(done);
     });
     

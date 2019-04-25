@@ -58,30 +58,33 @@ router.post('/session', function (req, res, next) {
 // Verify the ID token while checking if the token is revoked by passing
 // checkRevoked true.
 
-firebase.auth().currentUser.getIdToken()
-  .then((idToken) => {
-      // idToken can be passed back to server.
-    let checkRevoked = true;
-    admin.auth().verifyIdToken(idToken, checkRevoked)
-      .then(payload => {
-        // Token is valid.
-        res.status(200);
-      })
-      .catch(error => {
-        if (error.code == 'auth/id-token-revoked') {
-          // Token has been revoked. Inform the user to reauthenticate or signOut() the user.
-          res.status(404);
-        } else {
-          // Token is invalid.
-          res.status(404);
-        }
-      })
-      ;
+  firebase.auth().currentUser.getIdToken()
+    .then((idToken) => {
+        // idToken can be passed back to server.
+      let checkRevoked = true;
+      admin.auth().verifyIdToken(idToken, checkRevoked)
+        .then(payload => {
+          // Token is valid.
+          res.status(200);
+          res.send();
+        })
+        .catch(error => {
+          if (error.code == 'auth/id-token-revoked') {
+            // Token has been revoked. Inform the user to reauthenticate or signOut() the user.
+            res.status(404);
+            res.send();
+          } else {
+            // Token is invalid.
+            res.status(404);
+            res.send();
+          }
+        })
+        ;
 
-  })
-  .catch((error) => {
-    // Error occurred.
-  });
+    })
+    .catch((error) => {
+      // Error occurred.
+    });
 
 
 });
