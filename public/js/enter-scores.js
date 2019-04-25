@@ -5,6 +5,7 @@ const scoreInput = $('input#score');
 const saveScoreButton = $('button#save-score');
 const clearButton = $('button#clear');
 const saveErrLabel = $('label#save-error');
+const futureLabel = $('label#future');
 
 const quickAddName = $('input#name');
 const savePlayerButton = $('button#save-player');
@@ -27,10 +28,14 @@ $(saveScoreButton).click(() => {
     let date = datePicker.val();
     let score = scoreInput.val();
 
-    if (!playerId || !score) {
-        $(saveErrLabel).css('display', 'inline-block');
+    if (!playerId || !score || !date) {
+        saveErrLabel.css('display', 'inline-block');
         // Hide label after 1 second
         setTimeout(() => saveErrLabel.css('display', 'none'), 1000);
+    } else if (new Date() <= new Date(date)) {
+        futureLabel.css('display', 'inline-block');
+        // Hide label after 1 second
+        setTimeout(() => futureLabel.css('display', 'none'), 1000);
     } else {
         // Save score
         $.post('/enter-scores/save-score', {
@@ -80,11 +85,15 @@ function todayFormatted() {
 
 // Determine the semester based on the date
 function calculateSemester(date) {
-    let selectedDate = date.split('-');
-    let year = selectedDate[0].substr(2, 2);
-    let month = parseInt(selectedDate[1]);
+    if (date) {
+        let selectedDate = date.split('-');
+        let year = selectedDate[0].substr(2, 2);
+        let month = parseInt(selectedDate[1]);
 
-    const season = month < 7 ? 'Spring' : 'Fall';
+        const season = month < 7 ? 'Spring' : 'Fall';
 
-    return `${season} '${year}`;
+        return `${season} '${year}`;
+    } else {
+        return "";
+    }
 }

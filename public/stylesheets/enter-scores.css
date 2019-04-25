@@ -9,7 +9,7 @@ button.entry {
     border-radius: 10px;
 }
 
-label#save-error {
+label#save-error, label#future {
     color: red;
     display: none;
 }

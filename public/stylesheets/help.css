@@ -163,6 +163,11 @@ label#bad-hand {
     display: none;
 }
 
+select#picking-simulator, select#picking-examples {
+    background-color: #800 !important;
+    color: white !important;
+}
+
 .hardcoded {
     display: block;
 }
