@@ -10,9 +10,13 @@ describe('Should check for elements on the score entry page', function() {
         request(app).post('/login')
         .send({email:"sheepshead.test@gmail.com", password:"cs5062019!"})
         .end(() => {
-            request(app).get('/enter-scores').end((err, res) => {
-                assert(res.text.includes("<h3>Enter Scores</h3>")); 
-                done();
+            request(app).post('/session')
+            .expect(200)
+            .end(() =>  {
+                request(app).get('/enter-scores').end((err, res) => {
+                    assert(res.text.includes("<h3>Enter Scores</h3>")); 
+                    done();
+                });
             });
         });
     });
