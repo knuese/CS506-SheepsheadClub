@@ -11,14 +11,14 @@ describe('Should check for elements on the homepage', () => {
         });
     });
 
-    it('Has the Cheat Sheet card', (done) => {
+    it('Has the Rules card', (done) => {
         request(app).get('/').end((err, res) => {
-            assert(res.text.includes('<h3 class="card-title">Cheat Sheet</h3>'));
+            assert(res.text.includes('<h3 class="card-title">Rules</h3>'));
             done();
         });
     });
 
-    it('Has the Tutorials card', (done) => {
+    it('Has the Help card', (done) => {
         request(app).get('/').end((err, res) => {
             assert(res.text.includes('<h3 class="card-title">Help</h3>'));
             done();

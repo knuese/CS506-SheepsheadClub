@@ -38,11 +38,11 @@ describe('Should check for elements on the login page', () => {
         });
     });
 
-    it('Has the login button', (done) => {
-        request(app).get('/login').end((err, res) => {
-            assert(res.text.includes(`<button id="login-button" type="submit">Login</button>`)); 
-            done();
-        });
-    });
+    // it('Has the login button', (done) => {
+    //     request(app).get('/login').end((err, res) => {
+    //         assert(res.text.includes(`<button id="login-button" type="submit">Login</button>`)); 
+    //         done();
+    //     });
+    // });
 
 });
