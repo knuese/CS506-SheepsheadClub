@@ -4,11 +4,23 @@ block content
 
     link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous")
     link(rel="stylesheet" href="/stylesheets/index.css")
+<<<<<<< HEAD
     
     - var imageUrls = ['/images/home_p2.png', '/images/home_p3.png'];
 
 
 
+=======
+    -
+        var posts = ["Meeting is canceled today.  See you next week!",
+                     "This week we will have a change in venue.  We'll be meeting in the Sett this week!",
+                     "Remember to pay your dues by this Friday, or else we won't let you play",
+                     "We're thinking about getting UW-Sheepshead t-shirts.  Let me know what you think", "1", "2"]
+    - var imageUrls = ['/images/home_p1.png', '/images/home_p2.png', '/images/home_p3.png'];
+    - var noForEachPage = 3;
+    - var pageNo = Math.ceil(announcements.length / noForEachPage)
+      
+>>>>>>> origin/homepage
     //- corousel part
     div.container-fluid.website-links
       .row
@@ -21,13 +33,14 @@ block content
                 .carousel-item
                   img.img-fluid(src=imageUrl alt="Responsive image")
 
-      
+
       div.row
           //- announcements part
           div.col-md-6
               div.row.sub-row.announcements-row
                   div.col-12
                       div.card.announcements-card
+<<<<<<< HEAD
                           h3.card-title Announcements
                           if admin
                             br
@@ -50,6 +63,70 @@ block content
                                           if admin
                                               br
                                               button.btn.deleteButton.btn-primary(type='button' id=announcement.id) Delete
+=======
+                            h3.card-title 
+                                = "Announcements"
+                            if admin
+                                br
+                                div#addAnnouncement
+                                    button.btn.btn-primary(type='button', data-toggle='modal', data-target='#publishModal', data-whatever='@fat') Add Announcement
+                            div.card-block
+                                //- pagination
+                                .pagination-container
+                                        - for (var i = 0;i<pageNo;++i){
+                                        -if (i===0){
+                                            div(data-page=i+1)
+                                                - for (var j = i*noForEachPage ;(j<(i+1)*noForEachPage)&&(j<announcements.length);++j){
+                                                .card.post
+                                                    div.card-header.post-header
+                                                        b By
+                                                        b
+                                                            = " " + announcements[j].posterName
+                                                        i  on
+                                                        i
+                                                            = " " + announcements[j].date
+                                                        br
+                                                    div.card-block
+                                                        p.announcement-content
+                                                            = announcements[j].content
+                                                        if admin
+                                                            br
+                                                            button.btn.deleteButton.btn-primary(type='button' id=announcements[j].id) Delete Announcement                                                
+                                                -}
+                                        - } else {
+                                            div(data-page=i+1, style='display:none;')
+                                                - for (var j = i*noForEachPage ;(j<(i+1)*noForEachPage)&&(j<announcements.length);++j){
+                                                .card.post
+                                                    div.card-header.post-header
+                                                        b By
+                                                        b
+                                                            = " " + announcements[j].posterName
+                                                        i  on
+                                                        i
+                                                            = " " + announcements[j].date
+                                                        br
+                                                    div.card-block
+                                                        p.announcement-content
+                                                            = announcements[j].content
+                                                        if admin
+                                                            br
+                                                            button.btn.deleteButton.btn-primary(type='button' id=announcements[j].id) Delete Announcement                                                
+                                                -}
+                                        -}                                            
+                                        -}
+                                        
+                                        .pagination.pagination-centered.d-flex.justify-content-center
+                                            ul.pagination
+                                                li(data-page='-')
+                                                    a.page-link(href='#') <
+                                                - for (var i = 1;i<=pageNo;++i){
+                                                    li.page-item(data-page= i )
+                                                        a.page-link(href='#') 
+                                                            = ""+i
+                                                -}
+                                                li(data-page='+')
+                                                    a.page-link(href='#') >                            
+>>>>>>> origin/homepage
           //- navigation part
           div.col-md-6
               div.row.sub-row
