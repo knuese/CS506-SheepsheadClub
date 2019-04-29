@@ -115,3 +115,55 @@ function todayFormatted() {
 
     return year + '-' + month + '-' + day;
 }
+
+function validateAdd() {
+      
+    if( document.addForm.firstname.value == "" ) {
+       alert( "Please provide your first name!" );
+       document.addForm.firstname.focus() ;
+       return false;
+    }
+    if( document.addForm.lastname.value == "" ) {
+       alert( "Please provide your last name" );
+       document.addForm.lastname.focus() ;
+       return false;
+    }
+    if( document.addForm.semester.value == "") {
+       
+       alert( "Please provide a semester in the given format." );
+       document.addForm.semester.focus() ;
+       return false;
+    }
+    if( document.addForm.duesPaid.value == "" ) {
+       alert( "Please provide a date!" );
+       document.addForm.duesPaid.focus() ;
+       return false;
+    }
+    return( true );
+ }
+
+ function validateUpdate() {
+      
+    if( document.updateForm.firstname.value == "" ) {
+       alert( "Please provide your first name!" );
+       document.updateForm.firstname.focus() ;
+       return false;
+    }
+    if( document.updateForm.lastname.value == "" ) {
+       alert( "Please provide your last name" );
+       document.updateForm.lastname.focus() ;
+       return false;
+    }
+    if( document.updateForm.semester.value == "") {
+       
+       alert( "Please provide a semester in the given format." );
+       document.updateForm.semester.focus() ;
+       return false;
+    }
+    if( document.updateForm.duesPaid.value == "" ) {
+       alert( "Please provide a date!" );
+       document.updateForm.duesPaid.focus() ;
+       return false;
+    }
+    return( true );
+ }
