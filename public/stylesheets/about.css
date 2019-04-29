@@ -42,11 +42,12 @@ figure {
 figcaption {
     text-align: center;
     font-weight: bold;
+    font-size: 1vw;
 }
 
 img.logo {
-    max-width: 100%;
-    height: 250px;
+    /*max-*/width: 100%;
+    /*height: 250px;*/
     float: right;
 }
 
@@ -64,7 +65,7 @@ p.card {
 {
     .post-header {
         background-color: #ffe6e6;
-        font: 3.5vw 'Germania One', cursive;
+        font: 1.5vw 'Germania One', cursive;
     }
 
     .card-title {
@@ -73,15 +74,21 @@ p.card {
         width: 30%;
         padding: 5px;
         padding-left: 10px;
-        font: 5vw 'Germania One', cursive;
+        font: 2vw 'Germania One', cursive;
     }
 
     #credit {
         text-align: center;
-        font-size: 3vw;
+        font-size: .75vw;
     }
 
-    div.my-card {
+    div.about-card {
+        width: 100%;
+        height: 100%;
+        text-align: center;
+    }
+
+    div.officer-card {
         width: 75%;
         height: 100%;
         text-align: center;
@@ -104,13 +111,26 @@ p.card {
         height: auto;
         padding: 0 15px;
     }
+
+    p {
+        font-size: .75em;
+    }
+    
+    b {
+        font-size: .75em;
+    }
+    .centered {
+        margin-left: 20%;
+        text-align: center;
+    }
+
 }
 
 /* Larger screens */
 @media (min-width: 768px) {
     .post-header {
         background-color: #ffe6e6;
-        font: 1.5vw 'Germania One', cursive;
+        font: 3.5vw 'Germania One', cursive;
     }
 
     .card-title {
@@ -119,7 +139,7 @@ p.card {
         width: 30%;
         padding: 5px;
         padding-left: 10px;
-        font: 2vw 'Germania One', cursive;
+        font: 3vw 'Germania One', cursive;
     }
 
     #credit {
@@ -127,7 +147,13 @@ p.card {
         font-size: 0.75vw;
     }
 
-    div.my-card {
+    div.about-card {
+        width: 100%;
+        height: 100%;
+        text-align: center;
+    }
+
+    div.officer-card {
         width: 30%;
         height: 100%;
         text-align: center;
@@ -156,16 +182,25 @@ p.card {
         width: 50%;
         text-align: center;
     }
+
+    p {
+        font-size: 1em;
+    }
+    
+    b {
+        font-size: 1em;
+    }
+
+    .centered {
+        margin-left: 5%;
+        text-align: center;
+    }
 }
 
-p {
-    font-size: 1em;
+div.sizedup {
+    height: auto;
+    width: 100%;
 }
-
-b {
-    font-size: 1em;
-}
-
 .sized-for-image {
-    height: 300px !important;
+    height: 300px;/* !important;*/
 }
