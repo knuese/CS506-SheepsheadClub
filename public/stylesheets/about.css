@@ -85,7 +85,7 @@ p.card {
     div.about-card {
         width: 100%;
         height: 100%;
-        text-align: center;
+        text-align: left;
     }
 
     div.officer-card {
@@ -150,7 +150,7 @@ p.card {
     div.about-card {
         width: 100%;
         height: 100%;
-        text-align: center;
+        text-align: left;
     }
 
     div.officer-card {
