@@ -86,6 +86,13 @@ describe('Should test the scores API', function() {
         request(app).post('/enter-scores/add-player').expect(500, done);
     });
 
+    it('Should respond with 500 if a malformed date is passed when adding a score', (done) => {
+        request(app).post('/enter-scores/save-score')
+            .send({playerId: "testPlayer2", semester: "", date: "", score: 10})
+            .expect(500)
+            .end(done);
+    });
+
     it('Can save a score to the database', (done) => {
         let id = "testPlayer2";
         let score = 10;
