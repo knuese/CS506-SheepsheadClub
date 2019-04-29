@@ -4,13 +4,6 @@ block content
 
     link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous")
     link(rel="stylesheet" href="/stylesheets/index.css")
-<<<<<<< HEAD
-    
-    - var imageUrls = ['/images/home_p2.png', '/images/home_p3.png'];
-
-
-
-=======
     -
         var posts = ["Meeting is canceled today.  See you next week!",
                      "This week we will have a change in venue.  We'll be meeting in the Sett this week!",
@@ -20,7 +13,6 @@ block content
     - var noForEachPage = 3;
     - var pageNo = Math.ceil(announcements.length / noForEachPage)
       
->>>>>>> origin/homepage
     //- corousel part
     div.container-fluid.website-links
       .row
@@ -40,30 +32,6 @@ block content
               div.row.sub-row.announcements-row
                   div.col-12
                       div.card.announcements-card
-<<<<<<< HEAD
-                          h3.card-title Announcements
-                          if admin
-                            br
-                            div#addAnnouncement
-                                button.btn.btn-primary(type='button', data-toggle='modal', data-target='#publishModal', data-whatever='@fat') Add Announcement
-                          div.card-block.pre-scrollable
-                              each announcement in announcements
-                                  .card.post
-                                      div.card-header.post-header
-                                          b By
-                                          b
-                                            = " " + announcement.posterName
-                                          i  on
-                                          i
-                                            = " " + announcement.date
-                                          br
-                                      div.card-block
-                                          p.announcement-content
-                                              = announcement.content
-                                          if admin
-                                              br
-                                              button.btn.deleteButton.btn-primary(type='button' id=announcement.id) Delete
-=======
                             h3.card-title 
                                 = "Announcements"
                             if admin
@@ -126,7 +94,6 @@ block content
                                                 -}
                                                 li(data-page='+')
                                                     a.page-link(href='#') >                            
->>>>>>> origin/homepage
           //- navigation part
           div.col-md-6
               div.row.sub-row
