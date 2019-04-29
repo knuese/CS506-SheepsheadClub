@@ -19,7 +19,7 @@
     opacity: .8;
 } */
 
-#addAnnouncement  {
+#addAnnouncement {
     text-align: center;
 }
 
@@ -35,16 +35,15 @@
     height: 100%;
 }
 
-.announcement-content{
+.announcement-content {
     margin-left: 5%
 }
 
-.post{
+.post {
     margin-top: 10px;
 }
 
-@media (max-width: 768px)
-{
+@media (max-width: 768px) {
     .post-header {
         background-color: #ffe6e6;
         font: 3.5vw 'Germania One', cursive;
@@ -77,12 +76,6 @@
     }
 }
 
-<<<<<<< HEAD
-.pre-scrollable {
-  max-height: 900px;
-  overflow-y: scroll;
-=======
 .pagination-container {
-  min-height: 650px;
->>>>>>> origin/homepage
+    min-height: 650px;
 }
