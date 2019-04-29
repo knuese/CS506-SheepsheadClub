@@ -52,21 +52,27 @@ router.post('/scores/get-data', (req, res) => {
 
 // API route to save a score to the database
 router.post('/enter-scores/save-score', (req, res) => {
-    let semester = formatSemester(req.body.semester);
-    firebase.firestore().collection('semesters').doc(semester).set({}, {merge: true}); // Add a document for the semester if it doesn't exist in the list
-    firebase.firestore().collection(semester).doc(req.body.date).set({}, {merge: true}); // Create document if it doesn't exist
-    firebase.firestore().collection(semester) // Now add the entry for the score
-        .doc(req.body.date)
-        .collection('scores') // Creates scores collection if it doesn't exist
-        .doc(req.body.playerId).set({ // Creates entry for the player
-            score: req.body.score
-        }).then(() => {
-            res.send();
-        }).catch((err) => {
-            res.status(500);
-            res.statusMessage = err;
-            res.send();
-        });
+    if (req.body.date) {
+        let semester = formatSemester(req.body.semester);
+        firebase.firestore().collection('semesters').doc(semester).set({}, {merge: true}); // Add a document for the semester if it doesn't exist in the list
+        firebase.firestore().collection(semester).doc(req.body.date).set({}, {merge: true}); // Create document if it doesn't exist
+        firebase.firestore().collection(semester) // Now add the entry for the score
+            .doc(req.body.date)
+            .collection('scores') // Creates scores collection if it doesn't exist
+            .doc(req.body.playerId).set({ // Creates entry for the player
+                score: req.body.score
+            }).then(() => {
+                res.send();
+            }).catch((err) => {
+                res.status(500);
+                res.statusMessage = err;
+                res.send();
+            });
+    } else {
+        res.status(500);
+        res.statusMessage = "Cannot enter score with malformed date";
+        res.send();
+    }
 });
 
 // API route to save a played added from the "Quick Add" area
