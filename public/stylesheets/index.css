@@ -19,6 +19,12 @@
     opacity: .8;
 }
 
+div.divider {
+    width:5px;
+    height:auto;
+    display:inline-block;
+}
+
 #addAnnouncement  {
     text-align: center;
 }

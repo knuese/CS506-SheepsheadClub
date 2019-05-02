@@ -59,10 +59,9 @@ block content
                                                             = announcements[j].content
                                                         if admin
                                                             br
-                                                            button.btn.editButton.btn-primary(type='button', data-toggle='modal', data-target='#EditModal', data-content=announcements[j].content, data-id=announcements[j].id, data-poster=announcements[j].posterName) Edit Announcement
-                                                            br
-                                                            br
-                                                            button.btn.deleteButton.btn-primary(type='button' id=announcements[j].id) Delete Announcement
+                                                            button.btn.editButton.btn-primary(type='button', data-toggle='modal', data-target='#EditModal', data-content=announcements[j].content, data-id=announcements[j].id, data-poster=announcements[j].posterName) Edit
+                                                            div.divider
+                                                            button.btn.deleteButton.btn-primary(type='button' id=announcements[j].id) Delete
                                                 -}
                                         - } else {
                                             div(data-page=i+1, style='display:none;')
@@ -81,10 +80,9 @@ block content
                                                             = announcements[j].content
                                                         if admin
                                                             br
-                                                            button.btn.editButton.btn-primary(type='button', data-toggle='modal', data-target='#EditModal', data-content=announcements[j].content, data-id=announcements[j].id, data-poster=announcements[j].posterName) Edit Announcement
-                                                            br
-                                                            br
-                                                            button.btn.deleteButton.btn-primary(type='button' id=announcements[j].id ) Delete Announcement
+                                                            button.btn.editButton.btn-primary(type='button', data-toggle='modal', data-target='#EditModal', data-content=announcements[j].content, data-id=announcements[j].id, data-poster=announcements[j].posterName) Edit
+                                                            div.divider
+                                                            button.btn.deleteButton.btn-primary(type='button' id=announcements[j].id ) Delete
 
                                                 -}
                                         -}
