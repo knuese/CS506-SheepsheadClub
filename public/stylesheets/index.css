@@ -13,13 +13,19 @@
     color: white;
 }
 
-/* .btn:hover {
+.btn:hover {
     background-color: #800;
     border-color: #800;
     opacity: .8;
-} */
+}
 
-#addAnnouncement {
+div.divider {
+    width:5px;
+    height:auto;
+    display:inline-block;
+}
+
+#addAnnouncement  {
     text-align: center;
 }
 
@@ -35,15 +41,16 @@
     height: 100%;
 }
 
-.announcement-content {
+.announcement-content{
     margin-left: 5%
 }
 
-.post {
+.post{
     margin-top: 10px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 768px)
+{
     .post-header {
         background-color: #ffe6e6;
         font: 3.5vw 'Germania One', cursive;
@@ -77,5 +84,5 @@
 }
 
 .pagination-container {
-    min-height: 650px;
+  min-height: 650px;
 }
