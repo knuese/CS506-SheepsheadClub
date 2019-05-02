@@ -95,7 +95,7 @@ a#title:hover {
     width: 100%;
 }
 
-.pagination .page-item.active .page-link { 
+/* .pagination .page-item.active .page-link { 
     background-color: #800; 
     border-color: #800; 
 }
@@ -113,4 +113,4 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination .page-item.active .
 .pagination .page-item.active .page-link:hover {
     background-color: #F00;
     color: white;
-}
+} */
