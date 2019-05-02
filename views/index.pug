@@ -12,7 +12,7 @@ block content
     - var imageUrls = ['/images/home_p1.png', '/images/home_p2.png', '/images/home_p3.png'];
     - var noForEachPage = 3;
     - var pageNo = Math.ceil(announcements.length / noForEachPage)
-      
+
     //- corousel part
     div.container-fluid.website-links
       .row
@@ -32,12 +32,12 @@ block content
               div.row.sub-row.announcements-row
                   div.col-12
                       div.card.announcements-card
-                            h3.card-title 
+                            h3.card-title
                                 = "Announcements"
                             if admin
                                 br
                                 div#addAnnouncement
-                                    button.btn.btn-primary(type='button', data-toggle='modal', data-target='#publishModal', data-whatever='@fat') Add Announcement
+                                    button.btn.btn-primary(type='button', data-toggle='modal', data-target='#publishModal') Add Announcement
                             div.card-block
                                 //- pagination
                                 .pagination-container
@@ -59,7 +59,10 @@ block content
                                                             = announcements[j].content
                                                         if admin
                                                             br
-                                                            button.btn.deleteButton.btn-primary(type='button' id=announcements[j].id) Delete Announcement                                                
+                                                            button.btn.editButton.btn-primary(type='button', data-toggle='modal', data-target='#EditModal', data-content=announcements[j].content, data-id=announcements[j].id, data-poster=announcements[j].posterName) Edit Announcement
+                                                            br
+                                                            br
+                                                            button.btn.deleteButton.btn-primary(type='button' id=announcements[j].id) Delete Announcement
                                                 -}
                                         - } else {
                                             div(data-page=i+1, style='display:none;')
@@ -78,22 +81,26 @@ block content
                                                             = announcements[j].content
                                                         if admin
                                                             br
-                                                            button.btn.deleteButton.btn-primary(type='button' id=announcements[j].id) Delete Announcement                                                
+                                                            button.btn.editButton.btn-primary(type='button', data-toggle='modal', data-target='#EditModal', data-content=announcements[j].content, data-id=announcements[j].id, data-poster=announcements[j].posterName) Edit Announcement
+                                                            br
+                                                            br
+                                                            button.btn.deleteButton.btn-primary(type='button' id=announcements[j].id ) Delete Announcement
+
                                                 -}
-                                        -}                                            
                                         -}
-                                        
+                                        -}
+
                                         .pagination.pagination-centered.d-flex.justify-content-center
                                             ul.pagination
                                                 li(data-page='-')
                                                     a.page-link(href='#') <
                                                 - for (var i = 1;i<=pageNo;++i){
                                                     li.page-item(data-page= i )
-                                                        a.page-link(href='#') 
+                                                        a.page-link(href='#')
                                                             = ""+i
                                                 -}
                                                 li(data-page='+')
-                                                    a.page-link(href='#') >                            
+                                                    a.page-link(href='#') >
           //- navigation part
           div.col-md-6
               div.row.sub-row
@@ -154,6 +161,25 @@ block content
               button.btn.btn-secondary(type='button', data-dismiss='modal') Close
               button.btn#postButton.btn-primary(type='button') Publish announcement
 
+      //- component of pop up window
+      #EditModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='EditModalLabel', aria-hidden='true')
+        .modal-dialog(role='document')
+          .modal-content
+            .modal-header
+              h5#EditModalLabel.modal-title Edit Announcement
+              button.close(type='button', data-dismiss='modal', aria-label='Close')
+                span(aria-hidden='true') ×
+            .modal-body
+              form
+                .form-group
+                  label.col-form-label Posted By:
+                  input#updatePoster.form-control(type='text')
+                .form-group
+                  label.col-form-label Content:
+                  textarea#updatePostContent.form-control
+            .modal-footer
+              button.btn.btn-secondary(type='button', data-dismiss='modal') Close
+              button.btn#updateButton.btn-primary(type='button') Update announcement
 
 
     script(src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous")
