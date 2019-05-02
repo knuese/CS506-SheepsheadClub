@@ -44,8 +44,6 @@ router.post('/submit_post', function(req, res){
 });
 
 router.post('/update_post', function(req, res){
-    console.log(req.body.id);
-    console.log(req.body.posterName);
     firebase.firestore().collection('announcements').doc(req.body.id).update({
         posterName: req.body.posterName,
         content: req.body.content
