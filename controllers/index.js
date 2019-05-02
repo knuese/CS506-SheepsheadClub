@@ -43,6 +43,19 @@ router.post('/submit_post', function(req, res){
     });
 });
 
+router.post('/update_post', function(req, res){
+    firebase.firestore().collection('announcements').doc(req.body.id).update({
+        posterName: req.body.posterName,
+        content: req.body.content
+    }).then(() => {
+        res.send("success");
+    }).catch((err) => {
+        res.status(500);
+        res.statusMessage = err;
+        res.send();
+    });
+});
+
 router.post('/delete_post', function(req, res){
     firebase.firestore().collection('announcements').doc(req.body.id).delete().then(() => {
         res.send("success");
