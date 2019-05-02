@@ -91,14 +91,14 @@ block content
                                         .pagination.pagination-centered.d-flex.justify-content-center
                                             ul.pagination
                                                 li(data-page='-')
-                                                    a.page-link(href='#') <
+                                                    a.page-link.arrow(href='#') <
                                                 - for (var i = 1;i<=pageNo;++i){
                                                     li.page-item(data-page= i )
                                                         a.page-link(href='#')
                                                             = ""+i
                                                 -}
                                                 li(data-page='+')
-                                                    a.page-link(href='#') >
+                                                    a.page-link.arrow(href='#') >                            
           //- navigation part
           div.col-md-6
               div.row.sub-row

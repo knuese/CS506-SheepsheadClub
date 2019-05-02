@@ -86,21 +86,39 @@ var paginationHandler = function () {
         var parentLiPage = $(this).parent('li').data("page"),
             currentPage = parseInt($(".pagination-container div[data-page]:visible").data('page')),
             numPages = $paginationContainer.find("div[data-page]").length;
+        
+        // Remove selected CSS class
+        $('a.page-link').removeClass('selected');
+
         // make sure they aren't clicking the current page
         if (parseInt(parentLiPage) !== parseInt(currentPage)) {
             // hide the current page
             $paginationContainer.find("div[data-page]:visible").hide();
             if (parentLiPage === '+') {
                 // next page
-                $paginationContainer.find("div[data-page=" + (currentPage + 1 > numPages ? numPages : currentPage + 1) + "]").show();
+                let pageNum = currentPage + 1 > numPages ? numPages : currentPage + 1;
+                $paginationContainer.find("div[data-page=" + pageNum + "]").show();
+                $(`a.page-link:contains('${pageNum}')`).addClass('selected');
             } else if (parentLiPage === '-') {
                 // previous page
-                $paginationContainer.find("div[data-page=" + (currentPage - 1 < 1 ? 1 : currentPage - 1) + "]").show();
+                let pageNum = currentPage - 1 < 1 ? 1 : currentPage - 1;
+                $paginationContainer.find("div[data-page=" + pageNum + "]").show();
+                $(`a.page-link:contains('${pageNum}')`).addClass('selected');
             } else {
                 // specific page
                 $paginationContainer.find("div[data-page=" + parseInt(parentLiPage) + "]").show();
             }
         }
+
+        // If they didn't click an arrow page
+        if (parentLiPage !== '+' && parentLiPage !== '-') {
+            // Add selected CSS class
+            $(e.target).addClass('selected');
+        }
     });
 };
 $(document).ready(paginationHandler);
+
+$(document).ready(() => {
+    $(`a.page-link:contains('1')`).addClass('selected');
+});
