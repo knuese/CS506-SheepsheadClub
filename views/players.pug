@@ -17,8 +17,10 @@ block content
 
     .main.container-fluid
       .row
-        .col.text-left
+        .col.text-center
           h3 Players
+      .row
+        .col.text-left  
           // Currently a dummy button that redirects to the players page. Blocking on database integration.
           a.btn.btn-primary(data-toggle="modal", href="#addmodal") Add Player
           #addmodal(class="modal fade")
