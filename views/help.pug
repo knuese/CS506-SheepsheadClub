@@ -7,7 +7,7 @@ block content
   .main.container-fluid
     .row
       .col.text-center
-        h3 Help
+        h2 Help
     .row  
       .col-md-3
         .card
@@ -37,40 +37,25 @@ block content
       #strategy-text.text-left
     .help-content#picking
       .row
-        h4 Should I pick up the blind?
+        h3 Should I pick up the blind?
       .row
-        select.form-control#picking-simulator
-          option(value="hard_coded") Hard Coded Examples
-          option(value="randomized") Random Examples
-        br
-        select.form-control.hardcode#picking-examples
-          option(value="example1") Example 1
-          option(value="example2") Example 2
-          option(value="example3") Example 3
-          option(value="example4") Example 4 
-      br     
-      .row.hardcode#pick-text
+        h5 This interactive exercise helps you practice the decision making process that goes into whether or not to pick up the blind.
+        ul
+          li Click the "Pick Up!"" button if you believe your hand is strong enough to pick up the blind. 
+          li Click the "Pass!" button if you don't think your hand is very strong and you would like to pass on picking up the blind.
+          li If your answer is correct, the button will turn green! Otherwise it will turn a brighter red.
+          li If the button turns yellowish orange, then the decision is up to the picker on how aggressive you want to be (you could pick or pass).  
       .row.random#pick-text-random
       br
-      .hardcode.row
-        div.col-md-1
-        div.col-md-5
-          button.btn-primary.form-control#pickuphard Pick it up!
-          button.btn-primary.form-control#passhard Pass!
-        div.col-md-5
-          label#correct-pick Good Job! You made the right decision!
-          label#incorrect-pick Oh no, try again!
       .random.row
-        div.col-md-1
-        div.col-md-5
-          button.btn-primary.form-control#pickuprandom Pick it up!
-          button.btn-primary.form-control#passrandom Pass!
-          button.btn-primary.form-control#newdeal New Deal!
-        div.col-md-5
-          label#correct-pick Good Job! You made the right decision!
-          label#maybe-pick This one's a little tougher. If you are feeling aggressive you could pick it up, otherwise play it safe and pass.
-          label#incorrect-pick Oh no, try again!
-      br
+        div.col-md-3
+        div.col-md-2
+          button.btn-primary-help.form-control#pickuprandom Pick it up!
+        div.col-md-2
+          button.btn-primary-help.form-control#passrandom Pass!
+        div.col-md-2
+          button.btn-primary-help.form-control#newdeal New Deal!
+        div.col-md-3
       
     .help-content#what-to-play
       .row

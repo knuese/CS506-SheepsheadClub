@@ -13,11 +13,17 @@
     color: white;
 }
 
-/* .btn:hover {
+.btn:hover {
     background-color: #800;
     border-color: #800;
     opacity: .8;
-} */
+}
+
+div.divider {
+    width:5px;
+    height:auto;
+    display:inline-block;
+}
 
 #addAnnouncement  {
     text-align: center;
@@ -77,7 +83,29 @@
     }
 }
 
-.pre-scrollable {
-  max-height: 900px;
-  overflow-y: scroll;
+.pagination-container {
+    min-height: 650px;
+}
+
+a.page-link { 
+    color:#800; 
+    border-color: #800; 
+}
+
+a.page-link:hover {
+    color:#800; 
+    border-color: #800; 
+    background-color: #ffe6e6;
+}
+
+a.selected {
+    background-color: #800 !important;
+    border-color: #800 !important;
+    color: #fff !important;
+}
+
+a.arrow:active {
+    background-color: #800;
+    border-color: #800;
+    color: #fff;
 }

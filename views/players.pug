@@ -17,8 +17,10 @@ block content
 
     .main.container-fluid
       .row
-        .col.text-left
+        .col.text-center
           h3 Players
+      .row
+        .col.text-left  
           // Currently a dummy button that redirects to the players page. Blocking on database integration.
           a.btn.btn-primary(data-toggle="modal", href="#addmodal") Add Player
           #addmodal(class="modal fade")
@@ -28,7 +30,7 @@ block content
                   h4(class="modal-title") Add Player
                 
                 div(class="modal-body")
-                  form(method='POST' action='/add-player')
+                  form(method='POST' action='/add-player' name="addForm" onsubmit = "return(validateAdd());")
                     div.form-group
                       label(for='fn') First Name:
                       input#fn.form-control(type='text' name='firstname')
@@ -51,7 +53,7 @@ block content
                   h4(class="modal-title") Update Player
                 
                 div(class="modal-body")
-                  form(method='POST' action='/update-player')
+                  form(method='POST' action='/update-player' name="updateForm" onsubmit = "return(validateUpdate());")
                     input#id(type='hidden' name='id')
                     div.form-group
                       label(for='fn') First Name:

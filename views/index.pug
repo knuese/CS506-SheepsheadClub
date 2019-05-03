@@ -4,10 +4,14 @@ block content
 
     link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous")
     link(rel="stylesheet" href="/stylesheets/index.css")
-    
-    - var imageUrls = ['/images/home_p2.png', '/images/home_p3.png'];
-
-
+    -
+        var posts = ["Meeting is canceled today.  See you next week!",
+                     "This week we will have a change in venue.  We'll be meeting in the Sett this week!",
+                     "Remember to pay your dues by this Friday, or else we won't let you play",
+                     "We're thinking about getting UW-Sheepshead t-shirts.  Let me know what you think", "1", "2"]
+    - var imageUrls = ['/images/home_p1.png', '/images/home_p2.png', '/images/home_p3.png'];
+    - var noForEachPage = 4;
+    - var pageNo = Math.ceil(announcements.length / noForEachPage)
 
     //- corousel part
     div.container-fluid.website-links
@@ -17,39 +21,84 @@ block content
             .carousel-inner
               .carousel-item.active
                   img.img-fluid(src='/images/home_p1.png' alt="Responsive image" )
-              each imageUrl in imageUrls
+              each imagUrl in imageUrls
                 .carousel-item
-                  img.img-fluid(src=imageUrl alt="Responsive image")
+                  img.img-fluid(src=imagUrl alt="Responsive image")
 
-      
+
       div.row
           //- announcements part
           div.col-md-6
               div.row.sub-row.announcements-row
                   div.col-12
                       div.card.announcements-card
-                          h3.card-title Announcements
-                          if admin
-                            br
-                            div#addAnnouncement
-                                button.btn.btn-primary(type='button', data-toggle='modal', data-target='#publishModal', data-whatever='@fat') Add Announcement
-                          div.card-block.pre-scrollable
-                              each announcement in announcements
-                                  .card.post
-                                      div.card-header.post-header
-                                          b By
-                                          b
-                                            = " " + announcement.posterName
-                                          i  on
-                                          i
-                                            = " " + announcement.date
-                                          br
-                                      div.card-block
-                                          p.announcement-content
-                                              = announcement.content
-                                          if admin
-                                              br
-                                              button.btn.deleteButton.btn-primary(type='button' id=announcement.id) Delete
+                            h3.card-title
+                                = "Announcements"
+                            if admin
+                                br
+                                div#addAnnouncement
+                                    button.btn.btn-primary(type='button', data-toggle='modal', data-target='#publishModal') Add Announcement
+                            div.card-block
+                                //- pagination
+                                .pagination-container
+                                        - for (var i = 0;i<pageNo;++i){
+                                        -if (i===0){
+                                            div(data-page=i+1)
+                                                - for (var j = i*noForEachPage ;(j<(i+1)*noForEachPage)&&(j<announcements.length);++j){
+                                                .card.post
+                                                    div.card-header.post-header
+                                                        b By
+                                                        b
+                                                            = " " + announcements[j].posterName
+                                                        i  on
+                                                        i
+                                                            = " " + announcements[j].date
+                                                        br
+                                                    div.card-block
+                                                        p.announcement-content
+                                                            = announcements[j].content
+                                                        if admin
+                                                            br
+                                                            button.btn.editButton.btn-primary(type='button', data-toggle='modal', data-target='#EditModal', data-content=announcements[j].content, data-id=announcements[j].id, data-poster=announcements[j].posterName) Edit
+                                                            div.divider
+                                                            button.btn.deleteButton.btn-primary(type='button' id=announcements[j].id) Delete
+                                                -}
+                                        - } else {
+                                            div(data-page=i+1, style='display:none;')
+                                                - for (var j = i*noForEachPage ;(j<(i+1)*noForEachPage)&&(j<announcements.length);++j){
+                                                .card.post
+                                                    div.card-header.post-header
+                                                        b By
+                                                        b
+                                                            = " " + announcements[j].posterName
+                                                        i  on
+                                                        i
+                                                            = " " + announcements[j].date
+                                                        br
+                                                    div.card-block
+                                                        p.announcement-content
+                                                            = announcements[j].content
+                                                        if admin
+                                                            br
+                                                            button.btn.editButton.btn-primary(type='button', data-toggle='modal', data-target='#EditModal', data-content=announcements[j].content, data-id=announcements[j].id, data-poster=announcements[j].posterName) Edit
+                                                            div.divider
+                                                            button.btn.deleteButton.btn-primary(type='button' id=announcements[j].id ) Delete
+
+                                                -}
+                                        -}
+                                        -}
+
+                                        .pagination.pagination-centered.d-flex.justify-content-center
+                                            ul.pagination
+                                                li(data-page='-')
+                                                    a.page-link.arrow(href='#') <
+                                                - for (var i = 1;i<=pageNo;++i){
+                                                    li.page-item(data-page= i )
+                                                        a.page-link(href='#')
+                                                            = ""+i
+                                                -}
+                                                li(data-page='+')
+                                                    a.page-link.arrow(href='#') >                            
           //- navigation part
           div.col-md-6
               div.row.sub-row
@@ -96,7 +145,6 @@ block content
                                   10,000 years... Well, not really. Visit the About page for more information about the club!
                               a.btn.btn-primary(href = "/about") Find out More
 
-
       //- component of pop up window
       #publishModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='publishModalLabel', aria-hidden='true')
         .modal-dialog(role='document')
@@ -108,15 +156,35 @@ block content
             .modal-body
               form
                 .form-group
-                  label.col-form-label Posted by:
+                  label.col-form-label Posted By:
                   input#poster.form-control(type='text')
                 .form-group
                   label.col-form-label Content:
                   textarea#postContent.form-control
             .modal-footer
-              button.btn.btn-default(type='button', data-dismiss='modal') Close
-              button.btn#postButton.btn-primary(type='button') Publish
+              button.btn.btn-secondary(type='button', data-dismiss='modal') Close
+              button.btn#postButton.btn-primary(type='button') Publish announcement
 
+      //- component of pop up window
+      #EditModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='EditModalLabel', aria-hidden='true')
+        .modal-dialog(role='document')
+          .modal-content
+            .modal-header
+              h5#EditModalLabel.modal-title Edit Announcement
+              button.close(type='button', data-dismiss='modal', aria-label='Close')
+                span(aria-hidden='true') ×
+            .modal-body
+              form
+                .form-group
+                  label.col-form-label Posted By:
+                  input#updatePoster.form-control(type='text')
+                .form-group
+                  label.col-form-label Content:
+                  textarea#updatePostContent.form-control
+            .modal-footer
+              button.btn#updateButton.btn-primary(type='button') Update
+              button.btn.btn-secondary(type='button', data-dismiss='modal') Close
+ 
 
 
     script(src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous")
