@@ -28,8 +28,8 @@ let goodBadLabel = $('label#bad-hand');
 $(document).ready(() => {
     // Start with general strategy selected
     $('button#strategy').trigger('click');
-    $('button#pickuphard').trigger('click');
-    $('button#passhard').trigger('click');
+    //$('button#pickuphard').trigger('click');
+    //$('button#passhard').trigger('click');
 
     roleDropdown.trigger('change');
     playDropdown.trigger('change');
@@ -40,6 +40,11 @@ $('button.help').on('click', (event) => {
     $('button.help').removeClass('selected');
     $(event.target).addClass('selected');
     displayForSelection(event.target.id);
+});
+
+$('button#picking').on('click', (event) => {
+    $('button#pickuphard').css('background-color', '#800');
+    $('button#passhard').css('background-color', '#800');
 });
 
 // Switching between the html strategy dropdown selections
@@ -56,14 +61,18 @@ playDropdown.change(() => {
 simulatorDropdown.change(() => {
     clearMessage();
     if(simulatorDropdown.val() == "hard_coded") {
-        $('.hardcode').css('display', 'block');
+        $('.hardcode').css('display', 'flex');
         $('.hardcode#pick-text').load(`should-I-pick/${pickDropdown.val()}.html`);
         $('.random').css('display', 'none');
+        $('button#pickuphard').css('background-color', '#800');
+        $('button#passhard').css('background-color', '#800');
     }
     else {
         $('.random').css('display', 'block');
         $('.hardcode').css('display', 'none');
         randomHand();
+        $('button#pickuprandom').css('background-color', '#800');
+        $('button#passrandom').css('background-color', '#800');
 
     }
 });
@@ -151,18 +160,24 @@ $('button#pickuphard').on('click', () => {
 
     if(pickDropdown.val() == 'example1' || pickDropdown.val() == 'example3') {
         // Display correct pick
-        $('label#correct-pick').css('display', 'block');
+        //$('label#correct-pick').css('display', 'block');
 
         // Hide label after 10 second        
-        setTimeout(() => correctPickLabel.css('display', 'none'), 10000);
-
+        //setTimeout(() => correctPickLabel.css('display', 'none'), 10000);
+        
+        $('button#pickuphard').css('background-color', 'green');
+        $('button#passhard').css('background-color', '#800');
+        setTimeout(() => $('button#pickuphard').css('background-color', '#800'), 10000);
     }
     else {
         // Display incorrect pick
-        $('label#incorrect-pick').css('display', 'block');
+        //$('label#incorrect-pick').css('display', 'block');
 
         // Hide label after 10 second
-        setTimeout(() => incorrectPickLabel.css('display', 'none'), 10000);
+        //setTimeout(() => incorrectPickLabel.css('display', 'none'), 10000);
+        $('button#pickuphard').css('background-color', 'red');
+        $('button#passhard').css('background-color', '#800');
+        setTimeout(() => $('button#pickuphard').css('background-color', '#800'), 10000);
     }
 });
 
@@ -172,18 +187,25 @@ $('button#passhard').on('click', () => {
 
     if(pickDropdown.val() == 'example1' || pickDropdown.val() == 'example3') {
         // Display incorrect pick
-        $('label#incorrect-pick').css('display', 'block');
+        //$('label#incorrect-pick').css('display', 'block');
 
         // Hide label after 10 second        
-        setTimeout(() => incorrectPickLabel.css('display', 'none'), 10000);
-
+        //setTimeout(() => incorrectPickLabel.css('display', 'none'), 10000);
+        
+        $('button#passhard').css('background-color', 'red');
+        $('button#pickuphard').css('background-color', '#800');
+        setTimeout(() => $('button#pickuphard').css('background-color', '#800'), 10000);
     }
     else {
         // Display correct pick
-        $('label#correct-pick').css('display', 'block');
+        //$('label#correct-pick').css('display', 'block');
 
         // Hide label after 10 second
-        setTimeout(() => correctPickLabel.css('display', 'none'), 10000);
+        //setTimeout(() => correctPickLabel.css('display', 'none'), 10000);
+        
+        $('button#pickuphard').css('background-color', 'green');
+        $('button#passhard').css('background-color', '#800');
+        setTimeout(() => $('button#pickuphard').css('background-color', '#800'), 10000);
     }
 });
 
@@ -193,25 +215,34 @@ $('button#pickuprandom').on('click', () => {
 
     let check_hand = checkHand(random_hand);
     if(check_hand == 1){
-        // Display correct pick
-        $('label#correct-pick').css('display', 'block');
-
+        // Display correct pick by changing button green
+        $('button#pickuprandom').css('background-color', 'green');
+        $('button#passrandom').css('background-color', '#800');
+        setTimeout(() => $('button#pickuprandom').css('background-color', '#800'), 10000);
         // Hide label after 10 second        
-        setTimeout(() => correctPickLabel.css('display', 'none'), 10000);
+        //setTimeout(() => correctPickLabel.css('display', 'none'), 10000);
     }
     else if(check_hand == 2){
         // Display tentative pick
-        $('label#maybe-pick').css('display', 'block');
+        //$('label#maybe-pick').css('display', 'block');
         
+        $('button#pickuprandom').css('background-color', 'orange');
+        $('button#passrandom').css('background-color', '#800');
+        setTimeout(() => $('button#pickuprandom').css('background-color', '#800'), 10000);
+
         // Hide label after 10 second        
-        setTimeout(() => maybePickLabel.css('display', 'none'), 10000);
+        //setTimeout(() => maybePickLabel.css('display', 'none'), 10000);
     }
     else {
         // Display incorrect pick
-        $('label#incorrect-pick').css('display', 'block');
+        //$('label#incorrect-pick').css('display', 'block');
+
+        $('button#pickuprandom').css('background-color', 'red');
+        $('button#passrandom').css('background-color', '#800');
+        setTimeout(() => $('button#pickuprandom').css('background-color', '#800'), 10000);
 
         // Hide label after 10 second
-        setTimeout(() => incorrectPickLabel.css('display', 'none'), 10000);
+        //setTimeout(() => incorrectPickLabel.css('display', 'none'), 10000);
     }
 });
 
@@ -222,24 +253,34 @@ $('button#passrandom').on('click', () => {
     let check_hand = checkHand(random_hand);
     if(check_hand == 0){
         // Display correct pick
-        $('label#correct-pick').css('display', 'block');
+        //$('label#correct-pick').css('display', 'block');
 
         // Hide label after 10 second        
-        setTimeout(() => correctPickLabel.css('display', 'none'), 10000);
+        //setTimeout(() => correctPickLabel.css('display', 'none'), 10000);
+
+        $('button#passrandom').css('background-color', 'green');
+        $('button#pickuprandom').css('background-color', '#800');
+        setTimeout(() => $('button#passrandom').css('background-color', '#800'), 10000);
     }
     else if(check_hand == 2){
         // Display tentative pick
-        $('label#maybe-pick').css('display', 'block');
+        //$('label#maybe-pick').css('display', 'block');
         
         // Hide label after 10 second        
-        setTimeout(() => maybePickLabel.css('display', 'none'), 10000);
+        //setTimeout(() => maybePickLabel.css('display', 'none'), 10000);
+        $('button#passrandom').css('background-color', 'orange');
+        $('button#pickuprandom').css('background-color', '#800');
+        setTimeout(() => $('button#passrandom').css('background-color', '#800'), 10000);
     }
     else {
         // Display incorrect pick
-        $('label#incorrect-pick').css('display', 'block');
+        //$('label#incorrect-pick').css('display', 'block');
 
         // Hide label after 10 second
-        setTimeout(() => incorrectPickLabel.css('display', 'none'), 10000);
+        //setTimeout(() => incorrectPickLabel.css('display', 'none'), 10000);
+        $('button#passrandom').css('background-color', 'red');
+        $('button#pickuprandom').css('background-color', '#800');
+        setTimeout(() => $('button#passrandom').css('background-color', '#800'), 10000);
     }
 });
 
@@ -247,6 +288,11 @@ $('button#passrandom').on('click', () => {
 $('button#newdeal').on('click', () => {
     clearMessage();
     randomHand();
+    $('button#pickuprandom').css('background-color', '#800');
+    $('button#passrandom').css('background-color', '#800');
+    $('button#newdeal').css('background-color', '#800');
+
+
 });
 
 // Remove a card from both the hand array and the UI for hand assistance
@@ -264,9 +310,9 @@ function removeCard(event) {
 
 // Function that clears all error/info messages
 function clearMessage(){
-    $('label#correct-pick').css('display', 'none');
-    $('label#maybe-pick').css('display', 'none');
-    $('label#incorrect-pick').css('display', 'none');
+    //$('label#correct-pick').css('display', 'none');
+    //$('label#maybe-pick').css('display', 'none');
+    //$('label#incorrect-pick').css('display', 'none');
     $('label#good-hand').css('display', 'none');
     $('label#okay-hand').css('display', 'none');
     $('label#bad-hand').css('display', 'none');
@@ -304,10 +350,10 @@ function checkHand(current_hand) {
     else if(trump_count >= 4){
         return 1;
     }
-    else if(queen_count >= 2 && total_points >= 35){
+    else if(queen_count == 2 && trump_count == 2){
         return 2;
     }
-    else if(trump_count >= 3 && total_points >=35){
+    else if(trump_count == 3 && total_points >=25){
         return 2;
     }
     else {

@@ -74,7 +74,14 @@ button.selected {
     background-color: red;
 }
 
-.btn-primary {
+.btn-primary-help {
+    background-color: #800;
+    border-color: black !important;
+    color: white !important;
+}
+
+.btn-primary-help:active {
+    background-color: #800 !important;
     border-color: black !important;
 }
 
@@ -173,6 +180,7 @@ select#picking-simulator, select#picking-examples {
 
 .random {
     display: none;
+    margin-left: 1rem;
 }
 
 .displayed {
