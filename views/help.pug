@@ -39,46 +39,23 @@ block content
       .row
         h3 Should I pick up the blind?
       .row
-        h5 This interactive exercise practices the decision making process that goes into whether or not to pick up the blind at the start of the round.
+        h5 This interactive exercise helps you practice the decision making process that goes into whether or not to pick up the blind.
         ul
           li Click the "Pick Up!"" button if you believe your hand is strong enough to pick up the blind. 
           li Click the "Pass!" button if you don't think your hand is very strong and you would like to pass on picking up the blind.
           li If your answer is correct, the button will turn green! Otherwise it will turn a brighter red.
-          li When doing the random questions, if the button turns yellowish orange, then the decision is up to the picker on how aggressive they want to be (you could pick or pass).
-          li You can practice using hard-coded examples (examples that will be the same every time) or random examples using a random generator.
-      .row
-        br
-      .row
-        select.form-control#picking-simulator
-          option(value="hard_coded") Hard-Coded Examples
-          option(value="randomized") Random Examples
-        br
-        select.form-control.hardcode#picking-examples
-          option(value="example1") Example 1
-          option(value="example2") Example 2
-          option(value="example3") Example 3
-          option(value="example4") Example 4 
-      br     
-      .row.hardcode#pick-text
+          li If the button turns yellowish orange, then the decision is up to the picker on how aggressive you want to be (you could pick or pass).  
       .row.random#pick-text-random
       br
-      .hardcode.row
-        div.col-md-2
-        div.col-md-4
-          button.btn-primary-help.form-control#pickuphard Pick it up!
-        div.col-md-4
-          button.btn-primary-help.form-control#passhard Pass!
-        div.col-md-2
       .random.row
-        div.col-md-1
         div.col-md-3
+        div.col-md-2
           button.btn-primary-help.form-control#pickuprandom Pick it up!
-        div.col-md-3
+        div.col-md-2
           button.btn-primary-help.form-control#passrandom Pass!
-        div.col-md-3
+        div.col-md-2
           button.btn-primary-help.form-control#newdeal New Deal!
-        div.col-md-1  
-      br
+        div.col-md-3
       
     .help-content#what-to-play
       .row
