@@ -14,6 +14,7 @@ class Announcement {
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
+    console.log(req.connection.remoteAddress);
   getAnnouncements().then((announcements) => {
       res.render('index', { admin: firebase.auth().currentUser != null, announcements: announcements });
   });
