@@ -4,7 +4,7 @@ let firebase = require("firebase");
 
 //login page
 router.get('/login', function (req, res, next) {
-  if (global.loggedIn) {
+  if (firebase.auth().currentUser) {
     res.redirect('/');
   } else {
     res.render('login', {err: "", admin: false});
