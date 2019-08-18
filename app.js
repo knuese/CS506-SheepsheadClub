@@ -51,10 +51,11 @@ app.use(function (req, res, next) {
 app.use(errorController.get404);
 
 // Setting up port
-const server_port = process.env.YOUR_PORT || process.env.PORT || 5500;
+const port = process.env.PORT || 5500;
+console.log(`PORT WAS SET TO ${port}`);
 
-app.listen(server_port, function () {
-  console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", server_port, server_port);
+app.listen(port, function () {
+  console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", port, port);
 });
 
 module.exports = app;
