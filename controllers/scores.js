@@ -6,12 +6,12 @@ const ScoreEntry = require('../models/scoreEntry');
 
 /* GET scores page */
 router.get('/scores', (req, res) => {
-    getSemesters().then((semesters) => res.render('scores', { semesters: semesters, admin: firebase.auth().currentUser != null }));
+    getSemesters().then((semesters) => res.render('scores', { semesters: semesters, admin: global.loggedIn != null }));
 });
   
 /* GET score entry page */
 router.get('/enter-scores', (req, res, next) => {
-    if (firebase.auth().currentUser) {
+    if (global.loggedIn) {
         getPlayers().then((players) => {
             res.render('enter-scores', { admin: true, players: players });
         });

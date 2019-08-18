@@ -7,22 +7,22 @@ const cards = require('../public/js/cards');
 
 /* GET about page */
 router.get('/about', (req, res, next) => {
-    res.render('about', { admin: firebase.auth().currentUser != null });
+    res.render('about', { admin: global.loggedIn });
   });
   
 /* GET rules page */
 router.get('/rules', (req, res, next) => {
-    res.render('rules', { admin: firebase.auth().currentUser != null });
+    res.render('rules', { admin: global.loggedIn });
 });
 
 /* GET help page */
 router.get('/help', (req, res, next) => {
-    res.render('help', { cards: cards, admin: firebase.auth().currentUser != null });
+    res.render('help', { cards: cards, admin: global.loggedIn });
 });
 
 /* GET fun facts page */
 router.get('/fun-facts', (req, res, next) => {
-    res.render('fun-facts', { admin: firebase.auth().currentUser != null });
+    res.render('fun-facts', { admin: global.loggedIn });
 });
 
 router.post('/rules', function (req, res) {
