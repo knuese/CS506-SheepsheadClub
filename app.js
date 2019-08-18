@@ -52,9 +52,8 @@ app.use(errorController.get404);
 
 // Setting up port
 const server_port = process.env.YOUR_PORT || process.env.PORT || 5500;
-const server_host = process.env.YOUR_HOST || '0.0.0.0';
 
-app.listen(server_port, server_host, function () {
+app.listen(server_port, function () {
   console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", server_port, server_port);
 });
 
