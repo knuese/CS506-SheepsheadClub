@@ -22,9 +22,6 @@ let playersRouter = require('./controllers/players');
 let staticPageRouter = require('./controllers/staticPages');
 let loginRouter = require('./controllers/login');
 
-// Setting up port
-const PORT = process.env.PORT || 5500;
-
 const errorController = require('./controllers/error');
 
 let app = express();
@@ -53,7 +50,11 @@ app.use(function (req, res, next) {
 // error handler
 app.use(errorController.get404);
 
-app.listen(PORT, function () {
+// Setting up port
+const server_port = process.env.YOUR_PORT || process.env.PORT || 5500;
+const server_host = process.env.YOUR_HOST || '0.0.0.0';
+
+app.listen(server_port, server_host, function () {
   console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
 });
 
