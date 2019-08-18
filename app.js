@@ -15,15 +15,6 @@ let config = {
 };
 
 firebase.initializeApp(config);
-firebase.auth().onAuthStateChanged((user) => {
-  if (user) {
-    global.loggedIn = true;
-  } else {
-    global.loggedIn = false;
-  }
-
-  console.log(`LOGGED IN ${global.loggedIn}`);
-});
 
 let indexRouter = require('./controllers/index');
 let scoresRouter = require('./controllers/scores');
@@ -61,6 +52,7 @@ app.use(errorController.get404);
 
 // Setting up port
 const port = process.env.PORT || 5500;
+console.log(`PORT WAS SET TO ${port}`);
 
 app.listen(port, function () {
   console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", port, port);
