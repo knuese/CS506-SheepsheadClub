@@ -2,11 +2,12 @@ const express = require('express');
 const router = express.Router();
 const firebase = require('firebase');
 const Player = require('../models/player');
+const auth = require('../controllers/auth');
 
 /* GET players page */
 router.get('/players', (req, res, next) => {
     console.log('here');
-    if (firebase.auth().currentUser) {
+    if (auth.isLoggedIn(req.connection.remoteAddress)) {
       res.render('players', { admin: true, added: false, deleted:false, updated:false});
     } else {
       res.redirect('/login');
@@ -38,7 +39,7 @@ router.post('/add-player', (req, res) => {
 // Get data to display on the scores page
 router.post('/players/get-data', (req, res) => {
     let myPromise = new Promise((resolve, reject) => {
-        getData(resolve, reject);
+        getData(req, resolve, reject);
     });
 
     // The callback we pass in is to send the result with the data
@@ -89,8 +90,8 @@ router.post('/delete-player', (req, res) => {
     
   });
 
-async function getData(accept, reject) {
-    if (firebase.auth().currentUser) {
+async function getData(req, accept, reject) {
+    if (auth.isLoggedIn(req.connection.remoteAddress)) {
         const snapshot = await firebase.firestore().collection('players').get();
         let players = Array.from(snapshot.docs.map(doc => new Player(doc.id, 
                                                                         doc.data().firstName, 

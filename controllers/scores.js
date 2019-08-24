@@ -3,15 +3,16 @@ const router = express.Router();
 const firebase = require('firebase');
 const Player = require('../models/player');
 const ScoreEntry = require('../models/scoreEntry');
+const auth = require('../controllers/auth');
 
 /* GET scores page */
 router.get('/scores', (req, res) => {
-    getSemesters().then((semesters) => res.render('scores', { semesters: semesters, admin: firebase.auth().currentUser != null }));
+    getSemesters().then((semesters) => res.render('scores', { semesters: semesters, admin: auth.isLoggedIn(req.connection.remoteAddress) }));
 });
   
 /* GET score entry page */
 router.get('/enter-scores', (req, res, next) => {
-    if (firebase.auth().currentUser) {
+    if (auth.isLoggedIn(req.connection.remoteAddress)) {
         getPlayers().then((players) => {
             res.render('enter-scores', { admin: true, players: players });
         });
