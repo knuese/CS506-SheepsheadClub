@@ -7,7 +7,7 @@ const auth = require('../controllers/auth');
 /* GET players page */
 router.get('/players', (req, res, next) => {
     console.log('here');
-    if (auth.isLoggedIn(req.connection.remoteAddress)) {
+    if (auth.isLoggedIn(req)) {
       res.render('players', { admin: true, added: false, deleted:false, updated:false});
     } else {
       res.redirect('/login');
@@ -91,7 +91,7 @@ router.post('/delete-player', (req, res) => {
   });
 
 async function getData(req, accept, reject) {
-    if (auth.isLoggedIn(req.connection.remoteAddress)) {
+    if (auth.isLoggedIn(req)) {
         const snapshot = await firebase.firestore().collection('players').get();
         let players = Array.from(snapshot.docs.map(doc => new Player(doc.id, 
                                                                         doc.data().firstName, 

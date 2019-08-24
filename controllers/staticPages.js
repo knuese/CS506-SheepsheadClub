@@ -8,22 +8,22 @@ const auth = require('../controllers/auth')
 
 /* GET about page */
 router.get('/about', (req, res, next) => {
-    res.render('about', { admin: auth.isLoggedIn(req.connection.remoteAddress) });
+    res.render('about', { admin: auth.isLoggedIn(req) });
   });
   
 /* GET rules page */
 router.get('/rules', (req, res, next) => {
-    res.render('rules', { admin: auth.isLoggedIn(req.connection.remoteAddress) });
+    res.render('rules', { admin: auth.isLoggedIn(req) });
 });
 
 /* GET help page */
 router.get('/help', (req, res, next) => {
-    res.render('help', { cards: cards, admin: auth.isLoggedIn(req.connection.remoteAddress) });
+    res.render('help', { cards: cards, admin: auth.isLoggedIn(req) });
 });
 
 /* GET fun facts page */
 router.get('/fun-facts', (req, res, next) => {
-    res.render('fun-facts', { admin: auth.isLoggedIn(req.connection.remoteAddress) });
+    res.render('fun-facts', { admin: auth.isLoggedIn(req) });
 });
 
 router.post('/rules', function (req, res) {

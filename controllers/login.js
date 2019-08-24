@@ -5,7 +5,7 @@ const auth = require('./auth');
 
 //login page
 router.get('/login', function (req, res, next) {
-  if (auth.isLoggedIn(req.connection.remoteAddress)) {
+  if (auth.isLoggedIn(req)) {
     res.redirect('/');
   } else {
     res.render('login', {err: "", admin: false});
@@ -29,7 +29,7 @@ router.post('/login', function (req, res, next) {
   firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
       console.log("logging in");
-      auth.login(req.connection.remoteAddress);
+      auth.login(req);
       res.redirect('/');
     } else {
       console.log("logged in or error");
@@ -42,7 +42,7 @@ router.post('/login', function (req, res, next) {
 router.post('/logout', function (req, res, next) {
 
   firebase.auth().signOut().then(function () {
-    auth.logout(req.connection.remoteAddress);
+    auth.logout(req);
     res.redirect('/');
 
   }).catch(function (error) {

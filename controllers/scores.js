@@ -7,12 +7,12 @@ const auth = require('../controllers/auth');
 
 /* GET scores page */
 router.get('/scores', (req, res) => {
-    getSemesters().then((semesters) => res.render('scores', { semesters: semesters, admin: auth.isLoggedIn(req.connection.remoteAddress) }));
+    getSemesters().then((semesters) => res.render('scores', { semesters: semesters, admin: auth.isLoggedIn(req) }));
 });
   
 /* GET score entry page */
 router.get('/enter-scores', (req, res, next) => {
-    if (auth.isLoggedIn(req.connection.remoteAddress)) {
+    if (auth.isLoggedIn(req)) {
         getPlayers().then((players) => {
             res.render('enter-scores', { admin: true, players: players });
         });

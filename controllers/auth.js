@@ -1,5 +1,11 @@
 const users = [];
 
+const getIp = (req) => {
+    return req.headers['x-forwarded-for'] ||
+        req.connection.remoteAddress ||
+        req.sockert.remoteAddress;
+}
+
 const remove = (ip) => {
     const index = users.indexOf(ip);
     if (index > -1) {
@@ -8,17 +14,20 @@ const remove = (ip) => {
 }
 
 module.exports = {
-    login: function(ip) {
-        console.log(`Logging in ${ip}`);
+    login: function(req) {
+        const ip = getIp(req);
+        console.log(`--------------Logging in ${ip}--------------`);
         users.push(ip);
         setTimeout((ip) => remove(ip), 1000 * 60 * 5);
     },
-    isLoggedIn: function(ip) {
-        console.log(`${ip} is logged in: ${users.includes(ip)}`);
+    isLoggedIn: function(req) {
+        const ip = getIp(req);
+        console.log(`--------------${ip} is logged in: ${users.includes(ip)}--------------`);
         return users.includes(ip);
     },
-    logout: function(ip) {
-        console.log(`Logging out ${ip}`);
+    logout: function(req) {
+        const ip = getIp(req);
+        console.log(`--------------Logging out ${ip}--------------`);
         remove(ip);
     }
 }
