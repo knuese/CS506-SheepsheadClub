@@ -14,6 +14,7 @@ module.exports = {
         setTimeout((ip) => remove(ip), 1000 * 60 * 5);
     },
     isLoggedIn: function(ip) {
+        console.log(`${ip} is logged in: ${users.includes(ip)}`);
         return users.includes(ip);
     },
     logout: function(ip) {
