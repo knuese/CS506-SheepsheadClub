@@ -3,7 +3,7 @@ const users = [];
 const getIp = (req) => {
     return req.headers['x-forwarded-for'] ||
         req.connection.remoteAddress ||
-        req.sockert.remoteAddress;
+        req.socket.remoteAddress;
 }
 
 const remove = (ip) => {
@@ -15,6 +15,7 @@ const remove = (ip) => {
 
 module.exports = {
     login: function(req) {
+        console.log(req);
         const ip = getIp(req);
         console.log(`--------------Logging in ${ip}--------------`);
         users.push(ip);
